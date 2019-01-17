@@ -1,0 +1,9 @@
+.nc-header-menu >>> .nc-menu-horizontal {
+    border-bottom:none;
+}
+.nc-header >>> .nc-menu-horizontal {
+    border-bottom:none;
+}
+.nc-sider >>> .nc-menu-vertical {
+    border-right:none;
+}
