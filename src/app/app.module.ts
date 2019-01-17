@@ -7,11 +7,13 @@ import { BasicCookModule } from './basic-cook/basic-cook.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
+import { FullComponent } from './full.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FullComponent
   ],
   imports: [
     BrowserModule,BasicCookModule,AppRoutingModule,CoreModule,ShareModule

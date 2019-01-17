@@ -1,8 +1,8 @@
 .nc-header-menu >>> .nc-menu-horizontal {
-    border-bottom:none;
+    border-bottom-color:#e6e6e6;
 }
 .nc-header >>> .nc-menu-horizontal {
-    border-bottom:none;
+    border-bottom-color:#e6e6e6;
 }
 .nc-sider >>> .nc-menu-vertical {
     border-right:none;
