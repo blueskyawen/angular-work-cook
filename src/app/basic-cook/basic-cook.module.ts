@@ -9,10 +9,12 @@ import { MessageComponent } from './message/message.component';
 
 import { HerosService } from './heros/heros.service';
 import { MessageService } from './message/message.service';
+import { AddHeroComponent } from './heros/add-hero.component';
+import { HeroSearchComponent } from './heros/hero-search.component';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
-    MessageComponent],
+    MessageComponent,AddHeroComponent, HeroSearchComponent],
   imports: [
     CommonModule,ShareModule
   ]

@@ -1,8 +1,13 @@
 <h2>My Heroes</h2>
+<nc-button [type]="'add'" (click)="AddHero()">AddHero</nc-button>
 <ul class="heroes">
     <li *ngFor="let hero of heroes">
         <a routerLink="/main/basic/heros/detail/{{hero.id}}">
             <span class="badge">{{hero.id}}</span> {{hero.name}}
         </a>
+        <button class="delete" title="delete hero"
+                (click)="delete(hero)">x</button>
     </li>
 </ul>
+
+<app-add-hero *ngIf="isShowAdd" (heroAdded)="heroAdded($event)"></app-add-hero>

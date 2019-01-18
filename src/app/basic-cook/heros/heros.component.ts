@@ -7,8 +7,9 @@ import { HerosService } from './heros.service';
   templateUrl: './heros.component.html',
   styleUrls: ['./heros.component.less']
 })
-export class HerosComponent implements OnInit {ssssss
+export class HerosComponent implements OnInit {
   heroes: Hero[];
+  isShowAdd : boolean = false;
 
   constructor(private heroService: HerosService) { }
 
@@ -21,4 +22,19 @@ export class HerosComponent implements OnInit {ssssss
         .subscribe(heroes => this.heroes = heroes);
   }
 
+  AddHero() {
+    this.isShowAdd = true;
+  }
+
+  heroAdded(hero : any) {
+    if(hero) {
+      this.heroes.push(hero);
+    }
+    this.isShowAdd = false;
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
 }

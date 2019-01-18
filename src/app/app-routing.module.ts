@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from './not-found.component';
+import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
 import {DashboardComponent,HerosComponent,TopHerosComponent,
     HeroDetailComponent} from './basic-cook/index';

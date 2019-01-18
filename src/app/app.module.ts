@@ -6,17 +6,21 @@ import { BasicCookModule } from './basic-cook/basic-cook.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './not-found.component';
 import { FullComponent } from './full.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './core/in-memory-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
     FullComponent
   ],
   imports: [
-    BrowserModule,BasicCookModule,AppRoutingModule,CoreModule,ShareModule
+    BrowserModule,BasicCookModule,AppRoutingModule,CoreModule,ShareModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+        InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
