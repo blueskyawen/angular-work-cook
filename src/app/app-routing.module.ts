@@ -2,16 +2,23 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found.component';
 import { FullComponent } from './full.component';
-import {HerosComponent} from './basic-cook/index';
+import {DashboardComponent,HerosComponent,TopHerosComponent,
+    HeroDetailComponent} from './basic-cook/index';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
     children: [
-      { path: '', component: HerosComponent },
-      { path: 'basic/heros', component: HerosComponent }
+      { path: 'basic/heros', component: DashboardComponent,
+        children: [
+          { path: '', component: TopHerosComponent },
+          { path: 'topHeros', component: TopHerosComponent },
+          { path: 'list', component: HerosComponent },
+          { path: 'detail/:id', component: HeroDetailComponent }
+        ]
+      }
     ]
   },
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '', redirectTo: '/main/basic/heros', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 

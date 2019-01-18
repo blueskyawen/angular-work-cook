@@ -14,7 +14,7 @@ export class FullComponent implements OnInit {
       {title:'基本烹饪',
         icon:'fa fa-coffee',
         isActive:true,
-        callback: () => {this.router.navigate(['/main']);}
+        callback: () => {this.router.navigate(['/main/basic/heros']);}
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
@@ -35,7 +35,7 @@ export class FullComponent implements OnInit {
       {title:'英雄指南',
         icon:'fa fa-coffee',
         isActive:true,
-        callback: () => {this.router.navigate(['/main/basic/heros']);},
+        callback: () => {this.router.navigate(['/main/basic/heros/topHeros']);},
       },
       {title:'组件与模板',
         icon:'fa fa-wifi',

@@ -1,16 +1,8 @@
-<h3>1. 普通按钮</h3>
-<div style="margin-right: 10px;display: inline-block;">
-  <nc-button (click)="getUsers()">普通按钮</nc-button>
-</div>
-<div style="margin-right: 10px;display: inline-block;">
-  <nc-button [type]="'cancel'" (click)="addUsers()">取消按钮</nc-button>
-</div>
-
-<p>2. 多选-checkbox，用于表单的多选项目</p>
-<div style="margin-top: 20px;">
-  <span>请选择： </span>
-  <span *ngFor="let item of items" style="margin-right:10px;">
-    <nc-checkbox [(checked)]="item.checked" [isPartial]="item.partial"></nc-checkbox>
-    <span>{{item.label}}</span>
-  </span>
-</div>
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/main/basic/heros/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+    </li>
+</ul>

@@ -3,12 +3,12 @@ import { Hero } from './hero';
 import { HerosService } from './heros.service';
 
 @Component({
-  selector: 'app-heros',
-  templateUrl: './heros.component.html',
-  styleUrls: ['./heros.component.less']
+  selector: 'app-top-heros',
+  templateUrl: './top-heros.component.html',
+  styleUrls: ['./top-heros.component.less']
 })
-export class HerosComponent implements OnInit {ssssss
-  heroes: Hero[];
+export class TopHerosComponent implements OnInit {
+  heroes: Hero[] = [];
 
   constructor(private heroService: HerosService) { }
 
@@ -18,7 +18,7 @@ export class HerosComponent implements OnInit {ssssss
 
   getHeroes(): void {
     this.heroService.getHeroes()
-        .subscribe(heroes => this.heroes = heroes);
+        .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 
 }
