@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
 import {DashboardComponent,HerosComponent,TopHerosComponent,
-    HeroDetailComponent,DynamicCompComponent} from './basic-cook/index';
+    HeroDetailComponent,DynamicCompComponent,CustomElementComponent} from './basic-cook/index';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
@@ -18,7 +18,8 @@ const routes: Routes = [
       },
       { path: 'basic/comp',
         children: [
-          { path: 'dynamic', component: DynamicCompComponent }
+          { path: 'dynamic', component: DynamicCompComponent },
+          { path: 'customEle', component: CustomElementComponent }
         ]
       }
     ]

@@ -15,14 +15,17 @@ import { DynamicCompComponent } from './dynamic-comp/dynamic-comp.component';
 import { HeroJobAdComponent } from './dynamic-comp/hero-job-ad.component';
 import { HeroPrpfileComponent } from './dynamic-comp/hero-prpfile.component';
 import { AdDirective } from './dynamic-comp/ad.directive';
+import { CustomElementComponent } from './custom-element/custom-element.component';
+import { PopupComponent } from './custom-element/popup.component';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
     MessageComponent,AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
-    HeroJobAdComponent, HeroPrpfileComponent, AdDirective],
+    HeroJobAdComponent, HeroPrpfileComponent, AdDirective, CustomElementComponent,
+    PopupComponent],
   imports: [
     CommonModule,ShareModule
   ],
-  entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent ]
+  entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent,PopupComponent ]
 })
 export class BasicCookModule { }

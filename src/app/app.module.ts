@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 import { BasicCookModule } from './basic-cook/basic-cook.module';
@@ -20,7 +21,8 @@ import { InMemoryDataService }  from './core/in-memory-data.service';
     BrowserModule,BasicCookModule,AppRoutingModule,CoreModule,ShareModule,
     HttpClientInMemoryWebApiModule.forRoot(
         InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -46,7 +46,7 @@ export class FullComponent implements OnInit {
             {title:'动态组件',icon:'',isActive:false,place: 'down',
               callback: () => {this.router.navigate(['/main/basic/comp/dynamic']);}},
             {title:'自定义元素',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/ownElement']);}},
+              callback: () => {this.router.navigate(['/main/basic/comp/customEle']);}},
             {title:'属性指令',icon:'',isActive:false,place: 'down',
               callback: () => {this.router.navigate(['/main/basic/attrDirective']);}},
             {title:'结构指令',icon:'',isActive:false,place: 'down',

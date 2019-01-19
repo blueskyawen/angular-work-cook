@@ -30,7 +30,8 @@
               "src/styles.less",
               "./node_modules/ng-shadow-cat-d/ng-shadow-cat-d.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
