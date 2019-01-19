@@ -31,6 +31,9 @@
               "./node_modules/ng-shadow-cat-d/ng-shadow-cat-d.css"
             ],
             "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
             ]
           },
           "configurations": {
