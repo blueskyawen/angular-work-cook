@@ -44,7 +44,9 @@ export class FullComponent implements OnInit {
           place: 'down',isShow:false,
           navItems: [
             {title:'动态组件',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/dynamicComponent']);}},
+              callback: () => {this.router.navigate(['/main/basic/comp/dynamic']);}},
+            {title:'自定义元素',icon:'',isActive:false,place: 'down',
+              callback: () => {this.router.navigate(['/main/basic/ownElement']);}},
             {title:'属性指令',icon:'',isActive:false,place: 'down',
               callback: () => {this.router.navigate(['/main/basic/attrDirective']);}},
             {title:'结构指令',icon:'',isActive:false,place: 'down',
@@ -74,7 +76,7 @@ export class FullComponent implements OnInit {
   isShowSideMenu : boolean = true;
 
   constructor(private route: ActivatedRoute,
-              private router: Router,) {
+              private router: Router) {
 
   }
 

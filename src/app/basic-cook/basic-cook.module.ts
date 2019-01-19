@@ -11,12 +11,18 @@ import { HerosService } from './heros/heros.service';
 import { MessageService } from './message/message.service';
 import { AddHeroComponent } from './heros/add-hero.component';
 import { HeroSearchComponent } from './heros/hero-search.component';
+import { DynamicCompComponent } from './dynamic-comp/dynamic-comp.component';
+import { HeroJobAdComponent } from './dynamic-comp/hero-job-ad.component';
+import { HeroPrpfileComponent } from './dynamic-comp/hero-prpfile.component';
+import { AdDirective } from './dynamic-comp/ad.directive';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
-    MessageComponent,AddHeroComponent, HeroSearchComponent],
+    MessageComponent,AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
+    HeroJobAdComponent, HeroPrpfileComponent, AdDirective],
   imports: [
     CommonModule,ShareModule
-  ]
+  ],
+  entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent ]
 })
 export class BasicCookModule { }
