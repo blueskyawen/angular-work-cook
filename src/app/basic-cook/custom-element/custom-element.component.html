@@ -18,4 +18,10 @@
     </nc-form-control>
   </nc-form-group>
 </form>
-<div id="customEle"></div>
+<div id="customEle">
+</div>
+<nc-button (click)="showIt()">show自定义标签元素</nc-button>
+<div *ngIf="show" class="customEle">
+  <popup-element [message]="'自定义标签元素'" (closed)="show=false"></popup-element>
+</div>
+

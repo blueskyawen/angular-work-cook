@@ -9,13 +9,14 @@ import { PopupComponent } from './popup.component';
 })
 export class CustomElementComponent {
   message : string = 'AAAAA';
+  show : boolean = false;
 
   constructor(public injector: Injector, private applicationRef: ApplicationRef,
               private componentFactoryResolver: ComponentFactoryResolver) {
     // Convert `PopupComponent` to a custom element.
-    const PopupElement = createCustomElement(PopupComponent, {injector: this.injector});
+    //const PopupElement = createCustomElement(PopupComponent, {injector: this.injector});
     // Register the custom element with the browser.
-    customElements.define('popup-element', PopupElement);
+    //customElements.define('popup-element', PopupElement);
   }
 
   showAsComponent() {
@@ -36,7 +37,7 @@ export class CustomElementComponent {
     });
 
     // Set the message
-    popupComponentRef.instance.message = this.message;
+    popupComponentRef.instance.message = 'Popup by 动态组件: ' + this.message;
 
     // Add to the DOM
     document.getElementById('customEle').appendChild(popup);
@@ -51,10 +52,14 @@ export class CustomElementComponent {
     popupEl.addEventListener('closed', () => document.getElementById('customEle').removeChild(popupEl));
 
     // Set the message
-    popupEl.message = this.message;
+    popupEl.message = 'Popup by 自定义元素: ' + this.message;
 
     // Add to the DOM
     document.getElementById('customEle').appendChild(popupEl);
+  }
+
+  showIt() {
+    this.show = !this.show;
   }
 
 }

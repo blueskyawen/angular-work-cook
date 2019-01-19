@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,Injector,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/share.module';
 import { HerosComponent } from './heros/heros.component';
@@ -18,6 +18,8 @@ import { AdDirective } from './dynamic-comp/ad.directive';
 import { CustomElementComponent } from './custom-element/custom-element.component';
 import { PopupComponent } from './custom-element/popup.component';
 
+import { createCustomElement} from '@angular/elements';
+
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
     MessageComponent,AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
@@ -26,6 +28,14 @@ import { PopupComponent } from './custom-element/popup.component';
   imports: [
     CommonModule,ShareModule
   ],
-  entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent,PopupComponent ]
+  entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent,PopupComponent ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class BasicCookModule { }
+export class BasicCookModule {
+  constructor(public injector: Injector) {
+    // Convert `PopupComponent` to a custom element.
+    const PopupElement = createCustomElement(PopupComponent, {injector: this.injector});
+    // Register the custom element with the browser.
+    customElements.define('popup-element', PopupElement);
+  }
+}
