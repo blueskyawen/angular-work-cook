@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
-import {DashboardComponent,HerosComponent,TopHerosComponent,
-    HeroDetailComponent,DynamicCompComponent,CustomElementComponent} from './basic-cook/index';
+import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent,DynamicCompComponent,
+  CustomElementComponent,TempleFormComponent,ReactiveFormComponent} from './basic-cook/index';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
@@ -19,7 +19,13 @@ const routes: Routes = [
       { path: 'basic/comp',
         children: [
           { path: 'dynamic', component: DynamicCompComponent },
-          { path: 'customEle', component: CustomElementComponent }
+          { path: 'customEle', component: CustomElementComponent },
+        ]
+      },
+      { path: 'basic/form',
+        children: [
+          { path: 'temple', component: TempleFormComponent },
+          { path: 'reactive', component: ReactiveFormComponent }
         ]
       }
     ]

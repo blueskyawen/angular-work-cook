@@ -63,9 +63,9 @@ export class FullComponent implements OnInit {
           place: 'down',isShow:false,
           navItems: [
             {title:'模板式表单',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/templeForm']);}},
+              callback: () => {this.router.navigate(['/main/basic/form/temple']);}},
             {title:'响应式表单',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/relativeForm']);}},
+              callback: () => {this.router.navigate(['/main/basic/form/reactive']);}},
             {title:'动态表单',icon:'',isActive:false,place: 'down',
               callback: () => {this.router.navigate(['/main/basic/dynamicForm']);}}
           ]

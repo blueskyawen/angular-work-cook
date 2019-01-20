@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LibModule } from 'ng-shadow-cat-d';
 
@@ -9,6 +9,6 @@ import { LibModule } from 'ng-shadow-cat-d';
   imports: [
     CommonModule
   ],
-  exports: [LibModule,CommonModule,FormsModule,RouterModule]
+  exports: [LibModule,CommonModule,FormsModule,RouterModule,ReactiveFormsModule]
 })
 export class ShareModule { }

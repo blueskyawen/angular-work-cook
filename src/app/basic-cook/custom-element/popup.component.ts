@@ -29,12 +29,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-top: 1px solid black;
+          border-radius: 3px;
           font-size: 24px;
         }
 
         button {
           border-radius: 50%;
+          cursor: pointer;
         }
       `]
 })
