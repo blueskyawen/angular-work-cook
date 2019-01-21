@@ -1,0 +1,18 @@
+input {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: inherit;
+  &:after {
+    content: "(optional)";
+  }
+  &[required]:after {
+    content: "";
+  }
+}
+select {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: inherit;
+}

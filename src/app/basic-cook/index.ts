@@ -12,4 +12,5 @@ export * from './reactive-form/reactive-form.component';
 export * from './attr-directive/attr-directive.component';
 export * from './struct-directive/struct-directive.component';
 export * from './pipe/pipe.component';
+export * from './dynamic-form/dynamic-form.component';
 

@@ -4,7 +4,7 @@ import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
 import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent,DynamicCompComponent,
   CustomElementComponent,TempleFormComponent,ReactiveFormComponent,AttrDirectiveComponent,
-  StructDirectiveComponent,PipeComponent} from './basic-cook/index';
+  StructDirectiveComponent,PipeComponent,DynamicFormComponent} from './basic-cook/index';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
@@ -29,7 +29,8 @@ const routes: Routes = [
       { path: 'basic/form',
         children: [
           { path: 'temple', component: TempleFormComponent },
-          { path: 'reactive', component: ReactiveFormComponent }
+          { path: 'reactive', component: ReactiveFormComponent },
+          { path: 'dynamic', component: DynamicFormComponent }
         ]
       }
     ]

@@ -1,12 +1,13 @@
 import { NgModule,Injector,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/share.module';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+
 import { HerosComponent } from './heros/heros.component';
 import { HeroDetailComponent } from './heros/hero-detail.component';
 import { DashboardComponent } from './heros/dashboard.component';
 import { TopHerosComponent } from './heros/top-heros.component';
 import { MessageComponent } from './message/message.component';
-
 import { HerosService } from './heros/heros.service';
 import { MessageService } from './message/message.service';
 import { AddHeroComponent } from './heros/add-hero.component';
@@ -39,7 +40,7 @@ import { PipeComponent } from './pipe/pipe.component';
     HighlightDirective, AttrDirectiveComponent, InputNumberDirective, StructDirectiveComponent,
     NumIfDirective, TransverterPipe, PipeComponent],
   imports: [
-    CommonModule,ShareModule
+    CommonModule,ShareModule,DynamicFormModule
   ],
   entryComponents: [ HeroJobAdComponent, HeroPrpfileComponent,PopupComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

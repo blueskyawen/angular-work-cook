@@ -14,16 +14,19 @@ export class FullComponent implements OnInit {
       {title:'基本烹饪',
         icon:'fa fa-coffee',
         isActive:true,
+        url:'/main/basic/heros',
         callback: () => {this.router.navigate(['/main/basic/heros']);}
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
         isActive:false,
+        url:'/main/advance',
         callback: () => {this.router.navigate(['/main/advance']);}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
         isActive:false,
+        url:'/main/other',
         callback: () => {this.router.navigate(['/main/other']);}
       }
     ]
@@ -35,6 +38,7 @@ export class FullComponent implements OnInit {
       {title:'英雄指南',
         icon:'fa fa-coffee',
         isActive:true,
+        url:'/main/basic/heros/topHeros',
         callback: () => {this.router.navigate(['/main/basic/heros/topHeros']);},
       },
       {title:'组件与模板',
@@ -44,14 +48,19 @@ export class FullComponent implements OnInit {
           place: 'down',isShow:false,
           navItems: [
             {title:'动态组件',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/comp/dynamic',
               callback: () => {this.router.navigate(['/main/basic/comp/dynamic']);}},
             {title:'自定义元素',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/comp/customEle',
               callback: () => {this.router.navigate(['/main/basic/comp/customEle']);}},
             {title:'属性指令',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/comp/attrDirective',
               callback: () => {this.router.navigate(['/main/basic/comp/attrDirective']);}},
             {title:'结构指令',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/comp/structDirective',
               callback: () => {this.router.navigate(['/main/basic/comp/structDirective']);}},
             {title:'管道',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/comp/pipe',
               callback: () => {this.router.navigate(['/main/basic/comp/pipe']);}}
           ]
         }
@@ -63,11 +72,14 @@ export class FullComponent implements OnInit {
           place: 'down',isShow:false,
           navItems: [
             {title:'模板式表单',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/form/temple',
               callback: () => {this.router.navigate(['/main/basic/form/temple']);}},
             {title:'响应式表单',icon:'',isActive:false,place: 'down',
+              url:'/main/basic/form/reactive',
               callback: () => {this.router.navigate(['/main/basic/form/reactive']);}},
             {title:'动态表单',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/dynamicForm']);}}
+              url:'/main/basic/form/dynamic',
+              callback: () => {this.router.navigate(['/main/basic/form/dynamic']);}}
           ]
         }
       }
@@ -81,6 +93,12 @@ export class FullComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(location.pathname);
+
+  }
+
+  checkActiveNav() {
+
   }
 
   showSideMenu() {
