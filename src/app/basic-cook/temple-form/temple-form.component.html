@@ -1,8 +1,9 @@
 <form #tForm="ngForm" (ngSubmit)="save()">
   <div class="form-group">
-    <label>姓名</label>
+    <label class="form-left">姓名</label>
     <div class="form-right">
-      <input type="text" name="name" [(ngModel)]="name" minlength="3" [forbiddenName]="name" required #name1="ngModel"/>
+      <input type="text" name="name" [(ngModel)]="name" minlength="3" [forbiddenName]="name"
+             required #name1="ngModel"/>
     </div>
     <span class="reqiured"> * </span>
   </div>
@@ -13,7 +14,7 @@
   </div>
 
   <div class="form-group">
-    <label>性别</label>
+    <label class="form-left">性别</label>
     <div  class="form-right">
       <select name="Sex" [(ngModel)]="selectSex">
         <option *ngFor="let sex of sexs" [value]="sex.value">{{sex.name}}</option>
@@ -23,7 +24,7 @@
   </div>
 
   <div class="form-group">
-    <label>出生年月</label>
+    <label class="form-left">出生年月</label>
     <div class="form-right">
       <input type="date" name="shengti" [(ngModel)]="shengri" [value]="shengri" required/>
     </div>
@@ -31,7 +32,7 @@
   </div>
 
   <div class="form-group">
-    <label>密码</label>
+    <label class="form-left">密码</label>
     <div class="form-right">
       <input type="password" name="password" [(ngModel)]="password" required/>
     </div>
@@ -40,13 +41,13 @@
 
   <fieldset ngModelGroup="address" #address="ngModelGroup">
     <div class="form-group">
-      <label>国家</label>
+      <label class="form-left">国家</label>
       <div class="form-right">
         <input type="text" name="coun" [(ngModel)]="address.country" />
       </div>
     </div>
     <div class="form-group">
-      <label>城市</label>
+      <label class="form-left">城市</label>
       <div class="form-right">
         <input type="text" name="city" [(ngModel)]="address.city" />
       </div>
@@ -54,31 +55,31 @@
   </fieldset>
 
   <div  class="form-group"  *ngFor="let like of likes;let i=index">
-    <label *ngIf="i ===0" class="yes">兴趣爱好</label>
-    <label *ngIf="i !==0" class="no"></label>
+    <label *ngIf="i ===0" class="form-left yes">兴趣爱好</label>
+    <label *ngIf="i !==0" class="form-left no"></label>
     <div>
       <input type="checkbox" [(ngModel)]="like.isChecked" name="like" (ngModelChange)="selectLikes()" />{{like.name}}
     </div>
   </div>
 
   <div class="form-group" *ngFor="let skill of skills;let i=index">
-    <label *ngIf="i ===0" class="yes">技能</label>
-    <label *ngIf="i !==0" class="no"></label>
+    <label *ngIf="i ===0" class="form-left yes">技能</label>
+    <label *ngIf="i !==0" class="form-left no"></label>
     <div class="form-right">
       <input type="text" name="skill" [(ngModel)]="skill.value" />
     </div>
     <a (click)="delSkill(skill)" class="del"> - </a>
   </div>
   <div class="form-group">
-    <label class="no"></label>
-    <div class="add">
-      <a (click)="addSkill()"> + </a>
+    <label class="form-left no"></label>
+    <div class="form-right">
+      <a  class="add" (click)="addSkill()"> + </a>
     </div>
   </div>
 
   <div *ngFor="let bao of baocuns;let i=index" class="form-group">
-    <label *ngIf="i === 0" class="yes">是否保存</label>
-    <label *ngIf="i !== 0" class="no"></label>
+    <label *ngIf="i === 0" class="form-left yes">是否保存</label>
+    <label *ngIf="i !== 0" class="form-left no"></label>
     <div>
       <input  type="radio" [(ngModel)]="selectbao" name="bao" [value]="bao.value" />{{bao.name}}
     </div>

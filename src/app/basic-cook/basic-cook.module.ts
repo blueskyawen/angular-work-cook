@@ -23,12 +23,21 @@ import { TempleFormComponent } from './temple-form/temple-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 import { ForbiddenValidatorDirective } from './directive/forbinden-name.directive';
+import { HighlightDirective } from './directive/highlight.directive';
+import { AttrDirectiveComponent } from './attr-directive/attr-directive.component';
+import { InputNumberDirective } from './directive/input-number.directive';
+import { StructDirectiveComponent } from './struct-directive/struct-directive.component';
+import { NumIfDirective } from './directive/num-if.directive';
+import { TransverterPipe } from './directive/transverter.pipe';
+import { PipeComponent } from './pipe/pipe.component';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
     MessageComponent,AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
     HeroJobAdComponent, HeroPrpfileComponent, AdDirective, CustomElementComponent,
-    PopupComponent, TempleFormComponent, ReactiveFormComponent,ForbiddenValidatorDirective],
+    PopupComponent, TempleFormComponent, ReactiveFormComponent,ForbiddenValidatorDirective,
+    HighlightDirective, AttrDirectiveComponent, InputNumberDirective, StructDirectiveComponent,
+    NumIfDirective, TransverterPipe, PipeComponent],
   imports: [
     CommonModule,ShareModule
   ],

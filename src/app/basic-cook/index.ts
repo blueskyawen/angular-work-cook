@@ -9,3 +9,7 @@ export * from './dynamic-comp/dynamic-comp.component';
 export * from './custom-element/custom-element.component';
 export * from './temple-form/temple-form.component';
 export * from './reactive-form/reactive-form.component';
+export * from './attr-directive/attr-directive.component';
+export * from './struct-directive/struct-directive.component';
+export * from './pipe/pipe.component';
+

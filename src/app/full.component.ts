@@ -48,11 +48,11 @@ export class FullComponent implements OnInit {
             {title:'自定义元素',icon:'',isActive:false,place: 'down',
               callback: () => {this.router.navigate(['/main/basic/comp/customEle']);}},
             {title:'属性指令',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/attrDirective']);}},
+              callback: () => {this.router.navigate(['/main/basic/comp/attrDirective']);}},
             {title:'结构指令',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/structDirective']);}},
+              callback: () => {this.router.navigate(['/main/basic/comp/structDirective']);}},
             {title:'管道',icon:'',isActive:false,place: 'down',
-              callback: () => {this.router.navigate(['/main/basic/pipe']);}}
+              callback: () => {this.router.navigate(['/main/basic/comp/pipe']);}}
           ]
         }
       },

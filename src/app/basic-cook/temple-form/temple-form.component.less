@@ -2,115 +2,102 @@ div.form-group {
   height: 30px;
   line-height: 30px;
   margin-bottom: 10px;
-}
-
-.form-group label {
-  display: block;
-  width: 80px;
-  height: inherit;
-  float: left;
-}
-
-.form-group label:after,
-.form-group label[class=yes]:after {
-  content: " : ";
-}
-
-.form-group label[class=no]:after {
-  content: "  ";
-}
-
-.form-group div.form-right {
-  display: block;
-  width: 360px;
-  float: left;
-}
-
-.form-group div.form-right input {
-  height: 26px;
-  line-height: 26px;
-  width: inherit;
-}
-
-.form-group div.form-right input:after {
-  content: "(optional)";
-}
-
-.form-group div.form-right input[required]:after {
-  content: "";
-}
-
-.form-group span.reqiured {
-  color: red;
-  margin-left: 10px;
-  height: inherit;
-  line-height: inherit;
-  font-size: 18px;
-}
-
-.form-group div.form-right select {
-  height: 26px;
-  line-height: 26px;
-  width: inherit;
-}
-
-.form-group .add a {
-  color:white;
-  background-color: blue;
-  font-weight: bold;
-  margin-left: 10px;
-  height: 14px;
-  width: 14px;
-  line-height: 14px;
-  text-align: center;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  display: inline-block;
-}
-
-.form-group .add a:hover,
-.form-group a.del:hover {
-  cursor: pointer;
-}
-
-.form-group .del {
-  color:white;
-  background-color: red;
-  font-weight: bold;
-  display: inline-block;
-  margin-left: 10px;
-  height: 14px;
-  width: 14px;
-  line-height: 14px;
-  text-align: center;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
+  label.form-left {
+    display: block;
+    width: 80px;
+    height: inherit;
+    float: left;
+    &:after {
+      content: ": ";
+    }
+    &.yes:after {
+      content: ": ";
+    }
+    &.no:after {
+      content: "";
+    }
+  }
+  div.form-right {
+    display: inline-block;
+    width: 360px;
+    float: left;
+    input {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      width: inherit;
+      &:after {
+        content: "(optional)";
+      }
+      &[required]:after {
+        content: "";
+      }
+    }
+    select {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      width: inherit;
+    }
+  }
+  span.reqiured {
+    color: red;
+    margin-left: 10px;
+    height: inherit;
+    line-height: inherit;
+    font-size: 18px;
+  }
+  a {
+    &.add {
+      color:white;
+      background-color: blue;
+      font-weight: bold;
+      margin-left: 10px;
+      height: 16px;
+      width: 16px;
+      line-height: 16px;
+      text-align: center;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+    &.del {
+      color:white;
+      background-color: red;
+      font-weight: bold;
+      display: inline-block;
+      margin-left: 10px;
+      height: 16px;
+      width: 16px;
+      line-height: 16px;
+      text-align: center;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+  }
 }
 
 .button-group {
   margin-left: 80px;
   margin-top: 10px;
-}
-
-.button-group button {
-  height: 30px;
-  width: 60px;
-  margin-right: 10px;
-}
-
-.button-group button:hover {
-  cursor: pointer;
-}
-
-.button-group button.confirm {
-  background-color: blue;
-  border-color: blue;
-  color: white;
-}
-
-.button-group button[disabled].confirm {
-  background-color: darkgrey;
-  border-color: darkgrey;
+  button {
+    height: 30px;
+    width: 60px;
+    margin-right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+    &.confirm {
+      background-color: blue;
+      border-color: blue;
+      color: white;
+    }
+    &[disabled].confirm {
+      background-color: darkgrey;
+      border-color: darkgrey;
+    }
+  }
 }
 
 .error p {

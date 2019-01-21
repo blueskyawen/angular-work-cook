@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
 import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent,DynamicCompComponent,
-  CustomElementComponent,TempleFormComponent,ReactiveFormComponent} from './basic-cook/index';
+  CustomElementComponent,TempleFormComponent,ReactiveFormComponent,AttrDirectiveComponent,
+  StructDirectiveComponent,PipeComponent} from './basic-cook/index';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
@@ -20,6 +21,9 @@ const routes: Routes = [
         children: [
           { path: 'dynamic', component: DynamicCompComponent },
           { path: 'customEle', component: CustomElementComponent },
+          { path: 'attrDirective', component: AttrDirectiveComponent },
+          { path: 'structDirective', component: StructDirectiveComponent },
+          { path: 'pipe', component: PipeComponent }
         ]
       },
       { path: 'basic/form',
