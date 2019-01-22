@@ -88,7 +88,7 @@ export class FullComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router) {
     this.curUrl = location.pathname;
-    this.menuNavs.navItems[this.menuIndex[this.curUrl.split('/')[2]]].url = this.curUrl;
+    this.menuNavs.navItems[this.menuIndex[this.curUrl.split('main/')[1].split('/')[0]]].url = this.curUrl;
   }
 
   ngOnInit() {
