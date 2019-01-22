@@ -80,15 +80,18 @@ export class FullComponent implements OnInit {
     ]
   };
   isShowSideMenu : boolean = true;
+  curUrl : string;
+  menuIndex : any = {
+    basic: 0,advance:1,other:2
+  };
 
   constructor(private route: ActivatedRoute,
               private router: Router) {
-
+    this.curUrl = location.pathname;
+    this.menuNavs.navItems[this.menuIndex[this.curUrl.split('/')[2]]].url = this.curUrl;
   }
 
   ngOnInit() {
-    console.log(location.pathname);
-
   }
 
   checkActiveNav() {
