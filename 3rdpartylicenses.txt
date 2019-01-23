@@ -229,9 +229,6 @@ Apache-2.0
  
 
 
-@angular/core
-MIT
-
 @angular/common
 MIT
 
@@ -332,6 +329,9 @@ THE SOFTWARE.
 
 
 @angular/elements
+MIT
+
+@angular/core
 MIT
 
 core-js
