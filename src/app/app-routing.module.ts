@@ -32,6 +32,10 @@ const routes: Routes = [
           { path: 'reactive', component: ReactiveFormComponent },
           { path: 'dynamic', component: DynamicFormComponent }
         ]
+      },
+      {
+        path: 'advance',
+        loadChildren: './advance-cook/advance-cook.module#AdvanceCookModule'
       }
     ]
   },

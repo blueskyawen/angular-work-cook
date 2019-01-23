@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvanceCookService } from '../../advance-cook/advance-cook.service';
 
 @Component({
   selector: 'app-pipe',
@@ -9,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
     <span>MB</span>
   </div>
   <p>使用管道转换后： {{inputValue | transverter}}</p>
+  <p>*********************</p>
+  <p>{{advanceCookService.getMessage()}}</p>
   `,
   styles: []
 })
 export class PipeComponent implements OnInit {
   inputValue : any = 1024;
 
-  constructor() { }
+  constructor(public advanceCookService : AdvanceCookService) { }
 
   ngOnInit() {
   }

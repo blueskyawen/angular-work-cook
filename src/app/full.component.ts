@@ -18,8 +18,8 @@ export class FullComponent implements OnInit {
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
-        url:'/main/advance',
-        callback: () => {this.router.navigate(['/main/advance']);}
+        url:'/main/advance/rxjs',
+        callback: () => {this.router.navigate(['/main/advance/rxjs']);}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
@@ -28,7 +28,7 @@ export class FullComponent implements OnInit {
       }
     ]
   };
-  sidebarNavs : any = {
+  sidebarNavs_basic : any = {
     type: 'vertical',
     place: 'down',
     navItems: [
@@ -79,26 +79,57 @@ export class FullComponent implements OnInit {
       }
     ]
   };
+  sidebarNavs_advance : any = {
+    type: 'vertical',
+    place: 'down',
+    navItems: [
+      {title:'Rxjs',
+        icon:'fa fa-coffee',
+        url:'/main/advance/rxjs',
+        callback: () => {this.router.navigate(['/main/advance/rxjs']);},
+      },
+      {title:'Service-Worker',
+        icon:'fa fa-wifi',
+        url:'/main/advance/sw',
+        callback: () => {this.router.navigate(['/main/advance/sw']);}
+      }
+    ]
+  };
+  sidebarNav : any = this.sidebarNavs_basic;
+  sidebarNavs : any[] = [];
   isShowSideMenu : boolean = true;
   curUrl : string;
   menuIndex : any = {
     basic: 0,advance:1,other:2
   };
+  curMenuIndex : number = -1;
 
   constructor(private route: ActivatedRoute,
               private router: Router) {
-    this.curUrl = location.pathname;
-    this.menuNavs.navItems[this.menuIndex[this.curUrl.split('main/')[1].split('/')[0]]].url = this.curUrl;
+    this.sidebarNavs.push(this.sidebarNavs_basic);
+    this.sidebarNavs.push(this.sidebarNavs_advance);
   }
 
   ngOnInit() {
+    this.checkActiveNav();
   }
 
   checkActiveNav() {
-
+    this.curUrl = '/main/' + location.pathname.split('main/')[1];
+    if(this.menuIndex[this.curUrl.split('/')[2]] !== this.curMenuIndex) {
+      this.curMenuIndex = this.menuIndex[this.curUrl.split('/')[2]];
+      this.sidebarNav = this.sidebarNavs[this.curMenuIndex];
+    }
+    this.menuNavs.navItems[this.curMenuIndex].url = this.curUrl;
   }
 
   showSideMenu() {
     this.isShowSideMenu = !this.isShowSideMenu;
+  }
+
+  changeMenu() {
+    setTimeout(() => {
+      this.checkActiveNav();
+    },50);
   }
 }
