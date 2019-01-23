@@ -9,14 +9,15 @@
         <div class="nc-anticon"></div>
       </div>
     </div>
-    <div class="nc-header-menu" (click)="changeMenu()">
+    <div class="nc-header-menu">
       <nc-menu [type]="menuNavs.type" [place]="menuNavs.place" [navItems]="menuNavs.navItems"
-               [backColor]="'manual'" [color]="'#e6e6e6'" [url]="curUrl"></nc-menu>
+               [backColor]="'manual'" [color]="'#e6e6e6'" [url]="curUrl"
+               (menuSelectChange)="menuSelected($event)"></nc-menu>
     </div>
   </div>
   <div class="nc-layout nc-flex nc-row">
     <div class="nc-sider" style="width:240px;" [class.nc-sidebars-hidden]="!isShowSideMenu">
-      <nc-menu [type]="sidebarNav.type" [place]="sidebarNav.place" [navItems]="sidebarNav.navItems"
+      <nc-menu  *ngIf="isShowSider" [type]="sidebarNav.type" [place]="sidebarNav.place" [navItems]="sidebarNav.navItems"
                [color]="'#d9d9d9'" [url]="curUrl"></nc-menu>
     </div>
     <div class="nc-content nc-flex" style="min-height:800px;padding: 30px;">

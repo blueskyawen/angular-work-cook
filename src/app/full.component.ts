@@ -13,7 +13,7 @@ export class FullComponent implements OnInit {
     navItems: [
       {title:'基本烹饪',
         icon:'fa fa-coffee',
-        url:'/main/basic/heros',
+        url:'/main/basic/heros/topHeros',
         callback: () => {this.router.navigate(['/main/basic/heros']);}
       },
       {title:'进阶烹饪',
@@ -103,6 +103,7 @@ export class FullComponent implements OnInit {
     basic: 0,advance:1,other:2
   };
   curMenuIndex : number = -1;
+  isShowSider : boolean = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router) {
@@ -127,9 +128,16 @@ export class FullComponent implements OnInit {
     this.isShowSideMenu = !this.isShowSideMenu;
   }
 
-  changeMenu() {
-    setTimeout(() => {
-      this.checkActiveNav();
-    },50);
+  menuSelected(url : any) {
+    this.curUrl = url;
+    if(this.menuIndex[this.curUrl.split('/')[2]] !== this.curMenuIndex) {
+      this.curMenuIndex = this.menuIndex[this.curUrl.split('/')[2]];
+      this.sidebarNav = this.sidebarNavs[this.curMenuIndex];
+      this.menuNavs.navItems[this.curMenuIndex].url = this.curUrl;
+      this.isShowSider = false;
+      setTimeout(() => {
+        this.isShowSider = true;
+      },50);
+    }
   }
 }

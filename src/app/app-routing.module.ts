@@ -39,7 +39,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '', redirectTo: '/main/basic/heros', pathMatch: 'full' },
+  { path: '', redirectTo: '/main/basic/heros/topHeros', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 
