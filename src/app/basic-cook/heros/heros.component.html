@@ -9,5 +9,10 @@
                 (click)="delete(hero)">x</button>
     </li>
 </ul>
+<ul class="heroe-header">
+    <li *ngFor="let header of headers">
+        {{header}}
+    </li>
+</ul>
 
 <app-add-hero *ngIf="isShowAdd" (heroAdded)="heroAdded($event)"></app-add-hero>

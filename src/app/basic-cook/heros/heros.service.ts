@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { MessageService } from '../message/message.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {
@@ -22,9 +22,9 @@ export class HerosService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  getHeroes(): Observable<Hero[]> {
+  getHeroes(): Observable<HttpResponse<Hero>[]> {
     this.log('fetched heroes');
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Hero[]>(this.heroesUrl,{observe:'response'})
         .pipe(
           tap(_ => this.log('fetched heroes')),
           catchError(this.handleError('getHeroes', []))

@@ -10,6 +10,7 @@ import { HerosService } from './heros.service';
 export class HerosComponent implements OnInit {
   heroes: Hero[];
   isShowAdd : boolean = false;
+  headers : any[] = [];
 
   constructor(private heroService: HerosService) { }
 
@@ -19,7 +20,12 @@ export class HerosComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-        .subscribe(heroes => this.heroes = heroes);
+        .subscribe(resp => {
+          const keys = resp.headers.keys();
+          this.headers = keys.map(key =>
+              `${key}: ${resp.headers.get(key)}`);
+          this.heroes = resp.body;
+        });
   }
 
   AddHero() {
