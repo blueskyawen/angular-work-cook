@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
 import { MessageService } from '../message/message.service';
-import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {
@@ -22,12 +22,12 @@ export class HerosService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  getHeroes(): Observable<HttpResponse<Hero>[]> {
+  getHeroes(): Observable<Hero[]> {
     this.log('fetched heroes');
-    return this.http.get<Hero[]>(this.heroesUrl,{observe:'response'})
+    return this.http.get<Hero[]>(this.heroesUrl)
         .pipe(
-          tap(_ => this.log('fetched heroes')),
-          catchError(this.handleError('getHeroes', []))
+            tap(_ => this.log('fetched heroes')),
+            catchError(this.handleError('getHeroes', []))
         );
   }
 
@@ -63,16 +63,16 @@ export class HerosService {
     );
   }
 
-    searchHeroes(term: string): Observable<Hero[]> {
-        if (!term.trim()) {
-            // if not search term, return empty hero array.
-            return of([]);
-        }
-        return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-            tap(_ => this.log(`found heroes matching "${term}"`)),
-            catchError(this.handleError<Hero[]>('searchHeroes', []))
-        );
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
     }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+        tap(_ => this.log(`found heroes matching "${term}"`)),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

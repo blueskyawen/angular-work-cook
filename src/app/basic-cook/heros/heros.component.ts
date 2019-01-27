@@ -20,12 +20,7 @@ export class HerosComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-        .subscribe(resp => {
-          const keys = resp.headers.keys();
-          this.headers = keys.map(key =>
-              `${key}: ${resp.headers.get(key)}`);
-          this.heroes = resp.body;
-        });
+        .subscribe(heroes => this.heroes = heroes);
   }
 
   AddHero() {

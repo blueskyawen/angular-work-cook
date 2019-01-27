@@ -18,8 +18,8 @@ export class FullComponent implements OnInit {
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
-        url:'/main/advance/rxjs',
-        callback: () => {this.router.navigate(['/main/advance/rxjs']);}
+        url:'/main/advance/http/config',
+        callback: () => {this.router.navigate(['/main/advance/http/config']);}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
@@ -83,15 +83,38 @@ export class FullComponent implements OnInit {
     type: 'vertical',
     place: 'down',
     navItems: [
-      {title:'Rxjs',
+      {title:'Http',
         icon:'fa fa-coffee',
-        url:'/main/advance/rxjs',
-        callback: () => {this.router.navigate(['/main/advance/rxjs']);},
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'头配置',icon:'',place: 'down',
+              url:'/main/advance/http/config',
+              callback: () => {this.router.navigate(['/main/advance/http/config']);}},
+            {title:'请求拦截',icon:'',place: 'down',
+              url:'/main/advance/http/intercept',
+              callback: () => {this.router.navigate(['/main/advance/http/intercept']);}},
+            {title:'下载',icon:'',place: 'down',
+              url:'/main/advance/http/downloader',
+              callback: () => {/main/advance/rxjsthis.router.navigate(['/main/advance/http/downloader']);}},
+            {title:'上传',icon:'',place: 'down',
+              url:'/main/advance/http/uploader',
+              callback: () => {this.router.navigate(['/main/advance/http/uploader']);}},
+            {title:'包搜索',icon:'',place: 'down',
+              url:'/main/advance/http/npmsearch',
+              callback: () => {this.router.navigate(['/main/advance/http/npmsearch']);}}
+          ]
+        }
       },
       {title:'Service-Worker',
         icon:'fa fa-wifi',
         url:'/main/advance/sw',
         callback: () => {this.router.navigate(['/main/advance/sw']);}
+      },
+      {title:'Rxjs',
+        icon:'fa fa-coffee',
+        url:'/main/advance/rxjs',
+        callback: () => {this.router.navigate(['/main/advance/rxjs']);},
       }
     ]
   };
