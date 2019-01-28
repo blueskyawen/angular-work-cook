@@ -7,9 +7,7 @@ import { HerosComponent } from './heros/heros.component';
 import { HeroDetailComponent } from './heros/hero-detail.component';
 import { DashboardComponent } from './heros/dashboard.component';
 import { TopHerosComponent } from './heros/top-heros.component';
-import { MessageComponent } from './message/message.component';
 import { HerosService } from './heros/heros.service';
-import { MessageService } from './message/message.service';
 import { AddHeroComponent } from './heros/add-hero.component';
 import { HeroSearchComponent } from './heros/hero-search.component';
 import { DynamicCompComponent } from './dynamic-comp/dynamic-comp.component';
@@ -34,7 +32,7 @@ import { PipeComponent } from './pipe/pipe.component';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
-    MessageComponent,AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
+    AddHeroComponent, HeroSearchComponent, DynamicCompComponent,
     HeroJobAdComponent, HeroPrpfileComponent, AdDirective, CustomElementComponent,
     PopupComponent, TempleFormComponent, ReactiveFormComponent,ForbiddenValidatorDirective,
     HighlightDirective, AttrDirectiveComponent, InputNumberDirective, StructDirectiveComponent,

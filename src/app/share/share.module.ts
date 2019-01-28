@@ -4,11 +4,14 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LibModule } from 'ng-shadow-cat-d';
 
+import { MessageComponent } from './message/message.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [MessageComponent],
   imports: [
-    CommonModule
+    CommonModule,LibModule
   ],
-  exports: [LibModule,CommonModule,FormsModule,RouterModule,ReactiveFormsModule]
+  exports: [LibModule,CommonModule,FormsModule,RouterModule,ReactiveFormsModule,
+    MessageComponent]
 })
 export class ShareModule { }

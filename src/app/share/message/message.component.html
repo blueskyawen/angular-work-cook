@@ -1,5 +1,5 @@
 <div *ngIf="messageService.messages.length">
-
+  <p>************************</p>
   <h2>Messages</h2>
   <nc-button [type]="'cancel'" (click)="messageService.clear()">clear</nc-button>
   <div *ngFor="let message of messageService.messages" style="margin-top:10px;"> {{message}} </div>
