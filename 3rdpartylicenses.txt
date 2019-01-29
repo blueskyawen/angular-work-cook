@@ -238,9 +238,6 @@ MIT
 @angular/router
 MIT
 
-@angular/forms
-MIT
-
 @angular/animations
 MIT
 
@@ -332,6 +329,9 @@ THE SOFTWARE.
 MIT
 
 @angular/core
+MIT
+
+@angular/forms
 MIT
 
 core-js
