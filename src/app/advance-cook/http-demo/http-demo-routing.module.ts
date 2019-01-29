@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderConfigComponent } from './header-config/header-config.component';
+import { TextLoaderComponent } from './text-loader/text-loader.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
     component: HeaderConfigComponent
   },
   {
-    path: 'http/downloader',
-    component: HeaderConfigComponent
+    path: 'http/textloader',
+    component: TextLoaderComponent
   },
   {
     path: 'http/uploader',

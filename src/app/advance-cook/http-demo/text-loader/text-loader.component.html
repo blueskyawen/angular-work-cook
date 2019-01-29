@@ -1,0 +1,15 @@
+<h3>Download the textfile</h3>
+<div>
+  <div class="form-button">
+    <nc-button (click)="download()">Download</nc-button>
+  </div>
+  <div class="form-button">
+    <nc-button (click)="clear()">Clear</nc-button>
+  </div>
+</div>
+
+<p *ngIf="contents">Contents: "{{contents}}"</p>
+<div *ngIf="contents">
+  <p>Contents: "{{contents}}"</p>
+  <app-message></app-message>
+</div>

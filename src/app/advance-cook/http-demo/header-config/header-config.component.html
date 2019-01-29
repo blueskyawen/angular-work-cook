@@ -1,17 +1,36 @@
 <h3>Get configuration from JSON file</h3>
 <div>
-  <nc-button (click)="clear(); showConfig()">GetConfig</nc-button>
+  <div class="form-button">
+    <nc-button (click)="clear(); showConfig()">GetConfig</nc-button>
+  </div>
+  <div class="form-button">
+    <nc-button (click)="clear(); showConfig_2()">GetConfigWithType</nc-button>
+  </div>
+  <div class="form-button">
+    <nc-button (click)="clear(); showConfig_3()">getConfigWithResponse</nc-button>
+  </div>
+  <div class="form-button">
+    <nc-button (click)="clear(); showError()">getConfigWithResponse</nc-button>
+  </div>
+  <div class="form-button">
+    <nc-button (click)="clear()">Clear</nc-button>
+  </div>
   <span *ngIf="config">
-    <p>Heroes API URL is "{{config.heroesUrl}}"</p>
-    <p>Textfile URL is "{{config.textfile}}"</p>
+    <h4>Hero</h4>
+    <p>Name: {{config.name}}</p>
+    <p>City: {{config.city}}</p>
+    <p>Skill: {{config.skill}}</p>
     <div *ngIf="headers">
       Response headers:
       <ul>
         <li *ngFor="let header of headers">{{header}}</li>
       </ul>
     </div>
+    <app-message></app-message>
   </span>
 </div>
-<p *ngIf="error" class="error">{{error | json}}</p>
+<div *ngIf="error" class="error">
+  <p>{{error | json}}</p>
+  <app-message></app-message>
+</div>
 
-<app-message></app-message>

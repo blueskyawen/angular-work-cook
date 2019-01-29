@@ -20,7 +20,7 @@ import { InMemoryDataService }  from './core/in-memory-data.service';
   imports: [
     BrowserModule,BasicCookModule,AppRoutingModule,CoreModule,ShareModule,
     HttpClientInMemoryWebApiModule.forRoot(
-        InMemoryDataService, { dataEncapsulation: false }
+        InMemoryDataService, { dataEncapsulation: false,passThruUnknownUrl: true }
     ),
     BrowserAnimationsModule
   ],

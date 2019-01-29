@@ -1,4 +1,5 @@
 {
-  "heroesUrl": "api/heroes",
-  "textfile": "assets/textfile.txt"
+  "name": "孙悟空",
+  "city": "中国上海",
+  "skill": "七十二变, 筋斗云"
 }

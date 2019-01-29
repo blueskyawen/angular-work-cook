@@ -94,9 +94,9 @@ export class FullComponent implements OnInit {
             {title:'请求拦截',icon:'',place: 'down',
               url:'/main/advance/http/intercept',
               callback: () => {this.router.navigate(['/main/advance/http/intercept']);}},
-            {title:'下载',icon:'',place: 'down',
-              url:'/main/advance/http/downloader',
-              callback: () => {this.router.navigate(['/main/advance/http/downloader']);}},
+            {title:'Text下载',icon:'',place: 'down',
+              url:'/main/advance/http/textloader',
+              callback: () => {this.router.navigate(['/main/advance/http/textloader']);}},
             {title:'上传',icon:'',place: 'down',
               url:'/main/advance/http/uploader',
               callback: () => {this.router.navigate(['/main/advance/http/uploader']);}},
@@ -153,7 +153,6 @@ export class FullComponent implements OnInit {
 
   menuSelected(url : any) {
     this.curUrl = url;
-    console.log(this.curUrl);
     if(this.menuIndex[this.curUrl.split('/')[2]] !== this.curMenuIndex) {
       this.curMenuIndex = this.menuIndex[this.curUrl.split('/')[2]];
       this.sidebarNav = this.sidebarNavs[this.curMenuIndex];

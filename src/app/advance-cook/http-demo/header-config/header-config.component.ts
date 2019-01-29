@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeadConfigService } from './head-config.service';
+import { Config } from './config';
 
 @Component({
   selector: 'app-header-config',
@@ -25,9 +26,34 @@ export class HeaderConfigComponent implements OnInit {
   showConfig() {
     this.headConfigService.getConfig()
         .subscribe((data: any) => this.config = {
-          heroesUrl: data['heroesUrl'],
-          textfile:  data['textfile']
+          name: data['name'],
+          city:  data['city'],
+          skill:  data['skill']
         });
   }
+
+  showConfig_2() {
+    this.headConfigService.getConfig_2()
+        .subscribe((data: Config) => this.config = { ...data });
+  }
+
+  showError() {
+    this.headConfigService.getConfigWithError()
+        .subscribe(null,error => {
+          this.error = error;
+        });
+  }
+
+  showConfig_3() {
+    this.headConfigService.getConfigWithResponse()
+        .subscribe((resp : any) => {
+          const keys = resp.headers.keys();
+          this.headers = keys.map(key =>
+              `${key}: ${resp.headers.get(key)}`);
+
+          this.config = {...resp.body};
+    });
+  }
+
 
 }
