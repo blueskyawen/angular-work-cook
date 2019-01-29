@@ -5,12 +5,14 @@ import { NotFoundComponent } from './not-found.component';
 
 import { MessageService } from './message.service';
 
+import { httpInterceptorProviders } from './interceptor/index';
+
 @NgModule({
   declarations: [NotFoundComponent],
   imports: [
     CommonModule
   ],
   exports: [HttpClientModule],
-  providers: [MessageService]
+  providers: [MessageService,httpInterceptorProviders]
 })
 export class CoreModule { }
