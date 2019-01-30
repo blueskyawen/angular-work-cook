@@ -2,9 +2,7 @@
  * Created by liuxuwen on 19-1-30.
  */
 import { Injectable } from '@angular/core';
-import {
-    HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
-} from '@angular/common/http';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 

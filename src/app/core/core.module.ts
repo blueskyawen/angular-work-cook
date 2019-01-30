@@ -13,6 +13,6 @@ import { httpInterceptorProviders } from './interceptor/index';
     CommonModule
   ],
   exports: [HttpClientModule],
-  providers: [MessageService,httpInterceptorProviders]
+  providers: [httpInterceptorProviders]
 })
 export class CoreModule { }
