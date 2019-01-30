@@ -1,0 +1,30 @@
+<h3>Search Npm Packages</h3>
+<p>Searches when typing stops. Caches for 30 seconds.</p>
+
+<form style="max-width: 600px;" novalidate>
+  <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+    <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3">Name</nc-form-label>
+    <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+      <nc-input [type]="'text'" [(modelValue)]="pakName" (modelValueChange)="search()"></nc-input>
+    </nc-form-control>
+  </nc-form-group>
+  <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+    <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3">with refresh</nc-form-label>
+    <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+      <div class="nc-flex nc-align-item-center" style="height: 100%;">
+        <nc-switch [type]="'min'" [tipLabels]="['是','否']" [(switch)]="withRefresh">
+        </nc-switch>
+      </div>
+    </nc-form-control>
+  </nc-form-group>
+</form>
+
+<app-message></app-message>
+
+<p>***************************</p>
+<ul>
+  <li *ngFor="let package of packages$ | async">
+    <b>{{package.name}} v.{{package.version}}</b> -
+    <i>{{package.description}}</i>
+  </li>
+</ul>

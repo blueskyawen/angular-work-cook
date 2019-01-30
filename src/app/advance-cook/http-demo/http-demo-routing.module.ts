@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderConfigComponent } from './header-config/header-config.component';
 import { TextLoaderComponent } from './text-loader/text-loader.component';
+import { PkgSearchComponent } from './pkg-search/pkg-search.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'http/npmsearch',
-    component: HeaderConfigComponent
+    component: PkgSearchComponent
   }
 ];
 
