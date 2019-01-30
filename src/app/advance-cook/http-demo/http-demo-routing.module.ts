@@ -3,14 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderConfigComponent } from './header-config/header-config.component';
 import { TextLoaderComponent } from './text-loader/text-loader.component';
 import { PkgSearchComponent } from './pkg-search/pkg-search.component';
+import { UnloaderComponent } from './unloader/unloader.component';
 
 const routes: Routes = [
   {
     path: 'http/config',
-    component: HeaderConfigComponent
-  },
-  {
-    path: 'http/intercept',
     component: HeaderConfigComponent
   },
   {
@@ -19,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'http/uploader',
-    component: HeaderConfigComponent
+    component: UnloaderComponent
   },
   {
     path: 'http/npmsearch',

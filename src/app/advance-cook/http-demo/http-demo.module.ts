@@ -10,13 +10,15 @@ import { TextLoaderComponent } from './text-loader/text-loader.component';
 import { TextLoadService } from './text-loader/text-load.service';
 import { PkgSearchComponent } from './pkg-search/pkg-search.component';
 import { PkgSearchService } from './pkg-search/pkg-search.service';
+import { UnloaderComponent } from './unloader/unloader.component';
+import { UnloaderService } from './unloader/unloader.service';
 
 @NgModule({
-  declarations: [HeaderConfigComponent, TextLoaderComponent, PkgSearchComponent],
+  declarations: [HeaderConfigComponent, TextLoaderComponent, PkgSearchComponent, UnloaderComponent],
   imports: [
     CommonModule,
     HttpDemoRoutingModule,ShareModule
   ],
-  providers: [HeadConfigService,TextLoadService,PkgSearchService]
+  providers: [HeadConfigService,TextLoadService,PkgSearchService,UnloaderService]
 })
 export class HttpDemoModule {}
