@@ -168,3 +168,11 @@
 </nc-dialog>
 
 <nc-message [type]="'success'" [(show)]="isShowMsg">操作成功,2s后自动消失</nc-message>
+
+<nc-message [type]="'warn'" [(show)]="isShowErrorMsg" [style]="'right'" [headerTitle]="'警告消息'">
+  <div name="content">
+    <p>{{authErrorMsg}}</p>
+  </div>
+  <a class="manage" name="footer" herf="javascript:void(0);" (click)="manage(5)">忽略</a>
+</nc-message>
+

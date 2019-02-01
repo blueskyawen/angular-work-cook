@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from './core/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from './core/auth.service';
   templateUrl: './full.component.html',
   styleUrls: ['./full.component.less','./app.common.css']
 })
-export class FullComponent implements OnInit {
+export class FullComponent implements OnInit, OnDestroy {
   menuNavs : any = {
     type: 'horizontal',
     place: 'down',
@@ -161,6 +161,9 @@ export class FullComponent implements OnInit {
   };
   isShowMsg : boolean = false;
   isUserLogined : boolean = false;
+  subAuthText: any;
+  isShowErrorMsg : boolean = false;
+  authErrorMsg : string = '';
 
   constructor(private route: ActivatedRoute,
               private router: Router,public authService : AuthService) {
@@ -170,6 +173,15 @@ export class FullComponent implements OnInit {
 
   ngOnInit() {
     this.checkActiveNav();
+    this.subAuthText = this.authService.getAuthText()
+        .subscribe(message => {
+          this.authErrorMsg = message;
+          this.isShowErrorMsg = true;
+        });
+  }
+
+  ngOnDestroy() {
+    this.subAuthText.unsubscribe();
   }
 
   checkActiveNav() {

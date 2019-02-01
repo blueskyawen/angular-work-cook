@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +7,24 @@ import { Observable, of } from 'rxjs';
 export class AuthService {
   curUser : any;
   redirectUrl : string;
+  authText$ = new Subject<string>();
 
   constructor() { }
 
   getAuthorizationToken() {
     return 'id85f5fe4caa565b00ab9891d6a7b1730a2359a';
+  }
+
+  sendAuthText(message: string) {
+    this.authText$.next(message);
+  }
+
+  clearAuthText() {
+    this.authText$.next();
+  }
+
+  getAuthText(): Observable<string> {
+    return this.authText$.asObservable();
   }
 
   registerUser(url,data): Observable<any> {

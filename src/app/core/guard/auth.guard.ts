@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable,Subject} from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+
   constructor(public authService : AuthService,
               private router : Router) {}
 
@@ -19,7 +20,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.authService.redirectUrl = url;
-      this.router.navigate(['/main/basic/heros']);
+      this.authService.sendAuthText('无权访问，请先登录！');
       return false;
     }
   }
