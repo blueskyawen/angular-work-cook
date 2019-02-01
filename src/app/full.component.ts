@@ -268,4 +268,12 @@ export class FullComponent implements OnInit, OnDestroy {
     this.userOptions[1].disable = flag;
   }
 
+  checkIt(checked : number) {
+    if(checked === 1) {
+      checked = 0;
+    }
+    if(checked === 0) {
+      checked = 1;
+    }
+  }
 }
