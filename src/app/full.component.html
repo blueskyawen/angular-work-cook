@@ -13,6 +13,18 @@
       <nc-menu [type]="menuNavs.type" [place]="menuNavs.place" [navItems]="menuNavs.navItems"
                [backColor]="'manual'" [color]="'#e6e6e6'" [url]="curUrl"
                (menuSelectChange)="menuSelected($event)"></nc-menu>
+      <span class="github-item" href="https://github.com/blueskyawen/angular-work-cook" target="_blank">
+        <span *ngIf="isUserLogined" class="userName">{{authService.curUser.name}}</span>
+        <nc-dropdown [type]="'hover'" [place]="'left'">
+          <i nc-dropdown-btn class="fa fa-user-circle-o"></i>
+          <ul nc-dropdown-menu class="dropdown-items">
+            <li *ngFor="let option of userOptions" [class.disable]="option.disable" (click)="option.callback()">
+              {{option.name}}
+            </li>
+          </ul>
+        </nc-dropdown>
+        <i class="fa fa-github" title="Go github"></i>
+      </span>
     </div>
   </div>
   <div class="nc-layout nc-flex nc-row">
@@ -28,3 +40,131 @@
     Angular Cook @blueskyawen By Ng-Shadow-Cat
   </div>
 </div>
+
+<nc-dialog [header]="'注销'" [style]="'confirm'" [operType]="'delete'" [(isShow)]="userOper.loginOff">
+  <div class="content">
+  </div>
+  <div class="footer">
+      <span class="form-btn-group">
+        <nc-button [type]="'major'" (click)="loginOff()">注销</nc-button>
+      </span>
+      <span class="form-btn-group">
+        <nc-button [type]="'cancel'" (click)="userOper.loginOff=false">取消</nc-button>
+      </span>
+  </div>
+</nc-dialog>
+
+<nc-dialog [header]="'登录'" [style]="'normal'" [(isShow)]="userOper.loginOn">
+  <div class="content">
+    <div class="description">
+      <span class="grade">!</span>
+      <span class="text">输入用户名和密码来登录.</span>
+    </div>
+    <form>
+      <div class="input-margin nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-input [type]="'text'" [(modelValue)]="userLoginData.name" [required]="true"
+                  [width]="'70%'" [iconffix]="'pre'">
+          <nc-input-icon class="nc-input-icon-preffix"><span class="fa fa-user"></span></nc-input-icon>
+        </nc-input>
+      </div>
+      <div class="input-margin nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-input [type]="'password'" [(modelValue)]="userLoginData.password" [required]="true"
+                  [width]="'70%'" [iconffix]="'pre'">
+          <nc-input-icon class="nc-input-icon-preffix"><span class="fa fa-lock"></span></nc-input-icon>
+        </nc-input>
+      </div>
+    </form>
+  </div>
+  <div class="footer">
+    <span class="form-btn-group">
+      <nc-button (click)="loginOn()" [disabled]="isDisableLogin()">登录</nc-button>
+    </span>
+    <span class="form-btn-group">
+      <nc-button [type]="'cancel'" (click)="userOper.loginOn=false">取消</nc-button>
+    </span>
+  </div>
+</nc-dialog>
+
+<nc-dialog [header]="'注册'" [style]="'normal'" [(isShow)]="userOper.register">
+  <div class="content">
+    <div class="description">
+      <span class="grade">!</span>
+      <span class="text">用户注册.</span>
+    </div>
+    <form style="max-width: 600px;" novalidate>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3" [required]="true">用户名</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-input [type]="'text'" [(modelValue)]="registerData.user" [required]="true">
+          </nc-input>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label  class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3" [required]="true">密码</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-input [type]="'password'" [(modelValue)]="registerData.password" [required]="true">
+          </nc-input>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3" [required]="true">姓名</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-input [type]="'text'" [(modelValue)]="registerData.name" [required]="true">
+          </nc-input>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3">性别</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <div class="nc-flex nc-align-item-center" style="height: 100%;">
+            <nc-radio [options]="registerData.sexs" [value]="registerData.sex"></nc-radio>
+          </div>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3">年龄</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-number-put [type]="'middle'" [(value)]="registerData.age" [max]="199" [min]="1"></nc-number-put>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3" [required]="true">手机号</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-input [type]="'text'" [(modelValue)]="registerData.phone" [prefixList]="registerData.phonePreffixs"
+                    [required]="true">
+          </nc-input>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-label class="nc-xl-col-3 nc-lg-col-3 nc-md-col-3 nc-sm-col-3 nc-xs-col-3">爱好</nc-form-label>
+        <nc-form-control class="nc-xl-col-9 nc-lg-col-9 nc-md-col-9 nc-sm-col-9 nc-xs-col-9">
+          <nc-mutil-select [options]="registerData.likeOptions" [(selections)]="registerData.likes" [width]="'100%'">
+          </nc-mutil-select>
+        </nc-form-control>
+      </nc-form-group>
+      <nc-form-group class="nc-form-item nc-xl-col-12 nc-lg-col-12 nc-md-col-12 nc-sm-col-12 nc-xs-col-12">
+        <nc-form-control
+                class="nc-xl-offset-3 nc-lg-offset-3 nc-md-offset-3 nc-sm-offset-3 nc-xs-offset-3">
+          <div class="nc-flex nc-content-space-between nc-align-item-center">
+                    <span style="margin-right:10px;" (click)="checkIt(registerData.checkFlag)">
+                        <nc-checkbox [(checked)]="registerData.checkFlag"></nc-checkbox>
+                        <span>我已阅读并同意 <a>使用协议</a></span>
+                    </span>
+          </div>
+        </nc-form-control>
+      </nc-form-group>
+    </form>
+  </div>
+  <div class="footer">
+    <span class="form-btn-group">
+      <nc-button *ngIf="!registerData.loading" [disabled]="isDisableRegister()"
+                 (click)="register()">注册</nc-button>
+      <nc-button *ngIf="registerData.loading" [disabled]="true" [loading]="true">注册</nc-button>
+    </span>
+    <span class="form-btn-group">
+      <nc-button [type]="'cancel'" (click)="userOper.register=false">取消</nc-button>
+    </span>
+  </div>
+</nc-dialog>
+
+<nc-message [type]="'success'" [(show)]="isShowMsg">操作成功,2s后自动消失</nc-message>

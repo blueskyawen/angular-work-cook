@@ -6,6 +6,8 @@ import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent
   CustomElementComponent,TempleFormComponent,ReactiveFormComponent,AttrDirectiveComponent,
   StructDirectiveComponent,PipeComponent,DynamicFormComponent} from './basic-cook/index';
 
+import {AuthGuard} from './core/guard/auth.guard';
+
 const routes: Routes = [
   { path: 'main',component: FullComponent,
     children: [
@@ -17,7 +19,7 @@ const routes: Routes = [
           { path: 'detail/:id', component: HeroDetailComponent }
         ]
       },
-      { path: 'basic/comp',
+      { path: 'basic/comp',canActivate:[AuthGuard],
         children: [
           { path: 'dynamic', component: DynamicCompComponent },
           { path: 'customEle', component: CustomElementComponent },
@@ -34,7 +36,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'advance',
+        path: 'advance',canActivate:[AuthGuard],
         loadChildren: './advance-cook/advance-cook.module#AdvanceCookModule'
       }
     ]

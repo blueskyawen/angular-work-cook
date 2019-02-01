@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from './core/auth.service';
 
 @Component({
   selector: 'app-full',
@@ -125,8 +126,44 @@ export class FullComponent implements OnInit {
   curMenuIndex : number = -1;
   isShowSider : boolean = true;
 
+  userOper : any = {
+    register: false,
+    loginOn: false,
+    loginOff: false
+  };
+  userOptions : any[] = [
+    {name:'注册',disable:false,callback: () => {this.userOper.register = true;}},
+    {name:'登录',disable:false,callback: () => {this.userOper.loginOn = true;}},
+    {name:'注销',disable:false,callback: () => {this.userOper.loginOff = true;}}
+  ];
+  userLoginData : any = {
+    name:'',
+    password:''
+  };
+  registerData : any = {
+    user:'',
+    password:'',
+    name:'',
+    sexs:[{label: '男', value: 'man',disabled:false},{label: '女', value: 'women',disabled:false}],
+    sex:'man',
+    age:18,
+    phone:'',
+    phonePreffixs:[{label:'+86',value:'+86'}],
+    likeOptions:[{label: '读书', value: 'dushu',disable: false},{label: '旅游', value: 'lvyou',disable: false},
+      {label: '跑步', value: 'run',disable: false},{label: '徒步', value: 'tubu',disable: false},
+      {label: '爬山',value: 'pashan',disable: false},{label: '投资',value: 'touzhi',disable: false},
+      {label: '美食',value: 'meishi',disable: false},{label: '睡觉', value: 'sleep',disable: false},
+      {label: '音乐', value: 'mousic',disable: false}],
+    likes:[],
+    checkFlag: 0,
+    loading:false,
+    disabled:true
+  };
+  isShowMsg : boolean = false;
+  isUserLogined : boolean = false;
+
   constructor(private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,public authService : AuthService) {
     this.sidebarNavs.push(this.sidebarNavs_basic);
     this.sidebarNavs.push(this.sidebarNavs_advance);
   }
@@ -160,4 +197,63 @@ export class FullComponent implements OnInit {
       },50);
     }
   }
+
+  loginOn() {
+    this.authService.loginOnUser(this.userLoginData).subscribe(res => {
+      this.isUserLogined = res;
+      if(this.isUserLogined) {
+        this.authService.curUser = this.userLoginData;
+        this.setLoginDisable(true);
+      }
+      setTimeout(() => {
+        this.isShowMsg = true;
+        this.userOper.loginOn = false;
+      },2000);
+    });
+  }
+
+  isDisableLogin() {
+    return !this.userLoginData.name || !this.userLoginData.password;
+  }
+
+  register() {
+    if(this.registerData.disabled) {return false;}
+    this.registerData.loading = true;
+    this.authService.registerUser('/add/user',this.registerData).subscribe(res => {
+      setTimeout(() => {
+        this.registerData.loading = false;
+        this.isShowMsg = true;
+        this.userOper.register = false;
+      },2000);
+    });
+    return false;
+  }
+
+  loginOff() {
+    if(this.authService.curUser) {
+      this.authService.loginOffUser().subscribe(res => {
+        this.authService.curUser = null;
+        setTimeout(() => {
+          this.isShowMsg = true;
+          this.userOper.loginOff = false;
+          this.isUserLogined = false;
+        },2000);
+      });
+    } else {
+      this.userOper.loginOff = false;
+    }
+    this.setLoginDisable(false);
+  }
+
+  isDisableRegister() {
+    this.registerData.disabled = (this.registerData.checkFlag == 0) || !this.registerData.user ||
+        !this.registerData.password || !this.registerData.name || !this.registerData.phone ||
+        !this.registerData.sex;
+    return this.registerData.disabled;
+  }
+
+  setLoginDisable(flag : boolean) {
+    this.userOptions[1].disable = flag;
+  }
+
 }

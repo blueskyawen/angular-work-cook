@@ -20,3 +20,90 @@
   background: #fff;
   border:solid 1px #d9d9d9;
 }
+
+.nc-header-menu {
+  position:relative;
+  .github-item {
+    position:absolute;
+    top:50%;
+    right:20px;
+    transform: translateY(-50%);
+    .fa-github {
+      font-size: 22px;
+      color:#404040;
+      &:hover {
+        color:#66c2ff;
+        cursor: pointer;
+      }
+    }
+    .fa-user-circle-o {
+      font-size: 22px;
+      color:#404040;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    .userName {
+      margin-right: 10px;
+      color:#333399;
+      font-size: 18px;
+    }
+  }
+}
+
+ul.dropdown-items {
+  list-style:none;
+  padding:0;
+  border: solid 1px #d9d9d9;
+  border-radius: 3px;
+  z-index: 100;
+  background: #fff;
+  li {
+    display: inline-flex;
+    width:80px;
+    height:24px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color:#666;
+    font-size: 14px;
+    &.disable {
+      color:#ccc;
+      cursor:not-allowed;
+    }
+    &:not(.disable):hover {
+      color:#333;
+      background-color: #cce5ff;
+    }
+  }
+}
+
+.input-margin {
+  margin: 10px 0 10px 100px;
+}
+
+.description{
+  width:90%;
+  display:flex;
+  margin:auto;
+  border:solid 1px #66ccff;
+  border-radius:4px;
+  background:#e5f7ff;
+  padding:8px;
+  .grade{
+    width:20px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    border-radius:50%;
+    border:solid 1px #0040ff;
+    color:#0040ff;
+    margin-top:5px;
+    margin-left:5px
+  }
+  .text{
+    width:90%;
+    font-size:12px;
+    text-align:left;
+    margin-left:10px;;
+  }
+}
