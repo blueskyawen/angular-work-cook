@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder,FormArray } from '@angular/forms';
 import { forbiddenNameValidator } from '../directive/forbinden-name.directive';
+import { DialogService } from '../../core/guard/dialog';
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-reactive-form',
@@ -16,7 +18,7 @@ export class ReactiveFormComponent implements OnInit {
   baocuns : any[] = [{'name':'是','value':'Yes','isChecked':false},{'name':'否','value':'No','isChecked':false}];
   skillList : any[] = [{'value':'Java'},{'value':'Scala'}];
 
-  constructor(private fb : FormBuilder) {
+  constructor(private fb : FormBuilder,private dialogService : DialogService) {
     this.myForm = this.fb.group({
       name: ['Jack',
         [Validators.required,Validators.minLength(4),forbiddenNameValidator(/[@\$&0-9]/)]],
@@ -34,6 +36,14 @@ export class ReactiveFormComponent implements OnInit {
     this.initAdressList();
     this.initSkillList();
 
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (!this.name && !this.password) {
+      return true;
+    }
+
+    return this.dialogService.confirm('已有修改未保存，确定离开吗?');
   }
 
   get name() { return this.myForm.get('name');}

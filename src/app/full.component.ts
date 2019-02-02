@@ -132,8 +132,8 @@ export class FullComponent implements OnInit, OnDestroy {
     loginOff: false
   };
   userOptions : any[] = [
-    {name:'注册',disable:false,callback: () => {this.userOper.register = true;}},
-    {name:'登录',disable:false,callback: () => {this.userOper.loginOn = true;}},
+    {name:'注册',disable:false,callback: () => {this.cleanRegisterData();this.userOper.register = true;}},
+    {name:'登录',disable:false,callback: () => {this.cleanLoginData();this.userOper.loginOn = true;}},
     {name:'注销',disable:false,callback: () => {this.userOper.loginOff = true;}}
   ];
   userLoginData : any = {
@@ -160,6 +160,7 @@ export class FullComponent implements OnInit, OnDestroy {
     disabled:true
   };
   isShowMsg : boolean = false;
+  loginOperMsg : string = '操作成功,2s后自动消失';
   isUserLogined : boolean = false;
   subAuthText: any;
   isShowErrorMsg : boolean = false;
@@ -172,16 +173,49 @@ export class FullComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.checkActiveNav();
     this.subAuthText = this.authService.getAuthText()
         .subscribe(message => {
           this.authErrorMsg = message;
           this.isShowErrorMsg = true;
+          this.cleanLoginData();
+          setTimeout(() => {
+            this.userOper.loginOn = true;
+          },1000);
         });
+    this.checkActiveNav();
   }
 
   ngOnDestroy() {
     this.subAuthText.unsubscribe();
+  }
+
+  cleanLoginData() {
+    this.userLoginData = {
+      name:'',
+      password:''
+    };
+  }
+
+  cleanRegisterData() {
+    this.registerData = {
+      user:'',
+      password:'',
+      name:'',
+      sexs:[{label: '男', value: 'man',disabled:false},{label: '女', value: 'women',disabled:false}],
+      sex:'man',
+      age:18,
+      phone:'',
+      phonePreffixs:[{label:'+86',value:'+86'}],
+      likeOptions:[{label: '读书', value: 'dushu',disable: false},{label: '旅游', value: 'lvyou',disable: false},
+        {label: '跑步', value: 'run',disable: false},{label: '徒步', value: 'tubu',disable: false},
+        {label: '爬山',value: 'pashan',disable: false},{label: '投资',value: 'touzhi',disable: false},
+        {label: '美食',value: 'meishi',disable: false},{label: '睡觉', value: 'sleep',disable: false},
+        {label: '音乐', value: 'mousic',disable: false}],
+      likes:[],
+      checkFlag: 0,
+      loading:false,
+      disabled:true
+    };
   }
 
   checkActiveNav() {
@@ -216,12 +250,21 @@ export class FullComponent implements OnInit, OnDestroy {
       if(this.isUserLogined) {
         this.authService.curUser = this.userLoginData;
         this.setLoginDisable(true);
+        this.loginOperMsg = '操作成功,2s后自动消失';
+        this.reDirectRoute();
+      } else {
+        this.loginOperMsg = '操作失败!';
       }
-      setTimeout(() => {
-        this.isShowMsg = true;
-        this.userOper.loginOn = false;
-      },2000);
+      this.isShowMsg = true;
+      this.userOper.loginOn = false;
     });
+  }
+
+  reDirectRoute() {
+    if(this.isShowErrorMsg && this.authService.redirectUrl) {
+      this.isShowErrorMsg = false;
+      this.router.navigate([this.authService.redirectUrl]);
+    }
   }
 
   isDisableLogin() {
@@ -230,26 +273,24 @@ export class FullComponent implements OnInit, OnDestroy {
 
   register() {
     if(this.registerData.disabled) {return false;}
+    this.loginOperMsg = '操作成功,2s后自动消失';
     this.registerData.loading = true;
     this.authService.registerUser('/add/user',this.registerData).subscribe(res => {
-      setTimeout(() => {
-        this.registerData.loading = false;
-        this.isShowMsg = true;
-        this.userOper.register = false;
-      },2000);
+      this.registerData.loading = false;
+      this.isShowMsg = true;
+      this.userOper.register = false;
     });
     return false;
   }
 
   loginOff() {
+    this.loginOperMsg = '操作成功,2s后自动消失';
     if(this.authService.curUser) {
       this.authService.loginOffUser().subscribe(res => {
         this.authService.curUser = null;
-        setTimeout(() => {
-          this.isShowMsg = true;
-          this.userOper.loginOff = false;
-          this.isUserLogined = false;
-        },2000);
+        this.userOper.loginOff = false;
+        this.isUserLogined = false;
+        this.isShowMsg = true;
       });
     } else {
       this.userOper.loginOff = false;

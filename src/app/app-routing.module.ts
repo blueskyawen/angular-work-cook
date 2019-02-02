@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule,PreloadAllModules } from '@angular/router';
 import { NotFoundComponent } from './core/not-found.component';
 import { FullComponent } from './full.component';
 import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent,DynamicCompComponent,
@@ -7,6 +7,9 @@ import {DashboardComponent,HerosComponent,TopHerosComponent, HeroDetailComponent
   StructDirectiveComponent,PipeComponent,DynamicFormComponent} from './basic-cook/index';
 
 import {AuthGuard} from './core/guard/auth.guard';
+import {DeactiveGuardService} from './core/guard/deactive-guard.service';
+import {HeroDetailResolverService} from './core/guard/hero-detail-resolver.service';
+import {SelectivePreloadingStrategyService} from './core/selective-preloading-strategy.service';
 
 const routes: Routes = [
   { path: 'main',component: FullComponent,
@@ -16,27 +19,36 @@ const routes: Routes = [
           { path: '', component: TopHerosComponent },
           { path: 'topHeros', component: TopHerosComponent },
           { path: 'list', component: HerosComponent },
-          { path: 'detail/:id', component: HeroDetailComponent }
+          { path: 'detail/:id',
+            component: HeroDetailComponent,
+            resolve:{hero: HeroDetailResolverService}
+          }
         ]
       },
       { path: 'basic/comp',canActivate:[AuthGuard],
         children: [
-          { path: 'dynamic', component: DynamicCompComponent },
-          { path: 'customEle', component: CustomElementComponent },
-          { path: 'attrDirective', component: AttrDirectiveComponent },
-          { path: 'structDirective', component: StructDirectiveComponent },
-          { path: 'pipe', component: PipeComponent }
+          {
+            path: '',
+            canActivateChild: [AuthGuard],
+            children: [
+              { path: 'dynamic', component: DynamicCompComponent },
+              { path: 'customEle', component: CustomElementComponent },
+              { path: 'attrDirective', component: AttrDirectiveComponent },
+              { path: 'structDirective', component: StructDirectiveComponent },
+              { path: 'pipe', component: PipeComponent }
+            ]
+          }
         ]
       },
       { path: 'basic/form',
         children: [
           { path: 'temple', component: TempleFormComponent },
-          { path: 'reactive', component: ReactiveFormComponent },
+          { path: 'reactive', component: ReactiveFormComponent,canDeactivate: [DeactiveGuardService]},
           { path: 'dynamic', component: DynamicFormComponent }
         ]
       },
       {
-        path: 'advance',canActivate:[AuthGuard],
+        path: 'advance',canLoad:[AuthGuard],data: { preload: true },
         loadChildren: './advance-cook/advance-cook.module#AdvanceCookModule'
       }
     ]
@@ -46,7 +58,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy: SelectivePreloadingStrategyService})],
+  exports: [RouterModule],
+  providers: [SelectivePreloadingStrategyService]
 })
 export class AppRoutingModule { }
