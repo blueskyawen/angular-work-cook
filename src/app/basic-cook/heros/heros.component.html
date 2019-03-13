@@ -15,4 +15,6 @@
     </li>
 </ul>
 
-<app-add-hero *ngIf="isShowAdd" (heroAdded)="heroAdded($event)"></app-add-hero>
+<app-add-hero [type]="'sss'" (heroAdded)="heroAdded($event)">
+    <div class="nc-add-hero">I am Add Hero!!!</div>
+</app-add-hero>

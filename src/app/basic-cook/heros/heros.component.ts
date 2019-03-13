@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, AfterContentInit,
+    AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
 import { Hero } from './hero';
 import { HerosService } from './heros.service';
 
@@ -14,8 +15,37 @@ export class HerosComponent implements OnInit {
 
   constructor(private heroService: HerosService) { }
 
+  ngOnChanges() {
+    console.log('HerosComponent*****ngOnChanges');
+  }
+
   ngOnInit() {
+    console.log('HerosComponent*****ngOnInit');
     this.getHeroes();
+  }
+
+  ngDoCheck() {
+    console.log('HerosComponent*****ngDoCheck');
+  }
+
+  ngAfterContentInit() {
+    console.log('HerosComponent*****ngAfterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('HerosComponent*****ngAfterContentChecked');
+  }
+
+  ngAfterViewInit() {
+    console.log('HerosComponent*****ngAfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('HerosComponent*****ngAfterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('HerosComponent*****ngOnDestroy');
   }
 
   getHeroes(): void {
