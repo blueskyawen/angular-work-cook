@@ -50,6 +50,10 @@ const routes: Routes = [
       {
         path: 'advance',canLoad:[AuthGuard],data: { preload: true },
         loadChildren: './advance-cook/advance-cook.module#AdvanceCookModule'
+      },
+      {
+        path: 'other',
+        loadChildren: './other-cook/other-cook.module#OtherCookModule'
       }
     ]
   },

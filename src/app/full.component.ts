@@ -24,8 +24,8 @@ export class FullComponent implements OnInit, OnDestroy {
       },
       {title:'其他',
         icon:'fa fa-smile-o',
-        url:'/main/other',
-        callback: () => {this.router.navigate(['/main/other']);}
+        url:'/main/other/baiduMap/usejs',
+        callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);}
       }
     ]
   };
@@ -116,6 +116,26 @@ export class FullComponent implements OnInit, OnDestroy {
       }
     ]
   };
+  sidebarNavs_other : any = {
+    type: 'vertical',
+    place: 'down',
+    navItems: [
+      {title:'百度地图',
+        icon:'fa fa-coffee',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'使用js-api',icon:'',place: 'down',
+              url:'/main/other/baiduMap/usejs',
+              callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);}},
+            {title:'使用模块',icon:'',place: 'down',
+              url:'/main/other/baiduMap/usemodule',
+              callback: () => {this.router.navigate(['/main/other/baiduMap/usemodule']);}}
+          ]
+        }
+      }
+    ]
+  };
   sidebarNav : any = this.sidebarNavs_basic;
   sidebarNavs : any[] = [];
   isShowSideMenu : boolean = true;
@@ -170,6 +190,7 @@ export class FullComponent implements OnInit, OnDestroy {
               private router: Router,public authService : AuthService) {
     this.sidebarNavs.push(this.sidebarNavs_basic);
     this.sidebarNavs.push(this.sidebarNavs_advance);
+    this.sidebarNavs.push(this.sidebarNavs_other);
   }
 
   ngOnInit() {
