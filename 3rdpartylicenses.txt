@@ -44,6 +44,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+angular2-baidu-map
+GPL-3.0
+
 core-js
 MIT
 Copyright (c) 2014-2019 Denis Pushkarev
