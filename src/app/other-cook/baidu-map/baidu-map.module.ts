@@ -3,12 +3,12 @@ import { ShareModule } from '../../share/share.module';
 import { BaiduMapRoutingModule } from './baidu-map-routing.module';
 import { BaiduMapForJsComponent } from './baidu-map-for-js.component';
 import { BaiduMapForModuleComponent } from './baidu-map-for-module.component';
-
+import { BaiduMapModule } from 'angular2-baidu-map';
 @NgModule({
   declarations: [BaiduMapForJsComponent, BaiduMapForModuleComponent],
   imports: [
-    ShareModule,
+    ShareModule,BaiduMapModule,
     BaiduMapRoutingModule
   ]
 })
-export class BaiduMapModule { }
+export class BaiduMapCookModule { }

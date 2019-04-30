@@ -14,9 +14,9 @@ export class BaiduMapForModuleComponent implements OnInit {
   ngOnInit() {
     this.options = {
       centerAndZoom: {
-        lat: 39.920116,
-        lng: 116.403703,
-        zoom: 16
+        lat: 30.241628,
+        lng: 120.138121,
+        zoom: 13
       },
       enableKeyboard: true
     }
