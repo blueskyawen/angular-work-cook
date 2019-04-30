@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapOptions } from 'angular2-baidu-map';
 
 @Component({
   selector: 'app-baidu-map-for-module',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./baidu-map-for-module.component.less']
 })
 export class BaiduMapForModuleComponent implements OnInit {
+  options: MapOptions;
 
   constructor() { }
 
   ngOnInit() {
+    this.options = {
+      centerAndZoom: {
+        lat: 39.920116,
+        lng: 116.403703,
+        zoom: 16
+      },
+      enableKeyboard: true
+    }
   }
 
 }

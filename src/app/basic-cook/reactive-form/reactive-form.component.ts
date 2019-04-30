@@ -35,7 +35,6 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit() {
     this.initAdressList();
     this.initSkillList();
-
   }
 
   canDeactivate(): Observable<boolean> | boolean {
