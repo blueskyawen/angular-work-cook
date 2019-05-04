@@ -35,7 +35,7 @@ export class BaiduMapForModuleComponent implements OnInit {
         zoom: 13
       },
       enableKeyboard: true
-    }
+    };
 
     this.addNavigationControl();
   }
@@ -48,4 +48,23 @@ export class BaiduMapForModuleComponent implements OnInit {
     };
   }
 
+  scrollWheelZoom() {
+
+  }
+
+  dragg() {
+
+  }
+
+  overview() {
+
+  }
+
+  cityList() {
+
+  }
+
+  showLocMarker() {
+    
+  }
 }
