@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MapOptions } from 'angular2-baidu-map';
+import {
+  ControlAnchor,
+  MapOptions,
+  MapTypeControlOptions,
+  MapTypeControlType,
+  NavigationControlOptions,
+  NavigationControlType,
+  OverviewMapControlOptions,
+  ScaleControlOptions,
+  BNavigationControl,
+  MapTypeEnum
+} from 'angular2-baidu-map'
 
 @Component({
   selector: 'app-baidu-map-for-module',
@@ -8,6 +19,11 @@ import { MapOptions } from 'angular2-baidu-map';
 })
 export class BaiduMapForModuleComponent implements OnInit {
   options: MapOptions;
+  public controlOpts: NavigationControlOptions
+  public overviewmapOpts: OverviewMapControlOptions
+  public scaleOpts: ScaleControlOptions
+  public mapTypeOpts: MapTypeControlOptions
+  private BMAP_NAVIGATION_CONTROL_SMALL: any;
 
   constructor() { }
 
@@ -20,6 +36,16 @@ export class BaiduMapForModuleComponent implements OnInit {
       },
       enableKeyboard: true
     }
+
+    this.addNavigationControl();
+  }
+
+  addNavigationControl() {
+    this.controlOpts = {
+      anchor: ControlAnchor.BMAP_ANCHOR_TOP_LEFT,
+      type: NavigationControlType.BMAP_NAVIGATION_CONTROL_SMALL,
+      enableGeolocation: true
+    };
   }
 
 }

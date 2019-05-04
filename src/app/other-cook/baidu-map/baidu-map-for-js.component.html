@@ -1,2 +1,31 @@
-<div id="map-container"></div>
+<div class="map-container">
+    <div id="map-container" class="map-content"></div>
+    <div class="map-opers">
+        <span>
+          <nc-button class="button-clas" (click)="scrollWheelZoom()">滚动缩放</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="dragg()">拖拽</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="overview()">缩略图</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="cityList()">城市列表</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="showLocMarker()">标记显示</nc-button>
+        </span>
+        <!--span>
+         <nc-button class="button-clas" (click)="ceju()">鼠标测距</nc-button>
+        </span>-->
+    </div>
+</div>
 
+
+<nc-message [type]="'warn'" [(show)]="isShowMsg" [style]="'right'" [headerTitle]="'观察消息'">
+    <div name="content">
+        {{msgText}}
+    </div>
+    <a class="manage" name="footer" herf="javascript:void(0);" (click)="isShowMsg = false">忽略</a>
+</nc-message>

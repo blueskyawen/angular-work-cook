@@ -1,4 +1,27 @@
-<div class="baidu-map">
-    <baidu-map [options]="options">
-    </baidu-map>
+<div class="map-container">
+    <div class="baidu-map">
+        <baidu-map [options]="options">
+            <control type="navigation" [options]="controlOpts"></control>
+        </baidu-map>
+    </div>
+    <div class="map-opers">
+        <span>
+          <nc-button class="button-clas" (click)="scrollWheelZoom()">滚动缩放</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="dragg()">拖拽</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="overview()">缩略图</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="cityList()">城市列表</nc-button>
+        </span>
+        <span>
+         <nc-button class="button-clas" (click)="showLocMarker()">标记显示</nc-button>
+        </span>
+        <!--span>
+         <nc-button class="button-clas" (click)="ceju()">鼠标测距</nc-button>
+        </span>-->
+    </div>
 </div>
