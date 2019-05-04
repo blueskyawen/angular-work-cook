@@ -1,0 +1,41 @@
+<h2>外侧边框阴影</h2>
+<h4>1 渲染原理</h4>
+<div class="box-container">
+  <div class="shadow-ouset" [ngClass]="{'step-spread':stepIndex >= 1, 'step-offset':stepIndex >= 2,'step-end':stepIndex >= 3}">
+    <div class="shadow-ouset-son">
+    </div>
+    <div class="son2"></div>
+  </div>
+  <div id="boxbutton1" class="oper-button">
+    <nc-button (click)="nextStep()">{{operTitle}}</nc-button>
+  </div>
+</div>
+
+<h4>2 试一试</h4>
+<div class="box-shadow-out" #boxshadowout style="box-shadow: 0px 0px 0px 20px #ffcc66;">
+  接收预订提醒、评论撰写提醒、价格提醒，以及与您使用爱彼迎有关的其他提
+</div>
+<div class="box-input">
+  <div>输入后点生成： </div>
+  <div>
+    <div>
+      <span>x-shadow</span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowOut.x_offset" [width]="'100px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <span>y-shadow</span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowOut.y_offset" [width]="'100px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <span>模糊距离</span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowOut.blur_ju" [width]="'100px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <span>spread-阴影尺寸</span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowOut.spread" [width]="'100px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <nc-button (click)="makeShadowOut()">生成</nc-button>
+    </div>
+  </div>
+</div>

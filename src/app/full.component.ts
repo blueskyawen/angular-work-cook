@@ -133,6 +133,20 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/other/baiduMap/usemodule']);}}
           ]
         }
+      },
+      {title:'边框阴影',
+        icon:'fa fa-coffee',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'外侧阴影',icon:'',place: 'down',
+              url:'/main/other/boxShadow/lizi',
+              callback: () => {this.router.navigate(['/main/other/boxShadow/lizi']);}},
+            {title:'内侧阴影',icon:'',place: 'down',
+              url:'/main/other/boxShadow/demo',
+              callback: () => {this.router.navigate(['/main/other/boxShadow/demo']);}}
+          ]
+        }
       }
     ]
   };
