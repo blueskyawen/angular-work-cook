@@ -179,9 +179,9 @@ export class BaiduMapForModuleComponent implements OnInit {
 
   showWindow({marker, map}: {marker: BMarker, map: BMapInstance }) {
     let opts = {
-      width : 150,     // 信息窗口宽度
+      width : 240,     // 信息窗口宽度
       height: 120,     // 信息窗口高度
-      title : "西湖-花港观鱼"  // 信息窗口标题
+      title : "西湖十景-花港观鱼"  // 信息窗口标题
     };
     map.openInfoWindow(
         new window.BMap.InfoWindow('在苏堤映波桥西北197米处，介于小南湖与西里湖间，范围约0.25公顷。以赏花、观鱼为景观主题，体验自然的勃勃生机。', opts),

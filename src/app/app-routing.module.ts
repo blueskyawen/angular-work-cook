@@ -54,6 +54,10 @@ const routes: Routes = [
       {
         path: 'other',
         loadChildren: './other-cook/other-cook.module#OtherCookModule'
+      },
+      {
+        path: 'webCop',
+        loadChildren: './web-cop-cook/web-cop-cook.module#WebCopCookModule'
       }
     ]
   },

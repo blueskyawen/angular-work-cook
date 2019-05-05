@@ -22,6 +22,11 @@ export class FullComponent implements OnInit, OnDestroy {
         url:'/main/advance/http/config',
         callback: () => {this.router.navigate(['/main/advance/http/config']);}
       },
+      {title:'前端COP',
+        icon:'fa fa-envira',
+        url:'/main/webcop/cop-project/heart',
+        callback: () => {this.router.navigate(['/main/webCop/cop-project/heart']);}
+      },
       {title:'其他',
         icon:'fa fa-smile-o',
         url:'/main/other/baiduMap/usejs',
@@ -121,7 +126,7 @@ export class FullComponent implements OnInit, OnDestroy {
     place: 'down',
     navItems: [
       {title:'百度地图',
-        icon:'fa fa-coffee',
+        icon:'fa fa-map',
         childs: {
           place: 'down',isShow:false,
           navItems: [
@@ -135,7 +140,7 @@ export class FullComponent implements OnInit, OnDestroy {
         }
       },
       {title:'边框阴影',
-        icon:'fa fa-coffee',
+        icon:'fa fa-music',
         childs: {
           place: 'down',isShow:false,
           navItems: [
@@ -150,12 +155,29 @@ export class FullComponent implements OnInit, OnDestroy {
       }
     ]
   };
+  sidebarNavs_webcop : any = {
+    type: 'vertical',
+    place: 'down',
+    navItems: [
+      {title:'cop项目',
+        icon:'fa fa-glide',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'怦然心动',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/heart',
+              callback: () => {this.router.navigate(['/main/webCop/cop-project/heart']);}}
+          ]
+        }
+      }
+    ]
+  };
   sidebarNav : any = this.sidebarNavs_basic;
   sidebarNavs : any[] = [];
   isShowSideMenu : boolean = true;
   curUrl : string;
   menuIndex : any = {
-    basic: 0,advance:1,other:2
+    basic: 0,advance:1,webcop:2,other:3
   };
   curMenuIndex : number = -1;
   isShowSider : boolean = true;
@@ -204,6 +226,7 @@ export class FullComponent implements OnInit, OnDestroy {
               private router: Router,public authService : AuthService) {
     this.sidebarNavs.push(this.sidebarNavs_basic);
     this.sidebarNavs.push(this.sidebarNavs_advance);
+    this.sidebarNavs.push(this.sidebarNavs_webcop);
     this.sidebarNavs.push(this.sidebarNavs_other);
   }
 
