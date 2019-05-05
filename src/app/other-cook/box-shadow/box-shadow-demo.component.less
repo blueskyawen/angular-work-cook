@@ -14,7 +14,7 @@
       width: 200px;
       border: solid 50px #ff6666;
       background-color: transparent;
-      opacity: 0.8;
+      opacity: 0;
       position: absolute;
       top: -50px;
       left: -50px;
@@ -39,6 +39,11 @@
         &:last-child {
           display: none;
         }
+      }
+    }
+    &.step-init {
+      .shadow-ouset-son {
+        opacity: 0.8;
       }
     }
     &.step-spread {

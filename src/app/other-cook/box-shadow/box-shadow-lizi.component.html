@@ -1,13 +1,13 @@
 <h2>外侧边框阴影</h2>
 <h4>1 渲染原理</h4>
 <div class="box-container">
-  <div class="shadow-ouset" [ngClass]="{'step-spread':stepIndex >= 1, 'step-offset':stepIndex >= 2,'step-end':stepIndex >= 3}">
+  <div class="shadow-ouset" [ngClass]="{'step-init':stepIndex >= 1,'step-spread':stepIndex >= 2, 'step-offset':stepIndex >= 3,'step-end':stepIndex >= 4}">
     <div class="shadow-ouset-son">
     </div>
     <div class="son2"></div>
   </div>
   <div id="boxbutton1" class="oper-button">
-    <nc-button (click)="nextStep()">{{operTitle}}</nc-button>
+    <nc-button (click)="startShow()">{{operTitle}}</nc-button>
   </div>
 </div>
 

@@ -17,22 +17,28 @@ export class BoxShadowDemoComponent implements OnInit {
     blur_ju: 0,
     spread: 20
   };
-  operTitle: string = '下一步';
+  operTitle: string = '开始';
   stepIndex: number = 0;
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
   }
 
-  nextStep() {
-    if(this.stepIndex === 3) {
-      this.operTitle = '下一步';
-      this.stepIndex = 0;
-    } else {
-      this.stepIndex++;
+  startShow() {
+    if(this.stepIndex !== 0) {
+      return;
     }
-    if(this.stepIndex === 3) {
-      this.operTitle = '重新开始';
+    this.nextStep();
+  }
+
+  nextStep() {
+    this.stepIndex++;
+    if(this.stepIndex < 5) {
+      setTimeout(() => {
+        this.nextStep();
+      },2000);
+    } else {
+      this.stepIndex = 0;
     }
   }
 

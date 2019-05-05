@@ -1,7 +1,16 @@
 <div class="map-container">
     <div class="baidu-map">
-        <baidu-map [options]="options">
+        <baidu-map [options]="options" (loaded)="mapLoaded($event)">
             <control type="navigation" [options]="controlOpts"></control>
+            <control type="maptype" [options]="mapTypeOpts"></control>
+            <control type="geolocation" [options]="geolacOpts"></control>
+            <control type="scale" [options]="scaleOpts"></control>
+            <control type="overviewmap" [options]="overviewmapOpts" (loaded)="overviewLoaded($event)"></control>
+            <circle [center]="center" radius="1200" [options]="circleOptions" (loaded)="circleLoaded($event)"></circle>
+            <marker *ngFor="let marker of markers" [point]="marker.point" [options]="marker.options"
+                    (clicked)="showWindow($event)" (loaded)="markerLoaded($event)" ></marker>
+            <!--heatmap [dataset]="data" [options]="heatmapOptions"
+            (loaded)="heatmapLoaded($event)"></heatmap>-->
         </baidu-map>
     </div>
     <div class="map-opers">
@@ -12,11 +21,11 @@
          <nc-button class="button-clas" (click)="dragg()">拖拽</nc-button>
         </span>
         <span>
-         <nc-button class="button-clas" (click)="overview()">缩略图</nc-button>
+         <nc-button id="btn-over" class="button-clas" (click)="overview()">缩略图</nc-button>
         </span>
-        <span>
+        <!--span>
          <nc-button class="button-clas" (click)="cityList()">城市列表</nc-button>
-        </span>
+        </span>-->
         <span>
          <nc-button class="button-clas" (click)="showLocMarker()">标记显示</nc-button>
         </span>

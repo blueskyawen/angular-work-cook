@@ -6,7 +6,7 @@ import {Component, ElementRef, OnInit, AfterViewInit, Renderer2, ViewChild} from
   styleUrls: ['./box-shadow-lizi.component.less']
 })
 export class BoxShadowLiziComponent implements OnInit {
-  operTitle: string = '下一步';
+  operTitle: string = '开始';
   stepIndex: number = 0;
   selectOut: string = '';
   @ViewChild('boxshadowout')
@@ -24,15 +24,21 @@ export class BoxShadowLiziComponent implements OnInit {
   ngOnInit() {
   }
 
-  nextStep() {
-    if(this.stepIndex === 3) {
-      this.operTitle = '下一步';
-      this.stepIndex = 0;
-    } else {
-      this.stepIndex++;
+  startShow() {
+    if(this.stepIndex !== 0) {
+      return;
     }
-    if(this.stepIndex === 3) {
-      this.operTitle = '重新开始';
+    this.nextStep();
+  }
+
+  nextStep() {
+    this.stepIndex++;
+    if(this.stepIndex < 5) {
+      setTimeout(() => {
+        this.nextStep();
+      },2000);
+    } else {
+      this.stepIndex = 0;
     }
   }
 

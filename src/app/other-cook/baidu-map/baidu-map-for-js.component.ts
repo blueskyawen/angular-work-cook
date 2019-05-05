@@ -15,7 +15,7 @@ export class BaiduMapForJsComponent implements OnInit {
   map: any;
   point: any;
   scrollZoom: boolean = false;
-  bDragg: boolean = false;
+  bDragg: boolean = true;
   overviewMap: any;
   openOverview: boolean = false;
   cityControl: any;
@@ -40,7 +40,7 @@ export class BaiduMapForJsComponent implements OnInit {
     this.addNavigationControl();
     //map.addControl(new BMap.ScaleControl());
     this.addMapGeolotion();
-
+    this.addOverviewMap();
     this.map.addControl(new BMap.MapTypeControl({type: BMAP_MAPTYPE_CONTROL_MAP}));
     this.addCityList();
     this.addMaker();
@@ -70,6 +70,14 @@ export class BaiduMapForJsComponent implements OnInit {
       this.isShowMsg = true;
     });
     this.map.addControl(geolocationControl);
+  }
+
+  addOverviewMap() {
+    this.overviewMap = new BMap.OverviewMapControl({isOpen:this.openOverview });
+    this.map.addControl(this.overviewMap);
+    this.overviewMap.addEventListener("viewchanged", (e) => {
+      this.openOverview = e.isOpen;
+    });
   }
 
   addCityList() {
@@ -124,12 +132,7 @@ export class BaiduMapForJsComponent implements OnInit {
   }
 
   overview() {
-    this.openOverview = !this.openOverview;
-    this.map.removeControl(this.overviewMap);
-    setTimeout(() => {
-      this.overviewMap = new BMap.OverviewMapControl({isOpen:this.openOverview });
-      this.map.addControl(this.overviewMap);
-    },100);
+    this.overviewMap.changeView();
   }
 
   cityList() {
