@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CopParrotComponent implements OnInit {
   showIt: boolean = false;
+  isDong: boolean = false;
   constructor() { }
 
   ngOnInit() {

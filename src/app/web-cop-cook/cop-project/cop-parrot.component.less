@@ -9,10 +9,10 @@
     background: linear-gradient(#00C25E, #00A651, #00A651);
     border-radius: 50px 150px 30px 15px;
     box-shadow: inset 0 0 20px #225D59;
-    transition: 1s linear;
     cursor:pointer;
     opacity: 0;
     transform: translateZ(-1200px);
+    transition: all 1s linear;
     &.show {
       opacity: 1;
       transform: translateZ(0);
@@ -46,25 +46,67 @@
       transform: translate(-120px,30px) rotate(-5deg);
       border-radius: 150px 50px 30px 10px;
       box-shadow: inset 5px 5px 20px #ffb366;
-      transition: 0.5s;
+      //transition: 0.5s linear;
       transform-origin: 100% 0%;
       z-index:2;
     }
-    &:hover {
-      transform: rotate(-8deg);
-      transform-origin: 110% 100%;
+    .par-body {
+      display: inline-block;
+      height:240px;
+      width:480px;
+      background-color:blue;
+      position:absolute;
+      z-index: -1;
+      top: 210px;
+      left: -30px;
+      background: linear-gradient(#00A651, #00A651, #00C25E);
+      transform: rotate(30deg);
+      border-top-left-radius: 200px 10px;
+      border-top-right-radius: 250px 50px;
+      border-bottom-right-radius: 360px 190px;
+      border-bottom-left-radius: 120px 200px;
+      box-shadow: -10px -10px 8px 2px #00994b inset;
+    }
+    .par-chibang {
+      display:inline-block;
+      background:linear-gradient(#ff5050, #ffd11a, #ffff4d);
+      height:110px;
+      width:340px;
+      border-top-left-radius: 55px 50%;
+      border-top-right-radius: 280px 50%;
+      border-bottom-right-radius: 280px 50%;
+      border-bottom-left-radius: 55px 50%;
+      position:absolute;
+      top:220px;
+      left: 267px;
+      transform:rotate(35deg);
+      transform-origin: 0% 0%;
+      //transition: transform 500ms linear;
+    }
+    &.pera-yundong {
+      animation:parretAnima .8s infinite alternate;
       &:after {
-        transform: translate(-120px,30px) rotate(3deg) scale(1,0.96);
-        transform-origin: 110% 0%;
+        animation:parretZuibAnima .8s infinite alternate;
+      }
+      .par-chibang {
+        animation:parretCibAnima .8s infinite alternate;
       }
     }
   }
 }
 
-.parrot-body {
-  height:100px;
-  width:80px;
-  border-radius:50%;
-  position:absolute;
-  background: #00A651;
+@keyframes parretAnima
+{
+  0%   {transform: rotate(0)}
+  100% {transform: rotate(-8deg);transform-origin: 110% 100%;}
+}
+@keyframes parretZuibAnima
+{
+  0%   {transform: translate(-120px,30px) rotate(-5deg);transform-origin: 100% 0%;}
+  100% {transform: translate(-120px,30px) rotate(3deg) scale(1,0.96);transform-origin: 110% 0%;}
+}
+@keyframes parretCibAnima
+{
+  0%   {transform:rotate(35deg);}
+  100% {transform:rotate(25deg);}
 }

@@ -1,3 +1,7 @@
 <div class="parrot-container">
-  <div class="parrot" [class.show]="showIt"></div>
+  <div class="parrot" (mouseenter)="isDong = true" (mouseleave)="isDong = false"
+       [class.show]="showIt" [class.pera-yundong]="isDong">
+    <div class="par-body"></div>
+    <div class="par-chibang"></div>
+  </div>
 </div>
