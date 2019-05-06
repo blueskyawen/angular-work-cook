@@ -190,7 +190,7 @@ export class FullComponent implements OnInit, OnDestroy {
         childs: {
           place: 'down',isShow:false,
           navItems: [
-            {title:'Clock ',icon:'',place: 'down',
+            {title:'钟表 ',icon:'',place: 'down',
               url:'/main/webcop/fan-project/clock',
               callback: () => {this.router.navigate(['/main/webcop/fan-project/clock']);}}
           ]
