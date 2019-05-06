@@ -178,7 +178,21 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/webcop/cop-project/pc']);}},
             {title:'鹦鹉',icon:'',place: 'down',
               url:'/main/webcop/cop-project/parrot',
-              callback: () => {this.router.navigate(['/main/webcop/cop-project/parrot']);}}
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/parrot']);}},
+            {title:'小黄人',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/minion',
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/minion']);}}
+          ]
+        }
+      },
+      {title:'Fan项目',
+        icon:'fa fa-ship',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'Clock ',icon:'',place: 'down',
+              url:'/main/webcop/fan-project/clock',
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/clock']);}}
           ]
         }
       }

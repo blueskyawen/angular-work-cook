@@ -5,6 +5,8 @@ import { CopTaijiTuComponent } from './cop-project/cop-taiji-tu.component';
 import { CopUdsComponent } from './cop-project/cop-uds.component';
 import { CopApplePcComponent } from './cop-project/cop-apple-pc.component';
 import { CopParrotComponent } from './cop-project/cop-parrot.component';
+import { CopMinionsComponent } from './cop-project/cop-minions.component';
+import { FanClockComponent } from './fan-project/fan-clock.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,19 @@ const routes: Routes = [
       {
         path: 'parrot',
         component: CopParrotComponent
+      },
+      {
+        path: 'minion',
+        component: CopMinionsComponent
+      }
+    ]
+  },
+  {
+    path: 'fan-project',
+    children: [
+      {
+        path: 'clock',
+        component: FanClockComponent
       }
     ]
   }
