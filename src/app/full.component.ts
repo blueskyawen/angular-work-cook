@@ -25,7 +25,7 @@ export class FullComponent implements OnInit, OnDestroy {
       {title:'前端COP',
         icon:'fa fa-envira',
         url:'/main/webcop/cop-project/heart',
-        callback: () => {this.router.navigate(['/main/webCop/cop-project/heart']);}
+        callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
@@ -166,7 +166,19 @@ export class FullComponent implements OnInit, OnDestroy {
           navItems: [
             {title:'怦然心动',icon:'',place: 'down',
               url:'/main/webcop/cop-project/heart',
-              callback: () => {this.router.navigate(['/main/webCop/cop-project/heart']);}}
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);}},
+            {title:'旋转太极',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/taiji',
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/taiji']);}},
+            {title:'UDS',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/uds',
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/uds']);}},
+            {title:'PC开关机',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/pc',
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/pc']);}},
+            {title:'鹦鹉',icon:'',place: 'down',
+              url:'/main/webcop/cop-project/parrot',
+              callback: () => {this.router.navigate(['/main/webcop/cop-project/parrot']);}}
           ]
         }
       }

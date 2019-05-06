@@ -1,0 +1,70 @@
+.parrot-container {
+  perspective: 1200px;
+  .parrot {
+    height:230px;
+    width:220px;
+    margin:50px 300px;
+    position:relative;
+    background: #00A651;
+    background: linear-gradient(#00C25E, #00A651, #00A651);
+    border-radius: 50px 150px 30px 15px;
+    box-shadow: inset 0 0 20px #225D59;
+    transition: 1s linear;
+    cursor:pointer;
+    opacity: 0;
+    transform: translateZ(-1200px);
+    &.show {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+    &:before {
+      content:'';
+      height:30px;
+      width:30px;
+      position: absolute;
+      z-index:2;
+      background: #222222;
+      transform: translate(70px,50px);
+      border-radius: 50%;
+      box-shadow: 0px 0px 2px 5px #005500,10px 0 1px 14px #eeeeee,
+        8px -4px 5px 17px #009453,-60px 145px 2px 6px #00A651,-30px 135px 2px 8px #00A651,
+      3px 125px 2px 8px #00A651,35px 115px 2px 8px #00A651,70px 100px 2px 8px #00A651,
+      100px 90px 2px 8px #00A651,110px 70px 2px 8px #00A651,-60px 165px 2px 10px #009453,
+      -30px 155px 2px 10px #009453,3px 145px 2px 10px #009453,35px 135px 2px 10px #009453,
+      70px 120px 2px 10px #009453,100px 110px 2px 10px #009453,120px 100px 2px 10px #009453,
+      -62px 180px 2px 10px #008656,-30px 175px 2px 10px #008656,10px 170px 2px 10px #008656,
+      55px 160px 2px 10px #008656,90px 145px 2px 10px #008656,130px 130px 2px 10px #008656,
+      -60px 200px 3px 10px #007959,-20px 193px 3px 10px #007959,20px 185px 3px 10px #007959,
+      60px 175px 3px 10px #007959,100px 163px 3px 10px #007959,135px 148px 3px 10px #007959;
+    }
+    &:after {
+      content:'';
+      height:170px;
+      width:170px;
+      position: absolute;
+      background: linear-gradient(#FBB040, #FBE642);
+      transform: translate(-120px,30px) rotate(-5deg);
+      border-radius: 150px 50px 30px 10px;
+      box-shadow: inset 5px 5px 20px #ffb366;
+      transition: 0.5s;
+      transform-origin: 100% 0%;
+      z-index:2;
+    }
+    &:hover {
+      transform: rotate(-8deg);
+      transform-origin: 110% 100%;
+      &:after {
+        transform: translate(-120px,30px) rotate(3deg) scale(1,0.96);
+        transform-origin: 110% 0%;
+      }
+    }
+  }
+}
+
+.parrot-body {
+  height:100px;
+  width:80px;
+  border-radius:50%;
+  position:absolute;
+  background: #00A651;
+}

@@ -56,7 +56,7 @@ const routes: Routes = [
         loadChildren: './other-cook/other-cook.module#OtherCookModule'
       },
       {
-        path: 'webCop',
+        path: 'webcop',
         loadChildren: './web-cop-cook/web-cop-cook.module#WebCopCookModule'
       }
     ]

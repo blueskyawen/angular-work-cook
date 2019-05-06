@@ -1,0 +1,294 @@
+.computer {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  .computer-head {
+    width: 900px;
+    height: 500px;
+    background:#e6e6e6;
+    border: solid 2px #f2f2f2;
+    border-radius:10px;
+    box-sizing:border-box;
+    padding:20px 20px 50px;
+    position:relative;
+    .computer-screen {
+      width:100%;
+      height:100%;
+      background: #808080;
+      position:relative;
+      .login-on {
+        display: none;
+        flex-direction: column;
+        justify-content:space-between;
+        width:160px;
+        height:160px;
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        margin:auto;
+        opacity: 0;
+      }
+    }
+    .computer-opertion {
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:15px;
+      > span {
+        &:first-child {
+          display:inline-block;
+          margin-left:10px;
+          span {
+            display:inline-block;
+            height:6px;
+            width:13px;
+            border: solid 3px;
+            border-color: transparent #666 #666 #666;
+            border-bottom-left-radius:50% 70%;
+            border-bottom-right-radius:50% 70%;
+            position:relative;
+            margin-right:16px;
+            &:before {
+              content: "";
+              display:inline-block;
+              height:6px;
+              width:6px;
+              border: solid 3px;
+              border-color: #666 #666 transparent transparent;
+              border-top-right-radius:70%;
+              position:absolute;
+              bottom:100%;
+              right:100%;
+              margin-bottom:-4px;
+            }
+            &:after {
+              content: "";
+              display:inline-block;
+              height:6px;
+              width:6px;
+              border: solid 3px;
+              border-color: #666 transparent transparent #666;
+              border-top-left-radius:70%;
+              position:absolute;
+              bottom:100%;
+              left:100%;
+              margin-bottom:-4px;
+            }
+          }
+        }
+        &:last-child {
+          display:inline-flex;
+          justify-content:center;
+          align-items:center;
+          height:20px;
+          width:20px;
+          border-radius:50%;
+          background:#666;
+          cursor:pointer;
+          position:relative;
+          .fa {
+            font-size:12px;
+            color:#b3b3b3;
+          }
+          .text {
+            position:absolute;
+            color:#666;
+            left:160%;
+            bottom:0%;
+            display:inline-block;
+            padding: 10px;
+            font-size:12px;
+            background-color:#ffffcc;
+            border-radius:6px;
+            width:50px;
+            opacity:0;
+            transition:opacity 500ms;
+            &:before {
+              content:"";
+              position:absolute;
+              right:100%;
+              bottom:6px;
+              display:inline-block;
+              border:solid 8px;
+              border-color: transparent #ffffcc transparent transparent;
+            }
+          }
+        }
+        &.text-show:last-child {
+          span.text {
+            opacity:1;
+          }
+        }
+      }
+    }
+  }
+  &.compt-power-off {
+    .computer-head .computer-screen .login-out {
+      display: inline-block;
+      width:20px;
+      height:20px;
+      border: solid 6px #e6e6e6;
+      border-right-color: transparent;
+      border-radius:50%;
+      position:absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+      margin:auto;
+      animation: login-offing 1s infinite linear;
+    }
+  }
+  &.start-work {
+    .computer-head {
+      .computer-screen {
+        background:  #808080 url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555952653308&di=e6f362899090ffb4b54711abf8383c25&imgtype=0&src=http%3A%2F%2Fdesk-fd.zol-img.com.cn%2Ft_s960x600c5%2Fg5%2FM00%2F02%2F03%2FChMkJ1bKx1eIQkW8AAEYMtP-r6EAALHyQMDcL0AARhK342.jpg') no-repeat;
+        background-size: 100% 100%;
+      }
+      .computer-opertion {
+        > span:last-child .fa {
+          color:#fff;
+        }
+      }
+    }
+  }
+  &.power-on {
+    .computer-head .computer-opertion {
+      > span:last-child .fa {
+        color:#fff;
+      }
+    }
+    .computer-head .computer-screen {
+      .login-on {
+        display:inline-flex;
+        opacity: 1;
+        .login-logo {
+          display:inline-block;
+          margin: 0 auto 80px;
+          &.logo-outing {
+            animation: loging-logo 1.5s linear;
+          }
+          .apple-logo {
+            position:relative;
+            display:flex;
+            .logo {
+              display:inline-block;
+              width:36px;
+              height:50px;
+              background:#fff;
+              float:left;
+              border-top-left-radius: 50% 18px;
+              border-top-right-radius: 50% 18px;
+              border-bottom-left-radius: 50% 32px;
+              border-bottom-right-radius: 50% 32px;
+              &:first-child {
+                margin-right:-5px;
+                transform:rotate(-8deg)
+              }
+              &:nth-child(2) {
+                margin-left:-5px;
+                transform:rotate(8deg)
+              }
+            }
+            .logo-down {
+              display:inline-block;
+              width:18px;
+              height: 10px;
+              border:solid 7px;
+              border-color: #fff transparent transparent transparent;
+              border-radius: 50%;
+              position:absolute;
+              top:100%;
+              left:15px;
+              margin-top:-10px;
+            }
+            .logo-up {
+              display:inline-block;
+              width:18px;
+              height: 10px;
+              border:solid 7px;
+              border-color: transparent transparent #fff transparent;
+              border-radius: 50%;
+              position:absolute;
+              bottom:100%;
+              left:15px;
+              margin-bottom:-10px;
+            }
+            .logo-leaf {
+              display:inline-block;
+              position:absolute;
+              transform:rotate(45deg);
+              left:53%;
+              top:-20px;
+              height:22px;
+              width:10px;
+              background:#fff;
+              border-radius:50%;
+            }
+            .logo-eat {
+              display:inline-block;
+              height:30px;
+              width:15px;
+              background:#808080;
+              border-top-left-radius: 100% 50%;
+              border-bottom-left-radius: 100% 50%;
+              position:absolute;
+              left:100%;
+              top:6px;
+              margin-left:-13px;
+            }
+          }
+        }
+        .login-loading {
+          display:inline-block;
+          width:100%;
+          height:10px;
+          background: #595959;
+          border-radius: 5px;
+          position:relative;
+          span {
+            display:inline-block;
+            width:100%;
+            height:10px;
+            background: #f2f2f2;
+            border-radius: 5px;
+            position:absolute;
+            animation: login-loaing 4s linear;
+          }
+        }
+      }
+    }
+  }
+  .computer-body {
+    width: 130px;
+    height: 150px;
+    background:#e6e6e6;
+  }
+  .computer-foot {
+    width: 260px;
+    height: 36px;
+    background:#b3b3b3;
+    border-top-left-radius: 25% 100%;
+    border-top-right-radius: 25% 100%;
+  }
+}
+@keyframes loging-logo
+{
+  0%   {opacity: 0}
+  100%   {opacity: 1;}
+}
+
+@keyframes login-loaing
+{
+  0%   {width: 0%;}
+  100%   {width: 100%;}
+}
+
+@keyframes login-offing
+{
+  0%   {transform: rotate(0deg);}
+  100%   {transform: rotate(360deg);}
+}

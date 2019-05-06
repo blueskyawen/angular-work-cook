@@ -1,0 +1,110 @@
+.taiji {
+  width:200px;
+  height:200px;
+  min-width:60px;
+  min-height:60px;
+  margin:30px;
+  cursor: pointer;
+  transition: height 2s, width 2s;
+  animation: tajixuanzhuan 3s infinite 1s linear;
+  .yu-left {
+    display:inline-block;
+    width:50%;
+    height:100%;
+    float:left;
+    background:#e6e6e6;
+    border-top-left-radius: 100% 50%;
+    border-bottom-left-radius: 100% 50%;
+    position:relative;
+    &:before {
+      display:inline-block;
+      content:"";
+      width:20%;
+      height:10%;
+      background:#262626;
+      border-radius:50%;
+      position:absolute;
+      bottom:25%;
+      right:0;
+      transform: translateX(50%) translateY(50%);
+      z-index:1;
+    }
+    &:after {
+      display:inline-block;
+      content:"";
+      width:50%;
+      height:50%;
+      background:#262626;
+      border-top-left-radius: 100% 50%;
+      border-bottom-left-radius: 100% 50%;
+      position: absolute;
+      right:0;
+    }
+  }
+  .yu-right {
+    display:inline-block;
+    width:50%;
+    height:100%;
+    float:left;
+    background:#262626;
+    border-top-right-radius: 100% 50%;
+    border-bottom-right-radius: 100% 50%;
+    position:relative;
+    &:before {
+      display:inline-block;
+      content:"";
+      width:20%;
+      height:10%;
+      background:#e6e6e6;
+      border-radius:50%;
+      position:absolute;
+      top:25%;
+      left:0;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    &:after {
+      display:inline-block;
+      content:"";
+      width:50%;
+      height:50%;
+      background:#e6e6e6;
+      border-top-right-radius: 100% 50%;
+      border-bottom-right-radius: 100% 50%;
+      position:absolute;
+      left:0;
+      bottom:0;
+    }
+  }
+}
+
+@keyframes tajixuanzhuan
+{
+  10%   {transform: rotate(-36deg);}
+  20%   {transform: rotate(-72deg);}
+  30%   {transform: rotate(-108deg);}
+  40%   {transform: rotate(-144deg);}
+  50%   {transform: rotate(-180deg);}
+  60%   {transform: rotate(-216deg);}
+  70%   {transform: rotate(-252deg);}
+  80%   {transform: rotate(-288deg);}
+  90%   {transform: rotate(-324deg);}
+  100%   {transform: rotate(-360deg);}
+}
+
+.animaltion-stop {
+  animation-play-state:paused;
+  -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+}
+
+#count {
+  margin: 20px 60px;
+  font-size: 26px;
+}
+
+.button-group {
+  padding-left: 60px;
+  .oper-button {
+    margin-right: 50px;
+  }
+}
+
