@@ -149,7 +149,10 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/other/boxShadow/lizi']);}},
             {title:'内侧阴影',icon:'',place: 'down',
               url:'/main/other/boxShadow/demo',
-              callback: () => {this.router.navigate(['/main/other/boxShadow/demo']);}}
+              callback: () => {this.router.navigate(['/main/other/boxShadow/demo']);}},
+            {title:'Demo',icon:'',place: 'down',
+              url:'/main/other/boxShadow/demos',
+              callback: () => {this.router.navigate(['/main/other/boxShadow/demos']);}}
           ]
         }
       }
@@ -190,9 +193,12 @@ export class FullComponent implements OnInit, OnDestroy {
         childs: {
           place: 'down',isShow:false,
           navItems: [
-            {title:'钟表 ',icon:'',place: 'down',
+            {title:'时钟 ',icon:'',place: 'down',
               url:'/main/webcop/fan-project/clock',
-              callback: () => {this.router.navigate(['/main/webcop/fan-project/clock']);}}
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/clock']);}},
+            {title:'旋转照片墙 ',icon:'',place: 'down',
+              url:'/main/webcop/fan-project/rotatePhoto',
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/rotatePhoto']);}}
           ]
         }
       }

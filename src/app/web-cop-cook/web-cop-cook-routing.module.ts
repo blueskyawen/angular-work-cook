@@ -7,6 +7,7 @@ import { CopApplePcComponent } from './cop-project/cop-apple-pc.component';
 import { CopParrotComponent } from './cop-project/cop-parrot.component';
 import { CopMinionsComponent } from './cop-project/cop-minions.component';
 import { FanClockComponent } from './fan-project/fan-clock.component';
+import { RotatePhotoWallComponent } from './fan-project/rotate-photo-wall.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'clock',
         component: FanClockComponent
+      },
+      {
+        path: 'rotatePhoto',
+        component: RotatePhotoWallComponent
       }
     ]
   }

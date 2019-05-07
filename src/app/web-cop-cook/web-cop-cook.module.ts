@@ -9,10 +9,11 @@ import { CopApplePcComponent } from './cop-project/cop-apple-pc.component';
 import { CopParrotComponent } from './cop-project/cop-parrot.component';
 import { CopMinionsComponent } from './cop-project/cop-minions.component';
 import { FanClockComponent } from './fan-project/fan-clock.component';
+import { RotatePhotoWallComponent } from './fan-project/rotate-photo-wall.component';
 
 @NgModule({
   declarations: [CopHeartComponent, CopTaijiTuComponent, CopUdsComponent, CopApplePcComponent,
-    CopParrotComponent, CopMinionsComponent, FanClockComponent],
+    CopParrotComponent, CopMinionsComponent, FanClockComponent, RotatePhotoWallComponent],
   imports: [
     ShareModule,
     WebCopCookRoutingModule
