@@ -4,6 +4,7 @@ import { ServiceWorkComponent } from './service-work/service-work.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'sw', pathMatch: 'full' },
   {
     path: 'rxjs',
     component: RxjsComponent
