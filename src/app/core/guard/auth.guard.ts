@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
     if (this.authService.curUser) {
       return true;
     } else {
-      this.authService.redirectUrl = url;
+      this.authService.redirectUrl = '/main/advance/http/config';
       this.authService.sendAuthText('无权访问，请先登录！');
       return false;
     }
