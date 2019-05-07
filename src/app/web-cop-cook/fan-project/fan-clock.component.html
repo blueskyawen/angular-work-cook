@@ -1,5 +1,5 @@
-<div class="clock">
-  <!--div class="clock-ban">
+<div class="clock" #myClock>
+  <div class="clock-ban">
     <div class="time-num one"></div>
     <div class="time-num two"></div>
     <div class="time-num three"></div>
@@ -7,5 +7,14 @@
     <div class="time-num five"></div>
     <div class="time-num six"></div>
   </div>
-  <div class="middle-a"></div>-->
+  <div class="middle-a"></div>
+  <div class="pointer-ban hour-ban" #hourPointer>
+    <div class="hour-ptr"></div>
+  </div>
+  <div class="pointer-ban minute-ban" #minuPointer>
+    <div class="minute-ptr"></div>
+  </div>
+  <div class="pointer-ban" #secondPointer>
+    <div class="second-ptr"></div>
+  </div>
 </div>
