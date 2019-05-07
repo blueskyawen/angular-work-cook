@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '',
     canActivateChild: [AuthGuard],
     children: [
+      { path: '', redirectTo: 'http/config', pathMatch: 'full' },
       {
         path: 'http/config',
         component: HeaderConfigComponent
