@@ -6,7 +6,7 @@ import {Component, ElementRef, OnInit, AfterViewInit, Renderer2, ViewChild} from
   styleUrls: ['./box-shadow-lizi.component.less']
 })
 export class BoxShadowLiziComponent implements OnInit {
-  operTitle: string = '开始';
+  operTitle: string = '开始演示';
   stepIndex: number = 0;
   selectOut: string = '';
   @ViewChild('boxshadowout')
@@ -33,7 +33,7 @@ export class BoxShadowLiziComponent implements OnInit {
 
   nextStep() {
     this.stepIndex++;
-    if(this.stepIndex < 5) {
+    if(this.stepIndex < 6) {
       setTimeout(() => {
         this.nextStep();
       },2000);

@@ -4,7 +4,7 @@
     display: inline-block;
     width: 200px;
     height: 150px;
-    border: solid 3px;
+    border: solid 5px #666;
     position: relative;
     background-color: #b3d9ff;
     margin: 30px 60px;
@@ -13,8 +13,8 @@
       width: 200px;
       height: 150px;
       background-color: #b3d9ff;
-      border-right: solid 3px;
-      border-bottom: solid 3px;
+      border-right: solid 5px #666;
+      border-bottom: solid 5px #666;
       position:absolute;
       transition: all 500ms linear;
     }
@@ -34,16 +34,21 @@
     }
     &.step-spread {
       .shadow-ouset-son {
-        height: 170px;
-        width: 220px;
-        top: -10px;
-        left:-10px;
+        height: 190px;
+        width: 240px;
+        top: -20px;
+        left:-20px;
       }
     }
     &.step-offset {
       .shadow-ouset-son {
         top: 20px;
         left: 20px;
+      }
+    }
+    &.step-blur {
+      .shadow-ouset-son {
+        box-shadow: 8px 8px 8px 0 #ff6666;
       }
     }
     &.step-end {
@@ -56,7 +61,8 @@
   .oper-button {
     display: inline-block;
     position:relative;
-    left: 200px;
+    left: 150px;
+    top: -50px;
   }
 }
 

@@ -17,7 +17,7 @@ export class BoxShadowDemoComponent implements OnInit {
     blur_ju: 0,
     spread: 20
   };
-  operTitle: string = '开始';
+  operTitle: string = '开始演示';
   stepIndex: number = 0;
   constructor(private renderer: Renderer2) { }
 
@@ -33,7 +33,7 @@ export class BoxShadowDemoComponent implements OnInit {
 
   nextStep() {
     this.stepIndex++;
-    if(this.stepIndex < 5) {
+    if(this.stepIndex < 6) {
       setTimeout(() => {
         this.nextStep();
       },2000);

@@ -1,8 +1,8 @@
 <h2>内侧边框阴影</h2>
 <h4>1 渲染原理</h4>
 <div class="box-container">
-  <div class="shadow-set" [ngClass]="{'step-init':stepIndex >= 1,'step-spread':stepIndex >= 2, 'step-offset':stepIndex >= 3,'step-end':stepIndex >= 4}">
-    <div class="shadow-ouset-son">
+  <div class="shadow-inset" [ngClass]="{'step-init':stepIndex >= 1,'step-spread':stepIndex >= 2, 'step-offset':stepIndex >= 3,'step-blur':stepIndex >= 4,'step-end':stepIndex >= 5}">
+    <div class="shadow-inset-son">
       <span></span>
       <span></span>
       <span></span>
