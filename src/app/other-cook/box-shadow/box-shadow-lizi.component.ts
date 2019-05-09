@@ -11,6 +11,8 @@ export class BoxShadowLiziComponent implements OnInit {
   selectOut: string = '';
   @ViewChild('boxshadowout')
   BoxOutRef: ElementRef;
+  @ViewChild('shadowColor')
+  BoxColorRef: ElementRef;
   shadowOut: any = {
     x_offset: 0,
     y_offset: 0,
@@ -44,7 +46,7 @@ export class BoxShadowLiziComponent implements OnInit {
 
   makeShadowOut() {
     this.selectOut = `${this.getCheckValue(this.shadowOut.x_offset, 0)} ${this.getCheckValue(this.shadowOut.y_offset, 0)} 
-    ${this.getCheckValue(this.shadowOut.blur_ju, 1)} ${this.getCheckValue(this.shadowOut.spread, 0)} #ffcc66`;
+    ${this.getCheckValue(this.shadowOut.blur_ju, 1)} ${this.getCheckValue(this.shadowOut.spread, 0)} ${this.BoxColorRef.nativeElement.value}`;
     this.renderer.setStyle(this.BoxOutRef.nativeElement, 'boxShadow', this.selectOut);
   }
 

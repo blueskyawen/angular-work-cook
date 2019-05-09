@@ -22,20 +22,24 @@
   <div>输入后点生成： </div>
   <div>
     <div>
+      <span>阴影颜色</span>
+      <span><input #shadowColor type="color" value="#ffcc66" /></span>
+    </div>
+    <div>
       <span>x-shadow</span>
-      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.x_offset" [width]="'100px'" [height]="'36px'"></nc-input></span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.x_offset" [width]="'60px'" [height]="'36px'"></nc-input></span>
     </div>
     <div>
       <span>y-shadow</span>
-      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.y_offset" [width]="'100px'" [height]="'36px'"></nc-input></span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.y_offset" [width]="'60px'" [height]="'36px'"></nc-input></span>
     </div>
     <div>
       <span>模糊距离</span>
-      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.blur_ju" [width]="'100px'" [height]="'36px'"></nc-input></span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.blur_ju" [width]="'60px'" [height]="'36px'"></nc-input></span>
     </div>
     <div>
       <span>spread-阴影尺寸</span>
-      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.spread" [width]="'100px'" [height]="'36px'"></nc-input></span>
+      <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.spread" [width]="'60px'" [height]="'36px'"></nc-input></span>
     </div>
     <div>
       <nc-button (click)="makeShadowInset()">生成</nc-button>

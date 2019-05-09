@@ -11,6 +11,8 @@ export class BoxShadowDemoComponent implements OnInit {
   selectInset: string = '';
   @ViewChild('boxshadowinset')
   BoxInsetRef: ElementRef;
+  @ViewChild('shadowColor')
+  BoxColorRef: ElementRef;
   shadowInset: any = {
     x_offset: 0,
     y_offset: 0,
@@ -44,7 +46,7 @@ export class BoxShadowDemoComponent implements OnInit {
 
   makeShadowInset() {
     this.selectInset = `${this.getCheckValue(this.shadowInset.x_offset, 0)} ${this.getCheckValue(this.shadowInset.y_offset, 0)} 
-    ${this.getCheckValue(this.shadowInset.blur_ju, 1)} ${this.getCheckValue(this.shadowInset.spread, 0)} #ffcc66 inset`;
+    ${this.getCheckValue(this.shadowInset.blur_ju, 1)} ${this.getCheckValue(this.shadowInset.spread, 0)} ${this.BoxColorRef.nativeElement.value} inset`;
     this.renderer.setStyle(this.BoxInsetRef.nativeElement, 'boxShadow', this.selectInset);
   }
 
