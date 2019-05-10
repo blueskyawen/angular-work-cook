@@ -11,14 +11,15 @@ export class BoxShadowLiziComponent implements OnInit {
   selectOut: string = '';
   @ViewChild('boxshadowout')
   BoxOutRef: ElementRef;
-  @ViewChild('shadowColor')
-  BoxColorRef: ElementRef;
-  shadowOut: any = {
-    x_offset: 0,
-    y_offset: 0,
-    blur_ju: 0,
-    spread: 20
-  };
+  shadowOutList: any[] = [
+    {
+      color: '#ffcc66',
+      x_offset: 0,
+      y_offset: 0,
+      blur_ju: 0,
+      spread: 20
+    }
+  ];
   numReg1 : any = new RegExp("^[-]?\\d+$");
   numReg2 : any = new RegExp("^\\d+$");
   constructor(private renderer: Renderer2) { }
@@ -45,14 +46,34 @@ export class BoxShadowLiziComponent implements OnInit {
   }
 
   makeShadowOut() {
-    this.selectOut = `${this.getCheckValue(this.shadowOut.x_offset, 0)} ${this.getCheckValue(this.shadowOut.y_offset, 0)} 
-    ${this.getCheckValue(this.shadowOut.blur_ju, 1)} ${this.getCheckValue(this.shadowOut.spread, 0)} ${this.BoxColorRef.nativeElement.value}`;
+    this.selectOut = '';
+    for (let index=0;index < this.shadowOutList.length;index++) {
+      if(index !== 0) {
+        this.selectOut += ',';
+      }
+      this.selectOut += `${this.getCheckValue(this.shadowOutList[index].x_offset, 0)} ${this.getCheckValue(this.shadowOutList[index].y_offset, 0)}
+      ${this.getCheckValue(this.shadowOutList[index].blur_ju, 1)} ${this.getCheckValue(this.shadowOutList[index].spread, 0)} ${this.shadowOutList[index].color}`;
+    }
     this.renderer.setStyle(this.BoxOutRef.nativeElement, 'boxShadow', this.selectOut);
   }
 
   getCheckValue(value: any,flag: number) {
     let regexp = flag === 0 ? this.numReg1 : this.numReg2;
     return regexp.test(value) ? `${value}px` : 0;
+  }
+
+  delShadowItem(index: number) {
+    this.shadowOutList.splice(index, 1);
+  }
+
+  addShadowItem() {
+    this.shadowOutList.push({
+      color: '#ffcc66',
+      x_offset: 0,
+      y_offset: 0,
+      blur_ju: 0,
+      spread: 20
+    });
   }
 
 }

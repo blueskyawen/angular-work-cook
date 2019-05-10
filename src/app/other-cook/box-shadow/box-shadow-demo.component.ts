@@ -13,12 +13,15 @@ export class BoxShadowDemoComponent implements OnInit {
   BoxInsetRef: ElementRef;
   @ViewChild('shadowColor')
   BoxColorRef: ElementRef;
-  shadowInset: any = {
-    x_offset: 0,
-    y_offset: 0,
-    blur_ju: 0,
-    spread: 20
-  };
+  shadowInsetList: any[] = [
+    {
+      color: '#ffcc66',
+      x_offset: 0,
+      y_offset: 0,
+      blur_ju: 0,
+      spread: 20
+    }
+  ];
   operTitle: string = '开始演示';
   stepIndex: number = 0;
   constructor(private renderer: Renderer2) { }
@@ -45,13 +48,33 @@ export class BoxShadowDemoComponent implements OnInit {
   }
 
   makeShadowInset() {
-    this.selectInset = `${this.getCheckValue(this.shadowInset.x_offset, 0)} ${this.getCheckValue(this.shadowInset.y_offset, 0)} 
-    ${this.getCheckValue(this.shadowInset.blur_ju, 1)} ${this.getCheckValue(this.shadowInset.spread, 0)} ${this.BoxColorRef.nativeElement.value} inset`;
+    this.selectInset = '';
+    for (let index=0;index < this.shadowInsetList.length;index++) {
+      if(index !== 0) {
+        this.selectInset += ',';
+      }
+      this.selectInset += `${this.getCheckValue(this.shadowInsetList[index].x_offset, 0)} ${this.getCheckValue(this.shadowInsetList[index].y_offset, 0)}
+    ${this.getCheckValue(this.shadowInsetList[index].blur_ju, 1)} ${this.getCheckValue(this.shadowInsetList[index].spread, 0)} ${this.shadowInsetList[index].color} inset`;
+    }
     this.renderer.setStyle(this.BoxInsetRef.nativeElement, 'boxShadow', this.selectInset);
   }
 
   getCheckValue(value: any,flag: number) {
     let regexp = flag === 0 ? this.numReg1 : this.numReg2;
     return regexp.test(value) ? `${value}px` : 0;
+  }
+
+  delShadowItem(index: number) {
+    this.shadowInsetList.splice(index, 1);
+  }
+
+  addShadowItem() {
+    this.shadowInsetList.push({
+      color: '#ffcc66',
+      x_offset: 0,
+      y_offset: 0,
+      blur_ju: 0,
+      spread: 20
+    });
   }
 }

@@ -15,12 +15,12 @@
 <div class="box-shadow-out" #boxshadowout style="box-shadow: 0px 0px 0px 20px #ffcc66;">
   接收预订提醒、评论撰写提醒、价格提醒，以及与您使用爱彼迎有关的其他提
 </div>
-<div class="box-input">
+<div class="box-input" id="box-input">
   <div>输入后点生成： </div>
-  <div>
+  <div class="shadow_demosss" *ngFor="let shadowOut of shadowOutList;let i=index">
     <div>
       <span>阴影颜色</span>
-      <span><input #shadowColor type="color" value="#ffcc66" /></span>
+      <span><input class="shadowColor" type="color" [(ngModel)]="shadowOut.color" /></span>
     </div>
     <div>
       <span>x-shadow</span>
@@ -37,6 +37,14 @@
     <div>
       <span>spread-阴影尺寸</span>
       <span><nc-input [showHint]="false" [(modelValue)]="shadowOut.spread" [width]="'60px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <span class="fa fa-minus-circle" (click)="delShadowItem(i)"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <span class="fa fa-plus-circle" (click)="addShadowItem()"></span>
     </div>
     <div>
       <nc-button (click)="makeShadowOut()">生成</nc-button>

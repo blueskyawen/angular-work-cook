@@ -20,10 +20,10 @@
 </div>
 <div class="box-input">
   <div>输入后点生成： </div>
-  <div>
+  <div class="shadow_demosss" *ngFor="let shadowInset of shadowInsetList;let i=index">
     <div>
       <span>阴影颜色</span>
-      <span><input #shadowColor type="color" value="#ffcc66" /></span>
+      <span><input type="color" [(ngModel)]="shadowInset.color" /></span>
     </div>
     <div>
       <span>x-shadow</span>
@@ -40,6 +40,14 @@
     <div>
       <span>spread-阴影尺寸</span>
       <span><nc-input [showHint]="false" [(modelValue)]="shadowInset.spread" [width]="'60px'" [height]="'36px'"></nc-input></span>
+    </div>
+    <div>
+      <span class="fa fa-minus-circle" (click)="delShadowItem(i)"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <span class="fa fa-plus-circle" (click)="addShadowItem()"></span>
     </div>
     <div>
       <nc-button (click)="makeShadowInset()">生成</nc-button>
