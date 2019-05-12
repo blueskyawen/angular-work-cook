@@ -155,6 +155,29 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/other/boxShadow/demos']);}}
           ]
         }
+      },
+      {title:'Css3 Demo',
+        icon:'fa fa-telegram',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'文本和边框',icon:'',place: 'down',
+              url:'/main/other/css3/text-box',
+              callback: () => {this.router.navigate(['/main/other/css3/text-box']);}},
+            {title:'盒子背景',icon:'',place: 'down',
+              url:'/main/other/css3/box-back',
+              callback: () => {this.router.navigate(['/main/other/css3/box-back']);}},
+            {title:'2D变换',icon:'',place: 'down',
+              url:'/main/other/css3/2d',
+              callback: () => {this.router.navigate(['/main/other/css3/2d']);}},
+            {title:'3D变换',icon:'',place: 'down',
+              url:'/main/other/css3/3d',
+              callback: () => {this.router.navigate(['/main/other/css3/3d']);}},
+            {title:'多列',icon:'',place: 'down',
+              url:'/main/other/css3/column',
+              callback: () => {this.router.navigate(['/main/other/css3/column']);}}
+          ]
+        }
       }
     ]
   };
