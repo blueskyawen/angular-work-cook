@@ -29,6 +29,7 @@ import { StructDirectiveComponent } from './struct-directive/struct-directive.co
 import { NumIfDirective } from './directive/num-if.directive';
 import { TransverterPipe } from './directive/transverter.pipe';
 import { PipeComponent } from './pipe/pipe.component';
+import { GreetDirective } from './directive/greet-directive.component';
 
 @NgModule({
   declarations: [HerosComponent, HeroDetailComponent, DashboardComponent, TopHerosComponent,
@@ -36,7 +37,7 @@ import { PipeComponent } from './pipe/pipe.component';
     HeroJobAdComponent, HeroPrpfileComponent, AdDirective, CustomElementComponent,
     PopupComponent, TempleFormComponent, ReactiveFormComponent,ForbiddenValidatorDirective,
     HighlightDirective, AttrDirectiveComponent, InputNumberDirective, StructDirectiveComponent,
-    NumIfDirective, TransverterPipe, PipeComponent],
+    NumIfDirective, TransverterPipe, PipeComponent, GreetDirective],
   imports: [
     CommonModule,ShareModule,DynamicFormModule
   ],

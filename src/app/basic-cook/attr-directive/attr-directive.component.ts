@@ -18,7 +18,6 @@ import { Component, OnInit } from '@angular/core';
         <input type="text" name="inutMinNumber" [(ngModel)]="minNumber">
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-input-label">请输入： </label>
       <div class="form-input-content">
@@ -27,6 +26,9 @@ import { Component, OnInit } from '@angular/core';
         <button class="button" (click)="des()">减少</button>
       </div>
     </div>
+
+    <h2>Greet指令</h2>
+    <h4 [greet]="'Hello, Semlinker!'" author="semlinker22">Hello, Angular</h4>
   `,
   styles: ['input {height:30px;width:200px;border:solid 1px #ccc;border-radius:3px;}']
 })
