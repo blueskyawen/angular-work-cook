@@ -8,7 +8,7 @@ import { BoxCloumnComponent } from './box-cloumn.component';
 
 const routes: Routes = [
   {
-    path: 'css3/text-box',
+    path: 'css3/text-box/:type',
     component: TextBoxComponent
   },
   {

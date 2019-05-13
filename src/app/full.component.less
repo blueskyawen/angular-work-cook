@@ -1,3 +1,9 @@
+@nc-screen-xs-min: 575px;
+@nc-screen-sm-min: 576px;
+@nc-screen-md-min: 768px;
+@nc-screen-lg-min: 992px;
+@nc-screen-xl-min: 1200px;
+
 .menu-header {
   height: 60px;
   background: #e6e6e6;
@@ -7,7 +13,26 @@
   overflow-x: hidden;
   visibility: hidden;
 }
-@media (max-width:760px) {
+.work-content {
+  width:100%;
+  > .nc-sider {
+    @media (max-width: @nc-screen-md-min) {
+      width: 80%;
+    }
+    @media (min-width: @nc-screen-md-min) {
+      width: 210px;
+    }
+  }
+  > .nc-content {
+    @media (max-width: @nc-screen-md-min) {
+      width: 100%;
+    }
+    @media (min-width: @nc-screen-md-min) {
+      width: calc(100% - 210px);
+    }
+  }
+}
+@media (max-width: @nc-screen-md-min) {
   .menu-header {
     height: auto;
   }

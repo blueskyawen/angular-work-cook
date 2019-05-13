@@ -1,3 +1,35 @@
-<p>
-  text-box works!
-</p>
+<div>
+  <h2>文本和边框</h2>
+  <nc-tab [tabs]="tabItems" [type]="'line'" [(selectTab)] = "currentTab"  [id]="'tab_text_box'">
+    <div class="border_radius_demo" *ngIf="currentTab === 'border-radius'">
+      <div class="border_radius" #borderradiusout style="border-radius: 10px;">
+      </div>
+      <div class="demo_oper">
+        <div class="oper-label">圆角尺寸(px): </div>
+        <div class="oper-items">
+          <span *ngFor="let vertifyItem of radiusData.vertifys">
+            <nc-number-put [type]="'middle'" [(value)]="vertifyItem.value"></nc-number-put>
+          </span>
+          <span class="fa fa-minus-circle" (click)="operVertifyItem('del')"></span>
+          <span class="fa fa-plus-circle" (click)="operVertifyItem('add')"></span>
+          <span class="oper_divider">/</span>
+          <span *ngFor="let alignItem of radiusData.aligns">
+            <nc-number-put [type]="'middle'" [(value)]="alignItem.value"></nc-number-put>
+          </span>
+          <span class="fa fa-minus-circle" (click)="operAlignItem('del')"></span>
+          <span class="fa fa-plus-circle" (click)="operAlignItem('add')"></span>
+        </div>
+        <div class="oper-button"><nc-button (click)="makeBorderRadiusOut()">生成</nc-button></div>
+      </div>
+    </div>
+    <div *ngIf="currentTab === 'border-image'">
+      边框图片
+    </div>
+    <div *ngIf="currentTab === 'text-shadow'">
+      文本阴影
+    </div>
+    <div *ngIf="currentTab === 'text-break'">
+      文本换行
+    </div>
+  </nc-tab>
+</div>

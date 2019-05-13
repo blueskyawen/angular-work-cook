@@ -27,12 +27,13 @@
       </span>
     </div>
   </div>
-  <div class="nc-layout nc-flex nc-row">
-    <div class="nc-sider" style="width:240px;" [class.nc-sidebars-hidden]="!isShowSideMenu">
+  <div class="nc-layout nc-row nc-flex-wrap work-content">
+    <div class="nc-sider"
+         [class.nc-sidebars-hidden]="!isShowSideMenu">
       <nc-menu  *ngIf="isShowSider" [type]="sidebarNav.type" [place]="sidebarNav.place" [navItems]="sidebarNav.navItems"
                [color]="'#d9d9d9'" [url]="curUrl"></nc-menu>
     </div>
-    <div class="nc-content nc-flex" style="min-height:800px;padding: 30px;">
+    <div class="nc-content" style="min-height:800px;padding: 30px;">
       <router-outlet></router-outlet>
     </div>
   </div>

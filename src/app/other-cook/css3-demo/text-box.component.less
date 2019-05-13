@@ -1,0 +1,38 @@
+.border_radius_demo {
+  width: 100%;
+  margin: 20px;
+  .border_radius {
+    height: 150px;
+    width:240px;
+    border: solid 2px #0066ff;
+    margin:  0 50px 50px;
+  }
+  .demo_oper {
+    width: inherit;
+    margin-left: 20px;
+    .oper-label {
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+    .oper-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      span {
+        margin: 0 10px 10px;
+        &.oper_divider {
+          font-size: 28px;
+          font-weight: 600;
+        }
+        &.fa {
+          font-size: 18px;
+          color: #999;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .oper-button {
+    padding-left: 20px;
+  }
+}

@@ -162,8 +162,8 @@ export class FullComponent implements OnInit, OnDestroy {
           place: 'down',isShow:false,
           navItems: [
             {title:'文本和边框',icon:'',place: 'down',
-              url:'/main/other/css3/text-box',
-              callback: () => {this.router.navigate(['/main/other/css3/text-box']);}},
+              url:'/main/other/css3/text-box/border-radius',
+              callback: () => {this.router.navigate(['/main/other/css3/text-box/border-radius']);}},
             {title:'盒子背景',icon:'',place: 'down',
               url:'/main/other/css3/box-back',
               callback: () => {this.router.navigate(['/main/other/css3/box-back']);}},
