@@ -19,17 +19,92 @@
           <span class="fa fa-minus-circle" (click)="operAlignItem('del')"></span>
           <span class="fa fa-plus-circle" (click)="operAlignItem('add')"></span>
         </div>
+        <div class="oper-button">border-radius: {{selectBorderRadius}}</div>
         <div class="oper-button"><nc-button (click)="makeBorderRadiusOut()">生成</nc-button></div>
       </div>
     </div>
-    <div *ngIf="currentTab === 'border-image'">
-      边框图片
+    <div class="border_image_demo"  *ngIf="currentTab === 'border-image'">
+      <div class="image">
+        <span>原图片: </span>
+        <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3721390607,2141480961&fm=26&gp=0.jpg" />
+      </div>
+      <div class="border_image">
+        <span>边框图片: </span>
+        <div #borderImageout>Angular是一个开发平台,帮你更轻松的构建 Web 应用,集声明式模板、依赖注入、端到端工具和一些最佳实践于一身</div>
+      </div>
+      <div class="demo_label">边框图片尺寸: </div>
+      <div class="demo_oper">
+        <span class="oper-label">border-image-slice </span>
+        <span *ngFor="let sliceItem of borderImageData.slices">
+          <nc-number-put [type]="'middle'" [(value)]="sliceItem.value"></nc-number-put>
+        </span>
+        <span class="fa fa-minus-circle" (click)="operSliceItem('del')"></span>
+        <span class="fa fa-plus-circle" (click)="operSliceItem('add')"></span>
+      </div>
+      <div class="demo_oper">
+        <span class="oper-label">border-image-width(px) </span>
+        <span *ngFor="let widthItem of borderImageData.widths">
+          <nc-number-put [type]="'middle'" [(value)]="widthItem.value"></nc-number-put>
+        </span>
+        <span class="fa fa-minus-circle" (click)="operWidthItem('del')"></span>
+        <span class="fa fa-plus-circle" (click)="operWidthItem('add')"></span>
+      </div>
+      <div class="demo_oper">
+        <span class="oper-label">border-image-outset(px) </span>
+        <span *ngFor="let outsetItem of borderImageData.outsets">
+          <nc-number-put [type]="'middle'" [(value)]="outsetItem.value"></nc-number-put>
+        </span>
+        <span class="fa fa-minus-circle" (click)="operOutsetItem('del')"></span>
+        <span class="fa fa-plus-circle" (click)="operOutsetItem('add')"></span>
+      </div>
+      <div class="demo_oper">
+        <span class="oper-label">border-image-repeat </span>
+        <span>
+          <nc-select [options]="repeatzzOptions" [(value)]="borderImageData.repeatzz" [width]="'240px'">
+          </nc-select>
+        </span>
+      </div>
+      <div class="oper-button">
+        <nc-button (click)="makeBorderImageOut()">生成</nc-button>
+      </div>
+      <div class="oper-button" style="color: #6600ff;">border-image: {{selectBorderImage}}</div>
     </div>
-    <div *ngIf="currentTab === 'text-shadow'">
-      文本阴影
-    </div>
-    <div *ngIf="currentTab === 'text-break'">
-      文本换行
+    <div class="text_shadow_demo" *ngIf="currentTab === 'text-shadow'">
+      <div class="text_shadow" #textShadowout>
+        Angular 集声明式模板、依赖注入、端到端工具和一些最佳实践于一身，为你解决开发方面的各种挑战。
+      </div>
+      <div class="text_shadow_oper">
+        <div>输入后点生成： </div>
+        <div class="shadow_demosss" *ngFor="let textShadowItem of textShadowList;let i=index">
+          <div>
+            <span>阴影颜色</span>
+            <span><input class="shadowColor" type="color" [(ngModel)]="textShadowItem.color" /></span>
+          </div>
+          <div>
+            <span>x-shadow</span>
+            <span><nc-input [showHint]="false" [(modelValue)]="textShadowItem.x_offset" [width]="'60px'" [height]="'36px'"></nc-input></span>
+          </div>
+          <div>
+            <span>y-shadow</span>
+            <span><nc-input [showHint]="false" [(modelValue)]="textShadowItem.y_offset" [width]="'60px'" [height]="'36px'"></nc-input></span>
+          </div>
+          <div>
+            <span>模糊距离</span>
+            <span><nc-input [showHint]="false" [(modelValue)]="textShadowItem.blur_ju" [width]="'60px'" [height]="'36px'"></nc-input></span>
+          </div>
+          <div>
+            <span class="fa fa-minus-circle" (click)="delShadowItem(i)"></span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span class="fa fa-plus-circle" (click)="addShadowItem()"></span>
+          </div>
+          <div>
+            <nc-button (click)="makeTextShadowOut()">生成</nc-button>
+          </div>
+        </div>
+      </div>
     </div>
   </nc-tab>
 </div>
