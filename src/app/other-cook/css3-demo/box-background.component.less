@@ -40,3 +40,62 @@
     }
   }
 }
+.gradient_demo {
+  width: 100%;
+  margin: 20px;
+  .liner_box {
+    height: 240px;
+    width: 500px;
+    border: solid 5px #ccc;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 36px;
+  }
+  .text_shadow_oper {
+    margin-top: 20px;
+    padding: 10px 0;
+    width: 100%;
+    > div {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      div {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 10px;
+        span {
+          font-size: 14px;
+          &:first-child {
+            margin-right: 5px;
+          }
+        }
+      }
+      &.oper-color {
+        align-items: center;
+        > .color-title {
+          margin-right: 10px;
+        }
+        > .color-items {
+          .color-item {
+            padding: 0 15px;
+            display: inline-flex;
+            align-items: center;
+            border-right: solid 1px #e6e6e6;
+            > span {
+              margin-right: 5px;
+              .label {
+                margin-right: 3px;
+              }
+            }
+          }
+          .fa {
+            font-size: 19px;
+            color: #ff6666;
+            cursor: pointer;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}

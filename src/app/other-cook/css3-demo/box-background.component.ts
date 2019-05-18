@@ -54,6 +54,40 @@ export class BoxBackgroundComponent implements OnInit {
       BackboxoutRef: ElementRef;
   selectBoxBack: string = '';
 
+  linerGrad: any = {
+    type: 'liner',
+    direct: {type: 'direct1',direct1:'top',direct2: 'top',direct3: 'right',deg: '90'},
+    colors: [
+      {color: '#ff3333', stop: 30}, {color: '#009933', stop: 100}
+    ]
+  };
+  linerOptions: any[] = [
+    {label: '线性渐变',value: 'liner',disable: false},{label: '重复线性渐变',value: 'repeat-liner',disable: false}
+  ];
+  directOptions: any[] = [
+    {label: '线性方向1个',value: 'direct1',disable: false},{label: '线性方向2个',value: 'direct2',disable: false},
+    {label: 'deg',value: 'deg',disable: false}
+  ];
+  direct1Options: any[] = [
+    {label: 'top',value: 'top',disable: false},{label: 'bottom',value: 'bottom',disable: false},
+    {label: 'left',value: 'left',disable: false},{label: 'right',value: 'right',disable: false}
+  ];
+  direct2Options: any[] = [
+    {label: 'top',value: 'top',disable: false},{label: 'bottom',value: 'bottom',disable: false}
+  ];
+  direct3Options: any[] = [
+    {label: 'left',value: 'left',disable: false},{label: 'right',value: 'right',disable: false}
+  ];
+  @ViewChild('linerGradientout')
+    LinerGradientoutRef: ElementRef;
+  selectLinerGrad: string = '';
+  radialGrad: any = {
+    type: 'liner'
+  };
+  radialOptions: any[] = [
+    {label: '径向渐变',value: 'radial',disable: false},{label: '重复径向渐变',value: 'repeat-radial',disable: false}
+  ];
+
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
@@ -79,6 +113,48 @@ export class BoxBackgroundComponent implements OnInit {
     return this.backBox.size.type === 'length' ? `${this.backBox.size.x}px ${this.backBox.size.y}px` :
         this.backBox.position.type === 'percentage' ? `${this.backBox.size.x}% ${this.backBox.size.y}%` :
             this.backBox.position.type;
+  }
+
+  delColor() {
+    if(this.linerGrad.colors.length === 2) {
+      return;
+    }
+    this.linerGrad.colors.pop();
+  }
+
+  addColor() {
+    this.linerGrad.colors.push({color: '#009933', stop: 100});
+  }
+
+  makelinergradiutOut() {
+    let tmpColor : string = '';
+    for(let index=0;index < this.linerGrad.colors.length;index++) {
+      if(index !== 0) {
+        tmpColor += ', ';
+      }
+      tmpColor += `${this.linerGrad.colors[index].color} ${this.linerGrad.colors[index].stop}%`;
+    }
+    tmpColor += ')';
+
+    this.renderer.setStyle(this.LinerGradientoutRef.nativeElement, 'background',
+        this.getLinerType('') + this.getLinerDirect('to') + ', ' + tmpColor);
+
+  }
+
+  getLinerType(type: string) {
+    return this.linerGrad.type === 'liner' ? `${type}linear-gradient(` : `${type}repeating-linear-gradient(`;
+  }
+
+  getLinerDirect(type: string) {
+    if(type) {
+      return this.linerGrad.direct.type === 'direct1' ? `to ${this.linerGrad.direct.direct1}` :
+          this.linerGrad.direct.type === 'direct2' ? `to ${this.linerGrad.direct.direct2} ${this.linerGrad.direct.direct3}`
+              : `${this.linerGrad.direct.deg}deg`;
+    } else {
+      return this.linerGrad.direct.type === 'direct1' ? this.linerGrad.direct.direct1 :
+          this.linerGrad.direct.type === 'direct2' ? `${this.linerGrad.direct.direct2} ${this.linerGrad.direct.direct3}`
+              : `${this.linerGrad.direct.deg}deg`;
+    }
   }
 
 }

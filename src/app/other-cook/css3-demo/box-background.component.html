@@ -92,7 +92,68 @@
       </div>
     </div>
     <div class="gradient_demo" *ngIf="currentTab === 'gradient'">
-      渐变
+      <h3>1 线性渐变</h3>
+      <div class="liner_box" #linerGradientout>
+        PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，
+        优化我们的Web App
+      </div>
+      <div class="text_shadow_oper">
+        <div>输入后点生成： </div>
+        <div class="opers">
+          <div>
+            <span>类型</span>
+            <span>
+              <nc-select [options]="linerOptions" [(value)]="linerGrad.type" [width]="'120px'"></nc-select>
+            </span>
+          </div>
+          <div>
+            <span>方向</span>
+            <span>
+              <nc-select [options]="directOptions" [(value)]="linerGrad.direct.type" [width]="'120px'"></nc-select>
+            </span>
+            <span  *ngIf="linerGrad.direct.type === 'direct1'" style="margin-left: 5px;">
+              <nc-select [options]="direct1Options" [(value)]="linerGrad.direct.direct1" [width]="'120px'"></nc-select>
+            </span>
+            <span  *ngIf="linerGrad.direct.type === 'direct2'" style="margin-left: 5px;">
+              <nc-select [options]="direct2Options" [(value)]="linerGrad.direct.direct2" [width]="'120px'"></nc-select>
+            </span>
+            <span  *ngIf="linerGrad.direct.type === 'direct2'" style="margin-left: 5px;">
+              <nc-select [options]="direct3Options" [(value)]="linerGrad.direct.direct3" [width]="'120px'"></nc-select>
+            </span>
+            <span *ngIf="linerGrad.direct.type === 'deg'" style="margin-left: 5px;">
+              <nc-input [showHint]="false" [(modelValue)]="linerGrad.direct.deg" [width]="'60px'" [height]="'36px'">
+              </nc-input>
+            </span>
+          </div>
+        </div>
+        <div class="opers oper-color">
+          <span class="color-title">色标</span>
+          <span class="color-items">
+            <span class="color-item" *ngFor="let colorItem of linerGrad.colors">
+              <span>
+                <span class="label">color</span>
+                <span>
+                  <input class="shadowColor" type="color" [(ngModel)]="colorItem.color" />
+                </span>
+              </span>
+              <span>
+                <span class="label">stop</span>
+                <span>
+                  <nc-number-put [type]="'middle'" [(value)]="colorItem.stop" [min]="0" [max]="100"></nc-number-put>
+                </span>
+              </span>
+            </span>
+            <span class="fa fa-minus-circle" (click)="delColor()"></span>
+            <span class="fa fa-plus-circle" (click)="addColor()"></span>
+          </span>
+        </div>
+
+        <div>
+          <div>
+            <nc-button (click)="makelinergradiutOut()">生成</nc-button>
+          </div>
+        </div>
+      </div>
     </div>
   </nc-tab>
 </div>
