@@ -1,0 +1,42 @@
+.background_demo {
+  width: 100%;
+  margin: 20px;
+  .back_box {
+    height: 240px;
+    width: 240px;
+    border: solid 20px #ccc;
+    overflow-y: auto;
+    padding: 30px;
+    font-size: 18px;
+    line-height: 36px;
+  }
+  .text_shadow_oper {
+    margin-top: 20px;
+    padding: 10px 0;
+    width: 100%;
+    > div {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      div {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 10px;
+        span {
+          font-size: 14px;
+          &:first-child {
+            margin-right: 5px;
+          }
+          &.fa {
+            font-size: 19px;
+            color: #ff6666;
+            cursor: pointer;
+          }
+          &.label1 {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
