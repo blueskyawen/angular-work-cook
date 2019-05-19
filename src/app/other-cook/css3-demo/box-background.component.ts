@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-box-background',
@@ -82,15 +83,46 @@ export class BoxBackgroundComponent implements OnInit {
     LinerGradientoutRef: ElementRef;
   selectLinerGrad: string = '';
   radialGrad: any = {
-    type: 'liner'
+    type: 'radial',
+    posit: {type: 'keyword',x: 'center',y: 'center',xx: 50,yy: 50},
+    shape: 'ellipse',
+    size1: 'closest-side',
+    colors: [
+      {color: '#ff3333', stop: 50}, {color: '#009933', stop: 100}
+    ]
   };
   radialOptions: any[] = [
     {label: '径向渐变',value: 'radial',disable: false},{label: '重复径向渐变',value: 'repeat-radial',disable: false}
   ];
+  positOptions: any[] = [
+    {label: '关键字',value: 'keyword',disable: false},{label: '百分比',value: 'pentage',disable: false},
+    {label: 'px',value: 'px',disable: false}
+  ];
+  posit1Options: any[] = [
+    {label: 'left',value: 'left',disable: false},{label: 'right',value: 'right',disable: false},
+    {label: 'center',value: 'center',disable: false}
+  ];
+  posit2Options: any[] = [
+    {label: 'top',value: 'top',disable: false},{label: 'bottom',value: 'bottom',disable: false},
+    {label: 'center',value: 'center',disable: false}
+  ];
+  shapeOptions: any[] = [
+    {label: 'circle',value: 'circle',disable: false},{label: 'ellipse',value: 'ellipse',disable: false}
+  ];
+  size22Options: any[] = [
+    {label: 'closest-side',value: 'closest-side',disable: false},{label: 'closest-corner',value: 'closest-corner',disable: false},
+    {label: 'farthest-side',value: 'farthest-side',disable: false},{label: 'farthest-corner',value: 'farthest-corner',disable: false}
+  ];
+  selectradiusGrad: string = '';
+  @ViewChild('radiusGradientout')
+    RadiusGradientoutRef: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2,private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.currentTab = params.get('type');
+    }); 
   }
 
   makeBackgroundOut() {
@@ -135,17 +167,17 @@ export class BoxBackgroundComponent implements OnInit {
       tmpColor += `${this.linerGrad.colors[index].color} ${this.linerGrad.colors[index].stop}%`;
     }
     tmpColor += ')';
-
+    this.selectLinerGrad = this.getLinerType('') + this.getLinerDirect('to') + ', ' + tmpColor;
     this.renderer.setStyle(this.LinerGradientoutRef.nativeElement, 'background',
-        this.getLinerType('') + this.getLinerDirect('to') + ', ' + tmpColor);
-
+        this.getLinerType('-moz-') + this.getLinerDirect() + ', ' + tmpColor);
+    this.renderer.setStyle(this.LinerGradientoutRef.nativeElement, 'background', this.selectLinerGrad);
   }
 
   getLinerType(type: string) {
     return this.linerGrad.type === 'liner' ? `${type}linear-gradient(` : `${type}repeating-linear-gradient(`;
   }
 
-  getLinerDirect(type: string) {
+  getLinerDirect(type?: string) {
     if(type) {
       return this.linerGrad.direct.type === 'direct1' ? `to ${this.linerGrad.direct.direct1}` :
           this.linerGrad.direct.type === 'direct2' ? `to ${this.linerGrad.direct.direct2} ${this.linerGrad.direct.direct3}`
@@ -157,4 +189,40 @@ export class BoxBackgroundComponent implements OnInit {
     }
   }
 
+  delColor2() {
+    if(this.radialGrad.colors.length === 2) {
+      return;
+    }
+    this.radialGrad.colors.pop();
+  }
+
+  addColor2() {
+    this.radialGrad.colors.push({color: '#009933', stop: 100});
+  }
+
+  makeradiusgradiutOut() {
+    let tmpColor : string = '';
+    for(let index=0;index < this.radialGrad.colors.length;index++) {
+      if(index !== 0) {
+        tmpColor += ', ';
+      }
+      tmpColor += `${this.radialGrad.colors[index].color} ${this.radialGrad.colors[index].stop}%`;
+    }
+    tmpColor += ')';
+    this.selectradiusGrad = this.getRadiusType('') +
+        `${this.radialGrad.shape} ${this.radialGrad.size1} ` + this.getRadiusDirect() + ', ' + tmpColor;
+    this.renderer.setStyle(this.RadiusGradientoutRef.nativeElement, 'background',
+        this.getRadiusType('-moz-') + `${this.radialGrad.shape} ${this.radialGrad.size1} ` + this.getRadiusDirect() + ', ' + tmpColor);
+    this.renderer.setStyle(this.RadiusGradientoutRef.nativeElement, 'background', this.selectradiusGrad);
+  }
+
+  getRadiusType(type: string) {
+    return this.radialGrad.type === 'radial' ? `${type}radial-gradient(` : `${type}repeating-radial-gradient(`;
+  }
+
+  getRadiusDirect() {
+    return this.radialGrad.posit.type === 'keyword' ? `at ${this.radialGrad.posit.x} ${this.radialGrad.posit.y}` :
+        this.radialGrad.posit.type  === 'px' ? `at ${this.radialGrad.posit.xx}px ${this.radialGrad.posit.yy}px`
+            : `at ${this.radialGrad.posit.xx}% ${this.radialGrad.posit.yy}%`;
+  }
 }

@@ -12,7 +12,7 @@ const routes: Routes = [
     component: TextBoxComponent
   },
   {
-    path: 'css3/box-back',
+    path: 'css3/box-back/:type',
     component: BoxBackgroundComponent
   },
   {

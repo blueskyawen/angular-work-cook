@@ -166,7 +166,7 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/other/css3/text-box/border-radius']);}},
             {title:'盒子背景',icon:'',place: 'down',
               url:'/main/other/css3/box-back',
-              callback: () => {this.router.navigate(['/main/other/css3/box-back']);}},
+              callback: () => {this.router.navigate(['/main/other/css3/box-back/background']);}},
             {title:'2D变换',icon:'',place: 'down',
               url:'/main/other/css3/2d',
               callback: () => {this.router.navigate(['/main/other/css3/2d']);}},
