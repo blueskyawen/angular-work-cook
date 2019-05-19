@@ -7,10 +7,10 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./text-box.component.less']
 })
 export class TextBoxComponent implements OnInit {
-  tabItems = [{name:'圆角',label:'border-radius',isActive:true,isDisable:false},
+  tabItems = [{name:'圆角',label:'border-radius',isActive:false,isDisable:false},
     {name:'边框图片',label:'border-image',isActive:false,isDisable:false},
     {name:'文本阴影',label:'text-shadow',isActive:false,isDisable:false}];
-  currentTab = this.tabItems[0].label;
+  currentTab = 'border-radius';
 
   radiusData: any = {
     vertifys: [{value: 10}],
@@ -59,6 +59,12 @@ export class TextBoxComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.currentTab = params.get('type');
+      for(let tabz of this.tabItems) {
+        if(tabz.label === this.currentTab) {
+          tabz.isActive = true;
+          break;
+        }
+      }
     });
   }
 

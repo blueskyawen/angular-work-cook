@@ -7,7 +7,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./box-background.component.less']
 })
 export class BoxBackgroundComponent implements OnInit {
-  tabItems = [{name:'背景',label:'background',isActive:true,isDisable:false},
+  tabItems = [{name:'背景',label:'background',isActive:false,isDisable:false},
     {name:'渐变',label:'gradient',isActive:false,isDisable:false}];
   currentTab = this.tabItems[0].label;
   backBox: any = {
@@ -122,7 +122,13 @@ export class BoxBackgroundComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.currentTab = params.get('type');
-    }); 
+      for(let tabz of this.tabItems) {
+        if(tabz.label === this.currentTab) {
+          tabz.isActive = true;
+          break;
+        }
+      }
+    });
   }
 
   makeBackgroundOut() {
