@@ -1,3 +1,61 @@
-<p>
-  transform2-d works!
-</p>
+<div>
+  <h2>2D 变换</h2>
+  <nc-tab [tabs]="tabItems" [type]="'line'" [(selectTab)] = "currentTab"  [id]="'tab_2D'">
+    <div class="translate_demo" *ngIf="currentTab === 'translate'">
+      <div class="translate_2d" #translateout>
+        PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用
+      </div>
+      <div class="demo_oper">
+        <div class="oper-label">输入后点生成：  </div>
+        <div class="oper-items">
+          <span class="oper-item">
+            <span>translate(px) </span>
+            <span>
+              <span class="input-label">x</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.x" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+            </span>
+            <span>
+              <span class="input-label">y</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.y" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+            </span>
+          </span>
+          <span class="oper-item">
+            <span>rolate(deg) </span>
+            <span>
+              <nc-input [showHint]="false" [(modelValue)]="transData.deg" [width]="'60px'" [height]="'36px'">
+              </nc-input>
+            </span>
+          </span>
+          <span class="oper-item">
+            <span>scale </span>
+            <span>
+              <span class="input-label">x</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.scale_x" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+            </span>
+            <span>
+              <span class="input-label">y</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.scale_y" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+            </span>
+          </span>
+        </div>
+        <div class="oper-button">transform: {{selectTransform}}</div>
+        <div class="oper-button"><nc-button (click)="makeTransformOut()">生成</nc-button></div>
+      </div>
+    </div>
+    <div class="skew_demo" *ngIf="currentTab === 'skew'">
+      <div class="skew_2d" #skewout></div>
+    </div>
+  </nc-tab>
+</div>

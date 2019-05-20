@@ -16,7 +16,7 @@ const routes: Routes = [
     component: BoxBackgroundComponent
   },
   {
-    path: 'css3/2d',
+    path: 'css3/2d/:type',
     component: Transform2DComponent
   },
   {
