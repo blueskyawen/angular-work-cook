@@ -23,6 +23,14 @@ export class Transform2DComponent implements OnInit {
       TranslateoutRef: ElementRef;
   selectTransform: string = '';
 
+  skewData: any = {
+    deg_x: '0',
+    deg_y: '0'
+  };
+  @ViewChild('skewout')
+    SkewoutRef: ElementRef;
+  selectSkewform: string = '';
+
   constructor(private renderer: Renderer2,private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -48,6 +56,11 @@ export class Transform2DComponent implements OnInit {
   getValue(value : string, type : number) {
     return type === 0 ? (this.numReg1.test(value) ? value : '0') :
         (this.numReg2.test(value) ? value : '1');
+  }
+
+  makeSkewOut() {
+    this.selectSkewform = `skew(${this.skewData.deg_x}deg,${this.skewData.deg_y}deg)`;
+    this.renderer.setStyle(this.SkewoutRef.nativeElement, 'transform', this.selectSkewform);
   }
 
 }
