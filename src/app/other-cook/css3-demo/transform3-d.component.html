@@ -7,7 +7,12 @@
 </div>
 <div class="demo_oper">
   <div class="oper-label">输入后点生成：  </div>
-  <div class="oper-items">
+  <div class="oper-label">
+    <span>元素2</span>
+    <span><nc-checkbox [(checked)]="isShow3d02" (checkedChange)="checkedChange()"></nc-checkbox></span>
+  </div>
+  <div class="oper-items" *ngFor="let data3d of data3dList;let i=index">
+    <div>{{i+1}}*** </div>
     <span class="oper-item">
       <span>translate3d(px) </span>
       <span>
@@ -185,9 +190,7 @@
     <span>backface-visibility: {{selectTransform1.visib}}</span>
     <span>transform-origin: {{selectTransform1.originz}}</span>
   </div>
-  <div class="oper-button"><nc-button (click)="make3DTransformOut1('1')">生成</nc-button></div>
+  <div class="oper-button"><nc-button (click)="make3DTransformOut1()">生成</nc-button></div>
 </div>
-<div class="oper-label">
-  <span>元素2</span>
-  <span><nc-checkbox [(checked)]="isShow3d02"></nc-checkbox></span>
-</div>
+
+
