@@ -1,3 +1,193 @@
-<p>
-  transform3-d works!
-</p>
+<h2>3D 变换</h2>
+<div class="translate_3d-demo">
+  <div class="translate_3d" #translate3dout1>
+  </div>
+  <div class="translate_3d" #translate3dout2 *ngIf="!!isShow3d02">
+  </div>
+</div>
+<div class="demo_oper">
+  <div class="oper-label">输入后点生成：  </div>
+  <div class="oper-items">
+    <span class="oper-item">
+      <span>translate3d(px) </span>
+      <span>
+        <span class="input-label">x</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.trans.x" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">y</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.trans.y" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">z</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.trans.z" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>scale3d </span>
+      <span>
+        <span class="input-label">x</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.scal.x" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">y</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.scal.y" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">z</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.scal.z" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>rotate3d </span>
+      <span>
+        <span class="input-label">x</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.rotat.x" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">y</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.rotat.y" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">z</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.rotat.z" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+      <span>
+        <span class="input-label">deg</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.rotat.deg" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>transform-style </span>
+      <span>
+        <nc-select [options]="styleOptions" [(value)]="data3d.stylez" [width]="'120px'">
+        </nc-select>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>backface-visibility </span>
+      <span>
+        <nc-select [options]="visibOptions" [(value)]="data3d.visib" [width]="'120px'">
+        </nc-select>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>perspective(px) </span>
+      <span>
+        <nc-input [showHint]="false" [(modelValue)]="data3d.perspec" [width]="'60px'" [height]="'36px'">
+        </nc-input>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>transform-origin</span>
+      <span class="aaa">
+        <span>类型</span>
+        <span>
+          <nc-select [options]="originTypes" [(value)]="data3d.originz.type" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+      </span>
+      <span class="aaa" *ngIf="data3d.originz.type === 'fangwei'">
+        <span>x</span>
+        <span>
+          <nc-select [options]="fanwei.x" [(value)]="data3d.originz.xx" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+        <span>y</span>
+        <span>
+          <nc-select [options]="fanwei.y" [(value)]="data3d.originz.yy" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+      </span>
+      <span class="aaa" *ngIf="data3d.originz.type !== 'fangwei'">
+        <span>x</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.originz.x" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+        <span>y</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.originz.y" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+    </span>
+    <span class="oper-item">
+      <span>perspective-origin</span>
+      <span class="aaa">
+        <span>类型</span>
+        <span>
+          <nc-select [options]="originTypes" [(value)]="data3d.transOrigin.type" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+      </span>
+      <span class="aaa" *ngIf="data3d.transOrigin.type === 'fangwei'">
+        <span>x</span>
+        <span>
+          <nc-select [options]="fanwei.x" [(value)]="data3d.transOrigin.xx" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+        <span>y</span>
+        <span>
+          <nc-select [options]="fanwei.y" [(value)]="data3d.transOrigin.yy" [width]="'120px'"
+                     [height]="'30px'"></nc-select>
+        </span>
+      </span>
+      <span class="aaa" *ngIf="data3d.transOrigin.type !== 'fangwei'">
+        <span>x</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.transOrigin.x" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+        <span>y</span>
+        <span>
+          <nc-input [showHint]="false" [(modelValue)]="data3d.transOrigin.y" [width]="'60px'" [height]="'36px'">
+          </nc-input>
+        </span>
+      </span>
+    </span>
+  </div>
+  <div class="oper-button">
+    <span>transform3d: {{selectTransform1.trans}}</span>
+    <span>perspective: {{selectTransform1.perspec}}</span>
+    <span>perspective-origin: {{selectTransform1.peroriginz}}</span>
+    <span>transform-style: {{selectTransform1.stylez}}</span>
+    <span>backface-visibility: {{selectTransform1.visib}}</span>
+    <span>transform-origin: {{selectTransform1.originz}}</span>
+  </div>
+  <div class="oper-button"><nc-button (click)="make3DTransformOut1('1')">生成</nc-button></div>
+</div>
+<div class="oper-label">
+  <span>元素2</span>
+  <span><nc-checkbox [(checked)]="isShow3d02"></nc-checkbox></span>
+</div>

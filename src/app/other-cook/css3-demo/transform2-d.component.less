@@ -8,6 +8,7 @@
     margin-bottom: 50px;
     background-color: #e5ffff;
     border-radius:5px;
+    transition: all .5s;
   }
   .skew_2d {
     height: 200px;
@@ -17,6 +18,7 @@
     background-color: #e5ffff;
     border-radius:5px;
     margin-left: 150px;
+    transition: all .5s;
   }
   .demo_oper {
     width: inherit;
@@ -31,11 +33,18 @@
       align-items: center;
       .oper-item {
         margin-right: 20px;
+        margin-bottom: 10px;
+        display: inline-flex;
+        align-items: center;
         > span {
           margin-right: 10px;
           .input-label {
             margin-right: 5px;
           }
+        }
+        > .aaa {
+          display: inline-flex;
+          align-items: center;
         }
       }
     }

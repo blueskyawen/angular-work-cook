@@ -1,0 +1,65 @@
+.translate_3d-demo {
+  width: 100%;
+  margin: 20px;
+  height: 400px;
+  position: relative;
+  .translate_3d {
+    height: 200px;
+    width: 240px;
+    border: solid 5px #ccc;
+    margin: 80px 80px 80px 300px;
+    background-color: #e5ffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius:2px;
+    position: absolute;
+    opacity: 0.6;
+    transition: all 1s;
+    &:first-child {
+      background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558505896041&di=9e02e4abf55c6a5ff207828a0816785e&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201107%2F01%2F20110701155928_zKFim.jpg);
+    }
+    &:last-child {
+      background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3780620793,2114772095&fm=26&gp=0.jpg);
+    }
+  }
+}
+.demo_oper {
+  width: inherit;
+  margin-left: 20px;
+  .oper-label {
+    padding: 0 20px 0 0;
+    margin-bottom: 20px;
+  }
+  .oper-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .oper-item {
+      margin-right: 20px;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      > span {
+        margin-right: 10px;
+        .input-label {
+          margin-right: 5px;
+        }
+      }
+      > .aaa {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+}
+.oper-button {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  span {
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

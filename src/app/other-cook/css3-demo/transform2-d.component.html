@@ -49,8 +49,43 @@
               </span>
             </span>
           </span>
+          <span class="oper-item">
+            <span>transform-origin</span>
+            <span class="aaa">
+              <span>类型</span>
+              <span>
+                <nc-select [options]="originTypes" [(value)]="transData.originz.type" [width]="'120px'"
+                           [height]="'30px'"></nc-select>
+              </span>
+            </span>
+            <span class="aaa" *ngIf="transData.originz.type === 'fangwei'">
+              <span>x</span>
+              <span>
+                <nc-select [options]="fanwei.x" [(value)]="transData.originz.xx" [width]="'120px'"
+                           [height]="'30px'"></nc-select>
+              </span>
+              <span>y</span>
+              <span>
+                <nc-select [options]="fanwei.y" [(value)]="transData.originz.yy" [width]="'120px'"
+                           [height]="'30px'"></nc-select>
+              </span>
+            </span>
+            <span class="aaa" *ngIf="transData.originz.type !== 'fangwei'">
+              <span>x</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.originz.x" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+              <span>y</span>
+              <span>
+                <nc-input [showHint]="false" [(modelValue)]="transData.originz.y" [width]="'60px'" [height]="'36px'">
+                </nc-input>
+              </span>
+            </span>
+          </span>
         </div>
         <div class="oper-button">transform: {{selectTransform}}</div>
+        <div class="oper-button">transform-origin:  {{selectTransformOrigin}}</div>
         <div class="oper-button"><nc-button (click)="makeTransformOut()">生成</nc-button></div>
       </div>
     </div>
