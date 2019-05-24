@@ -1,3 +1,60 @@
-<p>
-  box-cloumn works!
-</p>
+<h1>column多列</h1>
+<div class="column-container">
+  <h2 #columnh2>流浪地球（2008年出版的刘慈欣短篇小说作品集）</h2>
+  <h3 #columnh3>太阳即将毁灭，过去无数岁月中做为人类精神支柱的存在，变成了死亡和恐怖的象征。 比起坐以待毙，人类选择挣扎到底。</h3>
+  <div class="columns" #columnsss>
+    太阳即将毁灭，过去无数岁月中做为人类精神支柱的存在，变成了死亡和恐怖的象征。
+    比起坐以待毙，人类选择挣扎到底。
+    庞大的地球逃脱计划开始实施。然而人类所能制造的普通尺寸人造环境无法承受漫长的逃脱之旅。所以人类只得在地球的一侧安装上巨大的地球发动机，将整个巨大地球环境圈化为移民方舟，以此逃离太阳系，前往新家园。
+    代价是高昂的，艺术、伦理、常识，一件又一件曾经无比熟悉的特色从人性中消失，逝去的生命更是多如繁星。剩下的只有对生存的强烈渴望。疑惑和猜忌一度在人类当中引发叛乱之火，然而太阳最后的灭亡瞬间平息了一切，人类终于怀揣希望踏上漫长的流浪之旅。
+    “地球啊，我的流浪地球啊”成为无数生活在这个时代的人弥留之际的遗言。它包含着人类这个种族亘古不变的永恒心声————我们要活下去。 [1]
+    刘慈欣用旺盛的精力建成了一个光年尺度上的展览馆，里面藏满了宇宙文明史中科学与技术创造出来的超越常人想象的神迹。进入刘慈欣的世界，你立刻会感受到如粒子风暴般扑面而来的澎湃的激情——对科学，对技术的激情。正是这种激情，使他的世界灿烂银河之心。
+    这激情不仅体现他建构宏大场景的行为上，也体现他笔下人物的命运抉择中。那些被宏大世界反衬得孤独而弱小的生命的这种抉择从另一个角度给人震撼！
+  </div>
+</div>
+<div class="demo_oper">
+  <span>
+    <span>column-span</span>
+    <span>
+      <nc-select [options]="spanOptions" [(value)]="data.colspan" [width]="'120px'">
+      </nc-select>
+    </span>
+  </span>
+</div>
+<div class="demo_oper">
+  <span>
+    <span>column-count</span>
+    <span>
+      <nc-number-put [type]="'middle'" [(value)]="data.count"></nc-number-put>
+    </span>
+  </span>
+  <span>
+    <span>column-gap</span>
+    <span>
+      <nc-number-put [type]="'middle'" [(value)]="data.grap"></nc-number-put>
+    </span>
+  </span>
+  <span>
+    <span>column-rule-color</span>
+    <span>
+      <input class="shadowColor" type="color" [(ngModel)]="data.rule.color" />
+    </span>
+  </span>
+  <span>
+    <span>column-rule-style</span>
+    <span>
+      <nc-select [options]="styleOptions" [(value)]="data.rule.stylez" [width]="'120px'">
+      </nc-select>
+    </span>
+  </span>
+  <span>
+    <span>column-rule-width</span>
+    <span>
+      <nc-number-put [type]="'middle'" [(value)]="data.rule.widthz"></nc-number-put>
+    </span>
+  </span>
+</div>
+<div class="demo_oper">
+  <div>column-rule: {{this.colomnStr3}}</div>
+  <div class="oper-button"><nc-button (click)="makecolumnOut()">生成</nc-button></div>
+</div>
