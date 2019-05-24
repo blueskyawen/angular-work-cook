@@ -6,18 +6,28 @@ import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/co
   styleUrls: ['./transform3-d.component.less']
 })
 export class Transform3DComponent implements OnInit {
-  data3d1: any = {
+  data3dfath: any = {
+    stylez: 'preserve-3d',
+    perspec: '0',
+    transOrigin: {x: 50, y: 50, type: 'percentage', xx: 'left', yy: 'top'}
+  };
+  selectFather: any = {stylez: '', perspec: '', originzz: ''};
+  data3dList: any[] = [
+    {
+      trans: {x:'0',y:'0',z:'0'},
+      scal: {x:'1',y:'1',z:'1'},
+      rotat: {x:'0',y:'0',z:'1',deg:'45'},
+      visib: 'visible',
+      originz: {x: 50, y: 50, type: 'percentage', xx: 'left', yy: 'top'}
+    }
+  ];
+  data3d2: any = {
     trans: {x:'0',y:'0',z:'0'},
     scal: {x:'1',y:'1',z:'1'},
     rotat: {x:'0',y:'0',z:'1',deg:'45'},
-    stylez: 'preserve-3d',
     visib: 'visible',
-    perspec: '0',
-    originz: {x: 50, y: 50, type: 'percentage', xx: 'left', yy: 'top'},
-    transOrigin: {x: 50, y: 50, type: 'percentage', xx: 'left', yy: 'top'}
+    originz: {x: 50, y: 50, type: 'percentage', xx: 'left', yy: 'top'}
   };
-  data3d2: any;
-  data3dList: any[] = [];
   numReg1 : any = new RegExp("^[-]?\\d+$");
   numReg2 : any = new RegExp("^\\d+$");
   numReg3 : any = new RegExp("^\\d+(\\.\\d+)?$");
@@ -25,14 +35,12 @@ export class Transform3DComponent implements OnInit {
 
   @ViewChild('translate3dout1')
       Translate3doutRef1: ElementRef;
-  selectTransform1: any = {
-    trans: '', stytez: '', visib: '', perspec: '', originz: '', peroriginz: ''
-  };
+  selectTransform1: any = {trans: '', visib: '', originz: ''};
   @ViewChild('translate3dout2')
       Translate3doutRef2: ElementRef;
-  selectTransform2: any = {
-    trans: '', stytez: '', visib: '', perspec: '', originz: '', peroriginz: ''
-  };
+  selectTransform2: any = {trans: '', visib: '', originz: ''};
+  @ViewChild('translate3dContainer')
+      Translate3dContainer: ElementRef;
   styleOptions: any[] = [
     {label: 'flat',value: 'flat',disable: false},
     {label: 'preserve-3d',value: 'preserve-3d',disable: false}
@@ -56,8 +64,6 @@ export class Transform3DComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.data3dList.push(this.data3d1);
-    this.data3d2 = JSON.parse(JSON.stringify(this.data3d1));
   }
 
   checkedChange() {
@@ -86,42 +92,10 @@ export class Transform3DComponent implements OnInit {
         this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'transform', this.selectTransform2.trans);
       }
     }
-    this.makePerspectiveOut();
-    this.makePerspectiveOriginOut();
+
     this.makebackfaceVisibilityOut();
-    this.maketransformStyleOut();
     this.maketransformOriginOut();
-  }
-
-  makePerspectiveOut() {
-    for(var i=0;i<this.data3dList.length;i++) {
-      if(i === 0) {
-        this.selectTransform1.perspec = this.data3dList[i].perspec;
-        this.renderer.setStyle(this.Translate3doutRef1.nativeElement, 'perspective', this.selectTransform1.perspec);
-      }
-      if(i === 1) {
-        this.selectTransform2.perspec = this.data3dList[i].perspec;
-        this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'perspective', this.selectTransform2.perspec);
-      }
-    }
-  }
-
-  makePerspectiveOriginOut() {
-    for(var i=0;i<this.data3dList.length;i++) {
-      let data3d = this.data3dList[i];
-      if(i === 0) {
-        this.selectTransform1.perspec = data3d.transOrigin.type === 'fangwei' ? `${data3d.transOrigin.xx} ${data3d.transOrigin.yy}` :
-            data3d.transOrigin.type === 'percentage' ? `${data3d.transOrigin.x}% ${data3d.transOrigin.y}%` :
-                `${data3d.transOrigin.x}px ${data3d.transOrigin.y}px`;
-        this.renderer.setStyle(this.Translate3doutRef1.nativeElement, 'perspectiveOrigin', this.selectTransform1.perspec);
-      }
-      if(i === 1) {
-        this.selectTransform2.perspec = data3d.transOrigin.type === 'fangwei' ? `${data3d.transOrigin.xx} ${data3d.transOrigin.yy}` :
-            data3d.transOrigin.type === 'percentage' ? `${data3d.transOrigin.x}% ${data3d.transOrigin.y}%` :
-                `${data3d.transOrigin.x}px ${data3d.transOrigin.y}px`;
-        this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'perspectiveOrigin', this.selectTransform2.perspec);
-      }
-    }
+    this.make3DTransformOutFather();
   }
 
   makebackfaceVisibilityOut() {
@@ -133,19 +107,6 @@ export class Transform3DComponent implements OnInit {
       if(i === 1) {
         this.selectTransform2.visib = this.data3dList[i].visib;
         this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'backfaceVisibility', this.selectTransform2.visib);
-      }
-    }
-  }
-
-  maketransformStyleOut() {
-    for(var i=0;i<this.data3dList.length;i++) {
-      if(i === 0) {
-        this.selectTransform1.stylez = this.data3dList[i].stylez;
-        this.renderer.setStyle(this.Translate3doutRef1.nativeElement, 'transformStyle', this.selectTransform1.stylez);
-      }
-      if(i === 1) {
-        this.selectTransform2.stylez = this.data3dList[i].stylez;
-        this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'transformStyle', this.selectTransform2.stylez);
       }
     }
   }
@@ -166,6 +127,30 @@ export class Transform3DComponent implements OnInit {
         this.renderer.setStyle(this.Translate3doutRef2.nativeElement, 'transformOrigin', this.selectTransform2.originz);
       }
     }
+  }
+
+  make3DTransformOutFather() {
+    this.makePerspectiveOut();
+    this.makePerspectiveOriginOut();
+    this.maketransformStyleOut();
+  }
+
+  makePerspectiveOut() {
+    this.selectFather.perspec = this.data3dfath.perspec+'px';
+    this.renderer.setStyle(this.Translate3dContainer.nativeElement, 'perspective', this.selectFather.perspec);
+  }
+
+  makePerspectiveOriginOut() {
+    this.selectFather.originzz = '';
+    this.selectFather.originzz = this.data3dfath.transOrigin.type === 'fangwei' ? `${this.data3dfath.transOrigin.xx} ${this.data3dfath.transOrigin.yy}` :
+        this.data3dfath.transOrigin.type === 'percentage' ? `${this.data3dfath.transOrigin.x}% ${this.data3dfath.transOrigin.y}%` :
+            `${this.data3dfath.transOrigin.x}px ${this.data3dfath.transOrigin.y}px`;
+    this.renderer.setStyle(this.Translate3dContainer.nativeElement, 'perspectiveOrigin', this.selectFather.originzz);
+  }
+
+  maketransformStyleOut() {
+    this.selectFather.stylez = this.data3dfath.stylez;
+    this.renderer.setStyle(this.Translate3dContainer.nativeElement, 'transformStyle', this.selectFather.stylez);
   }
 
   getValue(value : string, type : number) {
