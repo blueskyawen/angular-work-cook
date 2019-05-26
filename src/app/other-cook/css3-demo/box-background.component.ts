@@ -117,6 +117,10 @@ export class BoxBackgroundComponent implements OnInit {
   @ViewChild('radiusGradientout')
     RadiusGradientoutRef: ElementRef;
 
+  showOpers: boolean = true;
+  showOpers1: boolean = true;
+  showOpers2: boolean = true;
+
   constructor(private renderer: Renderer2,private route: ActivatedRoute) { }
 
   ngOnInit() {

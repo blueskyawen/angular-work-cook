@@ -15,7 +15,7 @@
     margin-top: 20px;
     padding: 10px 0;
     width: 100%;
-    > div {
+    > div > div {
       padding: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -57,7 +57,7 @@
     margin-top: 20px;
     padding: 10px 0;
     width: 100%;
-    > div {
+    > div > div {
       padding: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -109,4 +109,25 @@
     line-height: 32px;
     transition: all .5s;
   }
+}
+.oper-button {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  span {
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+}
+.hideOp {
+  display: none !important;
 }

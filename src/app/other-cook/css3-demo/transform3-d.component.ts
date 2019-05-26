@@ -61,6 +61,8 @@ export class Transform3DComponent implements OnInit {
 
   isShow3d02: number = 0;
 
+  showOpers: boolean = true;
+
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
