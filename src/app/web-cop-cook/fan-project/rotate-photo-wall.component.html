@@ -1,3 +1,5 @@
-<p>
-  rotate-photo-wall works!
-</p>
+<div class="photo-wall-container">
+  <div class="photo-wall">
+    <img *ngFor="let image of images" [src]="image" />
+  </div>
+</div>

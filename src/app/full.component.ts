@@ -219,9 +219,12 @@ export class FullComponent implements OnInit, OnDestroy {
             {title:'时钟 ',icon:'',place: 'down',
               url:'/main/webcop/fan-project/clock',
               callback: () => {this.router.navigate(['/main/webcop/fan-project/clock']);}},
+            {title:'旋转正反体 ',icon:'',place: 'down',
+              url:'/main/webcop/fan-project/cube',
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/cube']);}},
             {title:'旋转照片墙 ',icon:'',place: 'down',
-              url:'/main/webcop/fan-project/rotatePhoto',
-              callback: () => {this.router.navigate(['/main/webcop/fan-project/rotatePhoto']);}}
+              url:'/main/webcop/fan-project/photoWall',
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/photoWall']);}}
           ]
         }
       }

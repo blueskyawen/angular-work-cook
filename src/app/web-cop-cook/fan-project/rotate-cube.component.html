@@ -1,0 +1,5 @@
+<div class="rotate-cube">
+  <div class="cube">
+    <img *ngFor="let photo of photos;let i=index;" [src]="photo" [alt]="'photo'+i" />
+  </div>
+</div>
