@@ -1,0 +1,116 @@
+.door-frame {
+  margin: 100px auto;
+  height:500px;
+  width:340px;
+  background-color:#333300;
+  box-shadow: -2px -2px 0px 2px #333,
+    2px -2px 0px 2px #333,-65px -45px 0px 45px #75a3a3,
+    65px -45px 0px 45px #75a3a3;
+  border-radius:2px 2px 0 0;
+  .door-card {
+    height:490px;
+    width:320px;
+    background-color: #001a4d;
+    border: 3px solid #211820;
+    box-sizing:border-box;
+    border-bottom:none;
+    position:relative;
+    top:10px;
+    left:10px;
+    webkit-perspective: 1000px;
+    perspective: 1000px;
+    .image-card {
+      position:absolute;
+      width:100%;
+      height:100%;
+      background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558971005535&di=75bae7a95f0ad24d6f32d76fbfee5660&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201706%2F16%2F20170616191530_wyWG2.jpeg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      opacity:0.2;
+      transform:translateZ(-500px);
+      transition: all 1s linear;
+      &.show {
+        transform:translateZ(0px);
+        opacity:1;
+      }
+    }
+    .door {
+      width:100%;
+      height:100%;
+      background-color:#fff;
+      position:absolute;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      transform-origin: left;
+      transform: rotateY(0deg);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transition: transform 1s linear;
+      &.open {
+        transform: rotateY(-90deg);
+      }
+      .light {
+        background: #F7E08F;
+        width: 800px;
+        position:absolute;
+        height:100%;
+        transform: translateZ(-13px);
+        opacity:0.8;
+        transition:opacity 1s linear 50ms;
+        &.active {
+          opacity:0;
+        }
+        &.hide {
+          visibility:hidden;
+        }
+      }
+      .door-face {
+        background-color:#006666;
+        position:absolute;
+        &.door-face-1 {
+          width:100%;
+          height:100%;
+          & > span {
+            display:inline-block;
+            height:26px;
+            width:26px;
+            background-color: #004d00;
+            border-radius: 50%;
+            border: solid 3px #666;
+            box-shadow: 0px 0px 8px 1px #999;
+            position:absolute;
+            right:10px;
+            top:50%;
+            transform:translateY(-50%);
+            z-index:1;
+            &:hover {
+              cursor:pointer;
+              background-color: #006600;
+            }
+          }
+        }
+        &.door-face-2 {
+          width:100%;
+          height:100%;
+          transform:translateZ(-10px);
+        }
+        &.door-face-3 {
+          width:100%;
+          height:10px;
+          transform:translateY(-10px) rotateX(90deg);
+          transform-origin: center bottom;
+        }
+        &.door-face-4 {
+          height:100%;
+          width:10px;
+          right:0;
+          transform:translateX(10px) rotateY(90deg);
+          transform-origin: left center;
+          border:solid 2px #007f80;
+          box-sizing:border-box;
+        }
+      }
+    }
+  }
+}
+

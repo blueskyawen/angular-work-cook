@@ -9,6 +9,7 @@ import { CopMinionsComponent } from './cop-project/cop-minions.component';
 import { FanClockComponent } from './fan-project/fan-clock.component';
 import { RotatePhotoWallComponent } from './fan-project/rotate-photo-wall.component';
 import { RotateCubeComponent } from './fan-project/rotate-cube.component';
+import { ConanDoorComponent } from './fan-project/conan-door.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
       {
         path: 'cube',
         component: RotateCubeComponent
+      },
+      {
+        path: 'conanDoor',
+        component: ConanDoorComponent
       }
     ]
   }

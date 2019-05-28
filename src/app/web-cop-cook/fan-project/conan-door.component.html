@@ -1,0 +1,14 @@
+<div class="door-frame">
+  <div class="door-card">
+    <div class="image-card" [class.show]="imageShow"></div>
+    <div class="door" [class.open]="doorOpen">
+      <div class="light hide" [ngClass]="{'active':light.active, 'hide': !light.show}"></div>
+      <div class="door-face door-face-1">
+        <span id="opendoor" (click)="openTheDoor()"></span>
+      </div>
+      <div class="door-face door-face-2"></div>
+      <div class="door-face door-face-3"></div>
+      <div class="door-face door-face-4"></div>
+    </div>
+  </div>
+</div>

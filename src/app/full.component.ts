@@ -224,7 +224,10 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/webcop/fan-project/cube']);}},
             {title:'旋转照片墙 ',icon:'',place: 'down',
               url:'/main/webcop/fan-project/photoWall',
-              callback: () => {this.router.navigate(['/main/webcop/fan-project/photoWall']);}}
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/photoWall']);}},
+            {title:'侦探推理门 ',icon:'',place: 'down',
+              url:'/main/webcop/fan-project/conanDoor',
+              callback: () => {this.router.navigate(['/main/webcop/fan-project/conanDoor']);}}
           ]
         }
       }
