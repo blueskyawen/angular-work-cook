@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from './core/auth.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-full',
@@ -15,22 +16,22 @@ export class FullComponent implements OnInit, OnDestroy {
       {title:'基本烹饪',
         icon:'fa fa-coffee',
         url:'/main/basic/heros/topHeros',
-        callback: () => {this.router.navigate(['/main/basic/heros']);}
+        callback: () => {this.router.navigate(['/main/basic/heros']);this.appService.setTitle('基本烹饪');}
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
         url:'/main/advance/http/config',
-        callback: () => {this.router.navigate(['/main/advance/http/config']);}
+        callback: () => {this.router.navigate(['/main/advance/http/config']);this.appService.setTitle('进阶烹饪');}
       },
       {title:'前端COP',
         icon:'fa fa-envira',
         url:'/main/webcop/cop-project/heart',
-        callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);}
+        callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);this.appService.setTitle('前端COP');}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
         url:'/main/other/baiduMap/usejs',
-        callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);}
+        callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);this.appService.setTitle('其他');}
       }
     ]
   };
@@ -283,7 +284,7 @@ export class FullComponent implements OnInit, OnDestroy {
   isShowErrorMsg : boolean = false;
   authErrorMsg : string = '';
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,private appService : AppService,
               private router: Router,public authService : AuthService) {
     this.sidebarNavs.push(this.sidebarNavs_basic);
     this.sidebarNavs.push(this.sidebarNavs_advance);
@@ -344,6 +345,7 @@ export class FullComponent implements OnInit, OnDestroy {
       this.sidebarNav = this.sidebarNavs[this.curMenuIndex];
     }
     this.menuNavs.navItems[this.curMenuIndex].url = this.curUrl;
+    this.appService.setTitle(this.menuNavs.navItems[this.curMenuIndex].title);
   }
 
   showSideMenu() {
