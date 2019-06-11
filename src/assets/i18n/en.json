@@ -1,0 +1,63 @@
+{
+ "lang": {
+  "chinese": "Chinese",
+  "english": "English"
+ },
+ "selectLang": "Lang",
+ "user": {
+  "register": "Register",
+  "login": "LoginOn",
+  "cancel": "LoginOff"
+ },
+ "menu": {
+  "basic": "Basic",
+  "advance": "Advance",
+  "cop": "WebCOP",
+  "other": "Others"
+ },
+ "sidBar": {
+  "heros": "Hero Guide",
+  "comp": "Components",
+  "dyncomp": "Dynamic",
+  "customEle": "customEle",
+  "attrDirective": "AttrDirective",
+  "structDirective": "StructDirective",
+  "pipe": "Pipe",
+  "form": "Form",
+  "templeF": "Template",
+  "reactiveF": "Reactive",
+  "dynamicF": "Dynamic",
+  "http": "Http",
+  "headconfig": "Header",
+  "textloader": "Loader",
+  "uploader": "Uploader",
+  "npmsearch": "Npm Search",
+  "servicework": "Service Worker",
+  "rxjs": "Rxjs",
+  "baidumap": "Baidu Map",
+  "mapjs": "Use Api",
+  "mapmodule": "Use Module",
+  "bordshadow": "Box shadow",
+  "outshadow": "OutShadow",
+  "inshadow": "InnerShadow",
+  "shadowdemo": "Demo",
+  "css3": "Css3 Demo",
+  "css3textbord": "Text&Border",
+  "box-back": "Background",
+  "2dtranslate": "2D",
+  "3dtranslate": "3D",
+  "column": "Columns",
+  "cop-project": "Cop Project",
+  "heart": "Heartbeat",
+  "taiji": "Tai Chi",
+  "uds": "UDS",
+  "pc": "PC",
+  "parrot": "Parrot",
+  "minion": "Minion",
+  "fan-project": "Fan Project",
+  "clock": "Clock",
+  "cube": "Rotate Cube",
+  "photoWall": "Photo Wall",
+  "conanDoor": "Conan Door"
+ }
+}

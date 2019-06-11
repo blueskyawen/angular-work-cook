@@ -13,17 +13,28 @@
       <nc-menu [type]="menuNavs.type" [place]="menuNavs.place" [navItems]="menuNavs.navItems"
                [backColor]="'manual'" [color]="'#e6e6e6'" [url]="curUrl"
                (menuSelectChange)="menuSelected($event)"></nc-menu>
-      <span class="github-item" href="https://github.com/blueskyawen/angular-work-cook" target="_blank">
-        <span *ngIf="isUserLogined" class="userName">{{authService.curUser.name}}</span>
-        <nc-dropdown [type]="'hover'" [place]="'left'">
-          <i nc-dropdown-btn class="fa fa-user-circle-o"></i>
-          <ul nc-dropdown-menu class="dropdown-items">
-            <li *ngFor="let option of userOptions" [class.disable]="option.disable" (click)="option.callback()">
-              {{option.name}}
-            </li>
-          </ul>
-        </nc-dropdown>
-        <i class="fa fa-github" title="Go github"></i>
+      <span class="github-item">
+        <span class="oper-item">
+          <span class="selectLang" (click)="showLang=!showLang">{{'selectLang' | translate}}</span>
+          <span class="langContent" *ngIf="showLang">
+            <span *ngFor="let option of langOptions" [class.selected]="option.value === lang"
+                  (click)="swithLang(option.value)">{{option.label}}</span>
+          </span>
+        </span>
+        <span class="oper-item">
+          <span *ngIf="isUserLogined" class="userName">{{authService.curUser.name}}</span>
+          <nc-dropdown [type]="'hover'" [place]="'left'">
+            <i nc-dropdown-btn class="fa fa-user-circle-o"></i>
+            <ul nc-dropdown-menu class="dropdown-items">
+              <li *ngFor="let option of userOptions" [class.disable]="option.disable" (click)="option.callback()">
+                {{option.name}}
+              </li>
+            </ul>
+          </nc-dropdown>
+        </span>
+        <span class="oper-item" (click)="goGithub()">
+          <i class="fa fa-github" title="Go github"></i>
+        </span>
       </span>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from './core/auth.service';
 import { AppService } from './app.service';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-full',
@@ -16,22 +17,26 @@ export class FullComponent implements OnInit, OnDestroy {
       {title:'基本烹饪',
         icon:'fa fa-coffee',
         url:'/main/basic/heros/topHeros',
-        callback: () => {this.router.navigate(['/main/basic/heros']);this.appService.setTitle('基本烹饪');}
+        callback: () => {this.router.navigate(['/main/basic/heros']);
+          this.appService.setTitle(this.translate.instant('menu.basic'));}
       },
       {title:'进阶烹饪',
         icon:'fa fa-tree',
         url:'/main/advance/http/config',
-        callback: () => {this.router.navigate(['/main/advance/http/config']);this.appService.setTitle('进阶烹饪');}
+        callback: () => {this.router.navigate(['/main/advance/http/config']);
+          this.appService.setTitle(this.translate.instant('menu.advance'));}
       },
       {title:'前端COP',
         icon:'fa fa-envira',
         url:'/main/webcop/cop-project/heart',
-        callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);this.appService.setTitle('前端COP');}
+        callback: () => {this.router.navigate(['/main/webcop/cop-project/heart']);
+          this.appService.setTitle(this.translate.instant('menu.cop'));}
       },
       {title:'其他',
         icon:'fa fa-smile-o',
         url:'/main/other/baiduMap/usejs',
-        callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);this.appService.setTitle('其他');}
+        callback: () => {this.router.navigate(['/main/other/baiduMap/usejs']);
+          this.appService.setTitle(this.translate.instant('menu.other'));}
       }
     ]
   };
@@ -283,13 +288,21 @@ export class FullComponent implements OnInit, OnDestroy {
   subAuthText: any;
   isShowErrorMsg : boolean = false;
   authErrorMsg : string = '';
+  langOptions: any[] = [
+    {label: this.translate.instant('lang.chinese'), value: 'zh-cn'},
+    {label: this.translate.instant('lang.english'), value: 'en'}
+  ];
+  lang: string = '';
+  showLang: boolean = false;
 
   constructor(private route: ActivatedRoute,private appService : AppService,
-              private router: Router,public authService : AuthService) {
+              private router: Router,public authService : AuthService,
+              private translate: TranslateService) {
     this.sidebarNavs.push(this.sidebarNavs_basic);
     this.sidebarNavs.push(this.sidebarNavs_advance);
     this.sidebarNavs.push(this.sidebarNavs_webcop);
     this.sidebarNavs.push(this.sidebarNavs_other);
+    this.initLang();
   }
 
   ngOnInit() {
@@ -302,11 +315,111 @@ export class FullComponent implements OnInit, OnDestroy {
             this.userOper.loginOn = true;
           },1000);
         });
-    this.checkActiveNav();
+    setTimeout(() => {
+      this.setTranslate();
+      this.checkActiveNav();
+    },50);
   }
 
   ngOnDestroy() {
     this.subAuthText.unsubscribe();
+  }
+
+  initLang() {
+    if(!localStorage.getItem('app_lang')) {
+      this.lang = 'zh-cn';
+      localStorage.setItem('app_lang', this.lang);
+    } else {
+      this.lang = localStorage.getItem('app_lang');
+    }
+    this.translate.setDefaultLang(this.lang);
+    this.translate.use(this.lang);
+  }
+
+  setTranslate() {
+    this.langOptions = [
+      {label: this.translate.instant('lang.chinese'), value: 'zh-cn'},
+      {label: this.translate.instant('lang.english'), value: 'en'}
+    ];
+    this.userOptions[0].name = this.translate.instant('user.register');
+    this.userOptions[1].name = this.translate.instant('user.login');
+    this.userOptions[2].name = this.translate.instant('user.cancel');
+    this.menuNavs.navItems[0].title = this.translate.instant('menu.basic');
+    this.menuNavs.navItems[1].title = this.translate.instant('menu.advance');
+    this.menuNavs.navItems[2].title = this.translate.instant('menu.cop');
+    this.menuNavs.navItems[3].title = this.translate.instant('menu.other');
+    this.setSiderBasicTranslate();
+    this.setSiderAdvanceTranslate();
+    this.setSiderCopTranslate();
+    this.setSiderOtherTranslate();
+  }
+
+  setSiderBasicTranslate() {
+    this.sidebarNavs_basic.navItems[0].title = this.translate.instant('sidBar.heros');
+    this.sidebarNavs_basic.navItems[1].title = this.translate.instant('sidBar.comp');
+    this.sidebarNavs_basic.navItems[1].childs.navItems[0].title = this.translate.instant('sidBar.dyncomp');
+    this.sidebarNavs_basic.navItems[1].childs.navItems[1].title = this.translate.instant('sidBar.customEle');
+    this.sidebarNavs_basic.navItems[1].childs.navItems[2].title = this.translate.instant('sidBar.attrDirective');
+    this.sidebarNavs_basic.navItems[1].childs.navItems[3].title = this.translate.instant('sidBar.structDirective');
+    this.sidebarNavs_basic.navItems[1].childs.navItems[4].title = this.translate.instant('sidBar.pipe');
+    this.sidebarNavs_basic.navItems[2].title = this.translate.instant('sidBar.form');
+    this.sidebarNavs_basic.navItems[2].childs.navItems[0].title = this.translate.instant('sidBar.templeF');
+    this.sidebarNavs_basic.navItems[2].childs.navItems[1].title = this.translate.instant('sidBar.reactiveF');
+    this.sidebarNavs_basic.navItems[2].childs.navItems[2].title = this.translate.instant('sidBar.dynamicF');
+  }
+
+  setSiderAdvanceTranslate() {
+    this.sidebarNavs_advance.navItems[0].title = this.translate.instant('sidBar.http');
+    this.sidebarNavs_advance.navItems[0].childs.navItems[0].title = this.translate.instant('sidBar.headconfig');
+    this.sidebarNavs_advance.navItems[0].childs.navItems[1].title = this.translate.instant('sidBar.textloader');
+    this.sidebarNavs_advance.navItems[0].childs.navItems[2].title = this.translate.instant('sidBar.uploader');
+    this.sidebarNavs_advance.navItems[0].childs.navItems[3].title = this.translate.instant('sidBar.npmsearch');
+    this.sidebarNavs_advance.navItems[1].title = this.translate.instant('sidBar.servicework');
+    this.sidebarNavs_advance.navItems[2].title = this.translate.instant('sidBar.rxjs');
+  }
+
+  setSiderCopTranslate() {
+    this.sidebarNavs_webcop.navItems[0].title = this.translate.instant('sidBar.cop-project');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[0].title = this.translate.instant('sidBar.heart');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[1].title = this.translate.instant('sidBar.taiji');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[2].title = this.translate.instant('sidBar.uds');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[3].title = this.translate.instant('sidBar.pc');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[4].title = this.translate.instant('sidBar.parrot');
+    this.sidebarNavs_webcop.navItems[0].childs.navItems[5].title = this.translate.instant('sidBar.minion');
+    this.sidebarNavs_webcop.navItems[1].title = this.translate.instant('sidBar.fan-project');
+    this.sidebarNavs_webcop.navItems[1].childs.navItems[0].title = this.translate.instant('sidBar.clock');
+    this.sidebarNavs_webcop.navItems[1].childs.navItems[1].title = this.translate.instant('sidBar.cube');
+    this.sidebarNavs_webcop.navItems[1].childs.navItems[2].title = this.translate.instant('sidBar.photoWall');
+    this.sidebarNavs_webcop.navItems[1].childs.navItems[3].title = this.translate.instant('sidBar.conanDoor');
+  }
+
+  setSiderOtherTranslate() {
+    this.sidebarNavs_other.navItems[0].title = this.translate.instant('sidBar.baidumap');
+    this.sidebarNavs_other.navItems[0].childs.navItems[0].title = this.translate.instant('sidBar.mapjs');
+    this.sidebarNavs_other.navItems[0].childs.navItems[1].title = this.translate.instant('sidBar.mapmodule');
+    this.sidebarNavs_other.navItems[1].title = this.translate.instant('sidBar.bordshadow');
+    this.sidebarNavs_other.navItems[1].childs.navItems[0].title = this.translate.instant('sidBar.outshadow');
+    this.sidebarNavs_other.navItems[1].childs.navItems[1].title = this.translate.instant('sidBar.inshadow');
+    this.sidebarNavs_other.navItems[1].childs.navItems[2].title = this.translate.instant('sidBar.shadowdemo');
+    this.sidebarNavs_other.navItems[2].title = this.translate.instant('sidBar.css3');
+    this.sidebarNavs_other.navItems[2].childs.navItems[0].title = this.translate.instant('sidBar.css3textbord');
+    this.sidebarNavs_other.navItems[2].childs.navItems[1].title = this.translate.instant('sidBar.box-back');
+    this.sidebarNavs_other.navItems[2].childs.navItems[2].title = this.translate.instant('sidBar.2dtranslate');
+    this.sidebarNavs_other.navItems[2].childs.navItems[3].title = this.translate.instant('sidBar.3dtranslate');
+    this.sidebarNavs_other.navItems[2].childs.navItems[4].title = this.translate.instant('sidBar.column');
+  }
+
+  swithLang(value : string) {
+    if(this.lang === value) {
+      return;
+    }
+    this.lang = value;
+    localStorage.setItem('app_lang', this.lang);
+    location.reload();
+  }
+
+  goGithub() {
+    window.open('https://github.com/blueskyawen/angular-work-cook','_blank');
   }
 
   cleanLoginData() {
