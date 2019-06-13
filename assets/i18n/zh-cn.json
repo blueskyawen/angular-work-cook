@@ -1,0 +1,63 @@
+{
+ "lang": {
+  "chinese": "中文",
+  "english": "英文"
+ },
+ "selectLang": "选择语言",
+ "user": {
+  "register": "注册",
+  "login": "登录",
+  "cancel": "注销"
+ },
+ "menu": {
+  "basic": "基本烹饪",
+  "advance": "进阶烹饪",
+  "cop": "前端COP",
+  "other": "其他"
+ },
+ "sidBar": {
+  "heros": "英雄指南",
+  "comp": "组件与模板",
+  "dyncomp": "动态组件",
+  "customEle": "自定义元素",
+  "attrDirective": "属性指令",
+  "structDirective": "结构指令",
+  "pipe": "管道",
+  "form": "表单",
+  "templeF": "模板式表单",
+  "reactiveF": "响应式表单",
+  "dynamicF": "动态表单",
+  "http": "Http",
+  "headconfig": "头配置",
+  "textloader": "Text下载",
+  "uploader": "上传",
+  "npmsearch": "包搜索",
+  "servicework": "Service-Worker",
+  "rxjs": "Rxjs",
+  "baidumap": "百度地图",
+  "mapjs": "使用js-api",
+  "mapmodule": "使用模块",
+  "bordshadow": "边框阴影",
+  "outshadow": "外侧阴影",
+  "inshadow": "内侧阴影",
+  "shadowdemo": "阴影Demo",
+  "css3": "Css3 Demo",
+  "css3textbord": "文本和边框",
+  "box-back": "盒子背景",
+  "2dtranslate": "2D变换",
+  "3dtranslate": "3D变换",
+  "column": "多列",
+  "cop-project": "cop项目",
+  "heart": "怦然心动",
+  "taiji": "旋转太极",
+  "uds": "UDS",
+  "pc": "PC开关机",
+  "parrot": "鹦鹉",
+  "minion": "小黄人",
+  "fan-project": "Fan项目",
+  "clock": "文本和边框",
+  "cube": "旋转正反体",
+  "photoWall": "旋转照片墙",
+  "conanDoor": "侦探推理门"
+ }
+}
