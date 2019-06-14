@@ -15,7 +15,7 @@
                (menuSelectChange)="menuSelected($event)"></nc-menu>
       <span class="github-item">
         <span class="oper-item">
-          <span class="selectLang" (click)="showLang=!showLang">{{'selectLang' | translate}}</span>
+          <span class="selectLang" (click)="showLang=!showLang">{{langTitle}}</span>
           <span class="langContent" *ngIf="showLang">
             <span *ngFor="let option of langOptions" [class.selected]="option.value === lang"
                   (click)="swithLang(option.value)">{{option.label}}</span>

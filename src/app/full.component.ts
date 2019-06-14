@@ -294,6 +294,7 @@ export class FullComponent implements OnInit, OnDestroy {
   ];
   lang: string = '';
   showLang: boolean = false;
+  langTitle: string = '';
 
   constructor(private route: ActivatedRoute,private appService : AppService,
               private router: Router,public authService : AuthService,
@@ -318,6 +319,7 @@ export class FullComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.setTranslate();
       this.checkActiveNav();
+      this.langTitle = this.translate.instant('selectLang');
     },50);
   }
 
