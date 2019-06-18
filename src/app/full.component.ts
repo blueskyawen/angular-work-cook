@@ -417,7 +417,7 @@ export class FullComponent implements OnInit, OnDestroy {
     }
     this.lang = value;
     localStorage.setItem('app_lang', this.lang);
-    location.reload();
+    setTimeout(() => {location.reload();},100);
   }
 
   goGithub() {
