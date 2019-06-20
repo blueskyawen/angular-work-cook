@@ -295,6 +295,7 @@ export class FullComponent implements OnInit, OnDestroy {
   lang: string = '';
   showLang: boolean = false;
   langTitle: string = '';
+  showFull : boolean = false;
 
   constructor(private route: ActivatedRoute,private appService : AppService,
               private router: Router,public authService : AuthService,
@@ -320,7 +321,8 @@ export class FullComponent implements OnInit, OnDestroy {
       this.setTranslate();
       this.checkActiveNav();
       this.langTitle = this.translate.instant('selectLang');
-    },100);
+      this.showFull = true;
+    },300);
   }
 
   ngOnDestroy() {

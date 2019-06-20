@@ -1,4 +1,4 @@
-<div class="nc-layout" style="overflow-y: auto">
+<div class="nc-layout" style="overflow-y: auto" *ngIf="showFull">
   <div class="nc-header nc-flex nc-align-item-center menu-header" style="width:100%;">
     <div class="nc-header-logo-area" style="width:240px;">
       <span class="nc-header-logo">
@@ -52,6 +52,7 @@
     Angular Cook @blueskyawen By Ng-Shadow-Cat
   </div>
 </div>
+<nc-loading *ngIf="!showFull" style="position: fixed;top: 50%;left:50%;"></nc-loading>
 
 <nc-dialog [header]="'注销'" [style]="'confirm'" [operType]="'delete'" [(isShow)]="userOper.loginOff">
   <div class="content">
