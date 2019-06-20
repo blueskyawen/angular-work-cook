@@ -320,7 +320,7 @@ export class FullComponent implements OnInit, OnDestroy {
       this.setTranslate();
       this.checkActiveNav();
       this.langTitle = this.translate.instant('selectLang');
-    },50);
+    },100);
   }
 
   ngOnDestroy() {
