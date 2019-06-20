@@ -322,7 +322,7 @@ export class FullComponent implements OnInit, OnDestroy {
       this.checkActiveNav();
       this.langTitle = this.translate.instant('selectLang');
       this.showFull = true;
-    },300);
+    },1000);
   }
 
   ngOnDestroy() {
@@ -419,7 +419,7 @@ export class FullComponent implements OnInit, OnDestroy {
     }
     this.lang = value;
     localStorage.setItem('app_lang', this.lang);
-    setTimeout(() => {location.reload();},100);
+    setTimeout(() => {location.reload(true);},100);
   }
 
   goGithub() {
