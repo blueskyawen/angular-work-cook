@@ -52,7 +52,8 @@
     Angular Cook @blueskyawen By Ng-Shadow-Cat
   </div>
 </div>
-<nc-loading *ngIf="!showFull" style="position: fixed;top: 50%;left:50%;"></nc-loading>
+
+<nc-loading *ngIf="!showFull" class="page-loading"></nc-loading>
 
 <nc-dialog [header]="'注销'" [style]="'confirm'" [operType]="'delete'" [(isShow)]="userOper.loginOff">
   <div class="content">
