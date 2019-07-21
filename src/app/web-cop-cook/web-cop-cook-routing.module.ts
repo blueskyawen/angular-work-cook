@@ -18,6 +18,7 @@ import {AuthGuard} from '../core/guard/auth.guard';
 const routes: Routes = [
   {
     path: 'cop-project',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'heart',
@@ -47,6 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'fan-project',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'clock',
@@ -68,15 +70,26 @@ const routes: Routes = [
   },
   {
     path: 'web-start',
-    canActivate: [AuthGuard],
     children: [
       {
-        path: 'cards',
-        component: StartCardsComponent
+        path: '',
+        canActivateChild: [AuthGuard],
+        children: [
+          {
+            path: 'cards',
+            component: StartCardsComponent
+          }
+        ]
       },
       {
-        path: 'cardsMore',
-        component: StartCardsMoreComponent
+        path: '',
+        canActivateChild: [AuthGuard],
+        children: [
+          {
+            path: 'cardsMore',
+            component: StartCardsMoreComponent,
+          }
+        ]
       }
     ]
   },

@@ -22,17 +22,18 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
     console.log('AuthGuard === canActivate');
     let url: string = state.url;
     console.log(url);
+    let today = new Date();
+    let year = today.getFullYear();
+    let curMonth = today.getMonth() + 1;
+    let curDate = today.getDate();
     if(this.startUrls.includes(url)) {
-      let today = new Date();
-      let curMonth = today.getMonth() + 1;
-      let curDate = today.getDate();
       if(url === this.startUrls[0]) {
-        if(curMonth > 7 || (curMonth == 7 && curDate > 21)) {
+        if(curMonth > 7 || (curMonth == 7 && curDate > 23)) {
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
           setTimeout(() => {
-            this.authService.sendAuthText(new AuthMsg('start', `7月22日前无法访问COP-Start 列表 !`));
+            this.authService.sendAuthText(new AuthMsg('start', `7月24日前无法访问 前端COP-Web Start-列表 !`));
           },200);
           return false;
         }
@@ -43,13 +44,20 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
           setTimeout(() => {
-            this.authService.sendAuthText(new AuthMsg('start', `8月6日前无法访问COP-Start 列表-进阶 !`));
+            this.authService.sendAuthText(new AuthMsg('start', `8月6日前无法访问 前端COP-Web Start-列表进阶 !`));
           },200);
           return false;
         }
       }
       if(url === this.startUrls[2]) {
         return true;
+      }
+    } else if(url.indexOf('cop-project') !== -1 || url.indexOf('fan-project') !== -1) {
+      if(curMonth > 7 || (curMonth == 7 && curDate > 25)) {
+        return true;
+      } else {
+        this.authService.sendAuthText(new AuthMsg('start', `7月26日前无法访问 !`));
+        return false;
       }
     } else {
       if (this.authService.curUser) {
