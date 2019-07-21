@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 
+export class AuthMsg {
+  message: string = '';
+  type: string = '';
+  constructor(type: string, msg: string) {
+    this.type = type;
+    this.message = msg;
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   curUser : any;
   redirectUrl : string;
-  authText$ = new Subject<string>();
+  authText$ = new Subject<AuthMsg>();
 
   constructor() { }
 
@@ -15,15 +24,15 @@ export class AuthService {
     return 'id85f5fe4caa565b00ab9891d6a7b1730a2359a';
   }
 
-  sendAuthText(message: string) {
-    this.authText$.next(message);
+  sendAuthText(authObj: AuthMsg) {
+    this.authText$.next(authObj);
   }
 
   clearAuthText() {
     this.authText$.next();
   }
 
-  getAuthText(): Observable<string> {
+  getAuthText(): Observable<AuthMsg> {
     return this.authText$.asObservable();
   }
 

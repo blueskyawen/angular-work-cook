@@ -1,0 +1,19 @@
+<div class="card-container">
+    <div class="card" *ngFor="let item of cardItems">
+        <div class="card-item">
+            <header>{{item.name}}</header>
+            <article>
+                <div class="bar">
+                    <span>
+                        <span class="bar-item" *ngFor="let bar of item.countArr"></span>
+                    </span>
+                    <span>6</span>
+                </div>
+            </article>
+            <footer>
+                <span>{{item.city}}</span>
+                <span>{{item.area}}</span>
+            </footer>
+        </div>
+    </div>
+</div>

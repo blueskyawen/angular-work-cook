@@ -10,6 +10,10 @@ import { FanClockComponent } from './fan-project/fan-clock.component';
 import { RotatePhotoWallComponent } from './fan-project/rotate-photo-wall.component';
 import { RotateCubeComponent } from './fan-project/rotate-cube.component';
 import { ConanDoorComponent } from './fan-project/conan-door.component';
+import { StartCardsComponent } from './start-project/start-cards.component';
+import { StartCardsMoreComponent } from './start-project/start-cards-more.component';
+import { StartNotFindComponent } from './start-project/start-not-find.component';
+import {AuthGuard} from '../core/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -61,6 +65,24 @@ const routes: Routes = [
         component: ConanDoorComponent
       }
     ]
+  },
+  {
+    path: 'web-start',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'cards',
+        component: StartCardsComponent
+      },
+      {
+        path: 'cardsMore',
+        component: StartCardsMoreComponent
+      }
+    ]
+  },
+  {
+    path: 'web-start/no-right',
+    component: StartNotFindComponent
   }
 ];
 

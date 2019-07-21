@@ -58,7 +58,9 @@
   "clock": "Clock",
   "cube": "Rotate Cube",
   "photoWall": "Photo Wall",
-  "conanDoor": "Conan Door"
+  "conanDoor": "Conan Door",
+  "cards": "Cards",
+  "cardsMore": "Cards More"
  },
  "heartBeat": "Heart Beat"
 }

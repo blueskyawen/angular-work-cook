@@ -236,6 +236,20 @@ export class FullComponent implements OnInit, OnDestroy {
               callback: () => {this.router.navigate(['/main/webcop/fan-project/conanDoor']);}}
           ]
         }
+      },
+      {title:'Web Start',
+        icon:'fa fa-ship',
+        childs: {
+          place: 'down',isShow:false,
+          navItems: [
+            {title:'cards',icon:'',place: 'down',
+              url:'/main/webcop/web-start/card',
+              callback: () => {this.router.navigate(['/main/webcop/web-start/cards']);}},
+            {title:'cardsMore',icon:'',place: 'down',
+              url:'/main/webcop/web-start/card-more',
+              callback: () => {this.router.navigate(['/main/webcop/web-start/cardsMore']);}}
+          ]
+        }
       }
     ]
   };
@@ -309,13 +323,15 @@ export class FullComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subAuthText = this.authService.getAuthText()
-        .subscribe(message => {
-          this.authErrorMsg = message;
+        .subscribe(auth => {
+          this.authErrorMsg = auth.message;
           this.isShowErrorMsg = true;
-          this.cleanLoginData();
-          setTimeout(() => {
-            this.userOper.loginOn = true;
-          },1000);
+          if(auth.type === 'login') {
+            this.cleanLoginData();
+            setTimeout(() => {
+              this.userOper.loginOn = true;
+            },1000);
+          }
         });
     setTimeout(() => {
       this.setTranslate();
@@ -395,6 +411,8 @@ export class FullComponent implements OnInit, OnDestroy {
     this.sidebarNavs_webcop.navItems[1].childs.navItems[1].title = this.translate.instant('sidBar.cube');
     this.sidebarNavs_webcop.navItems[1].childs.navItems[2].title = this.translate.instant('sidBar.photoWall');
     this.sidebarNavs_webcop.navItems[1].childs.navItems[3].title = this.translate.instant('sidBar.conanDoor');
+    this.sidebarNavs_webcop.navItems[2].childs.navItems[0].title = this.translate.instant('sidBar.cards');
+    this.sidebarNavs_webcop.navItems[2].childs.navItems[1].title = this.translate.instant('sidBar.cardsMore');
   }
 
   setSiderOtherTranslate() {

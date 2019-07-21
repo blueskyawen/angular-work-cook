@@ -1,0 +1,27 @@
+<div class="card-container">
+    <div class="card" *ngFor="let item of cardItems">
+        <div class="card-item">
+            <header>{{item.name}}
+                <span class="fa fa-minus-circle" (click)="delItem(item)"></span>
+            </header>
+            <article>
+                <div class="bar">
+                    <span>
+                        <span class="bar-item" [class.active]="i < item.count"
+                              *ngFor="let bar of item.countArr;let i=index"></span>
+                    </span>
+                    <span>{{item.count}}</span>
+                </div>
+            </article>
+            <footer>
+                <span>{{item.city}}</span>
+                <span>{{item.area}}</span>
+            </footer>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-add" (click)="addItem()">
+            <span class="fa fa-plus"></span>
+        </div>
+    </div>
+</div>
