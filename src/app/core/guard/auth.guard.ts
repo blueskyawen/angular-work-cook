@@ -28,12 +28,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
     let curDate = today.getDate();
     if(this.startUrls.includes(url)) {
       if(url === this.startUrls[0]) {
-        if(curMonth > 7 || (curMonth == 7 && curDate > 23)) {
+        if(curMonth > 7 || (curMonth == 7 && curDate > 24)) {
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
           setTimeout(() => {
-            this.authService.sendAuthText(new AuthMsg('start', `7月24日前无法访问 前端COP-Web Start-列表 !`));
+            this.authService.sendAuthText(new AuthMsg('start', `7月25日前无法访问 前端COP-Web Start-列表 !`));
           },200);
           return false;
         }
@@ -53,10 +53,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
         return true;
       }
     } else if(url.indexOf('cop-project') !== -1 || url.indexOf('fan-project') !== -1) {
-      if(curMonth > 7 || (curMonth == 7 && curDate > 25)) {
+      if(curMonth > 7 || (curMonth == 7 && curDate > 28)) {
         return true;
       } else {
-        this.authService.sendAuthText(new AuthMsg('start', `7月26日前无法访问 !`));
+        this.authService.sendAuthText(new AuthMsg('start', `7月29日前无法访问 !`));
         return false;
       }
     } else {
