@@ -34,7 +34,8 @@ const routes: Routes = [
       },
       {
         path: 'pc',
-        component: CopApplePcComponent
+        component: CopApplePcComponent,
+        data: {keep: true}
       },
       {
         path: 'parrot',
