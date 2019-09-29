@@ -4,6 +4,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot,
 import { Observable,Subject} from 'rxjs';
 import { AuthService, AuthMsg } from '../auth.service';
 import { Router } from '@angular/router';
+import { CustomReuseStrategy } from '../../CustomReuseStrategy';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log('AuthGuard === canActivate');
     let url: string = state.url;
-    console.log(url);
+    console.log(next);
+    console.log(state);
     let today = new Date();
     let year = today.getFullYear();
     let curMonth = today.getMonth() + 1;
@@ -29,6 +31,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
     if(this.startUrls.includes(url)) {
       if(url === this.startUrls[0]) {
         if(curMonth > 7 || (curMonth == 7 && curDate > 24)) {
+          CustomReuseStrategy.clear();
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
@@ -40,6 +43,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
       }
       if(url === this.startUrls[1]) {
         if(curMonth > 8 || (curMonth == 8 && curDate > 5)) {
+          CustomReuseStrategy.clear();
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
@@ -50,10 +54,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
         }
       }
       if(url === this.startUrls[2]) {
+        CustomReuseStrategy.clear();
         return true;
       }
     } else if(url.indexOf('cop-project') !== -1 || url.indexOf('fan-project') !== -1) {
       if(curMonth > 7 || (curMonth == 7 && curDate > 28)) {
+        CustomReuseStrategy.clear();
         return true;
       } else {
         this.authService.sendAuthText(new AuthMsg('start', `7月29日前无法访问 !`));
@@ -61,6 +67,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
       }
     } else {
       if (this.authService.curUser) {
+        CustomReuseStrategy.clear();
         return true;
       } else {
         this.authService.redirectUrl = url;

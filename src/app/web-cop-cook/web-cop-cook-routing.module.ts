@@ -30,12 +30,12 @@ const routes: Routes = [
       },
       {
         path: 'uds',
-        component: CopUdsComponent
+        component: CopUdsComponent,
+        data: {keep: true}
       },
       {
         path: 'pc',
-        component: CopApplePcComponent,
-        data: {keep: true}
+        component: CopApplePcComponent
       },
       {
         path: 'parrot',

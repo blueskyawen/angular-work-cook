@@ -3,6 +3,8 @@ import { RouteReuseStrategy, ActivatedRouteSnapshot, DetachedRouteHandle } from 
 export class CustomReuseStrategy implements RouteReuseStrategy {
 
     public static handlers: { [key: string]: DetachedRouteHandle } = {};
+    public static futureRouteConfig: any;
+    public static currRouteConfig: any;
 
     public static deleteRouteSnapshot(path: string): void {
         const name = path.replace(/\//g, '_');
@@ -11,7 +13,13 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
         }
     }
 
-    /** 表示对所有路由允许复用 如果你有路由不想利用可以在这加一些业务逻辑判断 */
+    public static clear(): void {
+        for (let key in CustomReuseStrategy.handlers) {
+            //delete CustomReuseStrategy.handlers[key];
+        }
+    }
+
+    /** 当路由离开时会触发,表示对所有路由允许复用 如果你有路由不想利用可以在这加一些业务逻辑判断 */
     shouldDetach(route: ActivatedRouteSnapshot): boolean {
         console.debug('shouldDetach======>', route);
         if (!route.data.keep) {
@@ -29,30 +37,55 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     /** 若 path 在缓存中有的都认为允许还原路由 */
     shouldAttach(route: ActivatedRouteSnapshot): boolean {
         console.debug('shouldAttach======>', route);
-        return !!CustomReuseStrategy.handlers[this.getRouteUrl(route)];
+        let aaa = this.getNouseRouteUrl(this.getRouteUrl(route));
+        console.debug('aaa======>', aaa);
+        return !!CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))];
     }
 
     /** 从缓存中获取快照，若无则返回nul */
     retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
         console.debug('retrieve======>', route);
-        if (!CustomReuseStrategy.handlers[this.getRouteUrl(route)]) {
+        console.debug('CustomReuseStrategy.futureRouteConfig======>',
+            CustomReuseStrategy.futureRouteConfig);
+        console.debug('CustomReuseStrategy.currRouteConfig======>',
+            CustomReuseStrategy.currRouteConfig);
+        let aaa = this.getNouseRouteUrl(this.getRouteUrl(route));
+        console.debug('aaa======>', aaa);
+        if (!CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))]) {
             return null;
         }
 
-        return CustomReuseStrategy.handlers[this.getRouteUrl(route)];
+        return CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))];
     }
 
     /** 进入路由触发，判断是否同一路由 */
     shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-        console.debug('shouldReuseRoute======>', future, curr);
-        return future.routeConfig === curr.routeConfig &&
-            JSON.stringify(future.params) === JSON.stringify(curr.params);
+        console.debug('shouldReuseRoute======>');
+        console.debug('future======>', future);
+        console.debug('curr======>', curr);
+        if (future.routeConfig === curr.routeConfig &&
+            JSON.stringify(future.params) === JSON.stringify(curr.params)) {
+            return true;
+        } else {
+            CustomReuseStrategy.futureRouteConfig =future.routeConfig;
+            CustomReuseStrategy.currRouteConfig =curr.routeConfig;
+            return false;
+        }
     }
 
     /** 使用route的path作为快照的key */
     getRouteUrl(route: ActivatedRouteSnapshot) {
         const path = route['_routerState'].url.replace(/\//g, '_');
         return path;
+    }
+
+    getNouseRouteUrl(path: any) {
+        if (CustomReuseStrategy.currRouteConfig) {
+            let paths = path.split('_');
+            return paths.slice(0, paths.lastIndexOf(CustomReuseStrategy.currRouteConfig.path)).join('_');
+        } else {
+            return path;
+        }
     }
 
 }

@@ -16,8 +16,9 @@ import { InMemoryDataService }  from './core/in-memory-data.service';
 
 import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { CustomReuseStrategy } from './CustomReuseStrategy';
 import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './CustomReuseStrategy';
+
 // 支持AOT
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
