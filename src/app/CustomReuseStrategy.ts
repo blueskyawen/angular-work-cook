@@ -82,7 +82,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     getNouseRouteUrl(path: any) {
         if (CustomReuseStrategy.currRouteConfig) {
             let paths = path.split('_');
-            return paths.slice(0, paths.lastIndexOf(CustomReuseStrategy.currRouteConfig.path)).join('_');
+            return paths.slice(0, paths.lastIndexOf(CustomReuseStrategy.currRouteConfig.path) + 1).join('_');
         } else {
             return path;
         }
