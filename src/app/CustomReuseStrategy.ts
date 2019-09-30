@@ -15,7 +15,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
 
     public static clear(): void {
         for (let key in CustomReuseStrategy.handlers) {
-            //delete CustomReuseStrategy.handlers[key];
+            delete CustomReuseStrategy.handlers[key];
         }
     }
 
@@ -37,9 +37,9 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     /** 若 path 在缓存中有的都认为允许还原路由 */
     shouldAttach(route: ActivatedRouteSnapshot): boolean {
         console.debug('shouldAttach======>', route);
-        let aaa = this.getNouseRouteUrl(this.getRouteUrl(route));
-        console.debug('aaa======>', aaa);
-        return !!CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))];
+        const diffUrl = this.getDiffRouteUrl(this.getRouteUrl(route));
+        console.debug('diffUrl======>', diffUrl);
+        return !!CustomReuseStrategy.handlers[diffUrl];
     }
 
     /** 从缓存中获取快照，若无则返回nul */
@@ -49,13 +49,13 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
             CustomReuseStrategy.futureRouteConfig);
         console.debug('CustomReuseStrategy.currRouteConfig======>',
             CustomReuseStrategy.currRouteConfig);
-        let aaa = this.getNouseRouteUrl(this.getRouteUrl(route));
-        console.debug('aaa======>', aaa);
-        if (!CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))]) {
+        const diffUrl = this.getDiffRouteUrl(this.getRouteUrl(route));
+        console.debug('diffUrl======>', diffUrl);
+        if (!CustomReuseStrategy.handlers[diffUrl]) {
             return null;
         }
 
-        return CustomReuseStrategy.handlers[this.getNouseRouteUrl(this.getRouteUrl(route))];
+        return CustomReuseStrategy.handlers[diffUrl];
     }
 
     /** 进入路由触发，判断是否同一路由 */
@@ -79,10 +79,14 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
         return path;
     }
 
-    getNouseRouteUrl(path: any) {
-        if (CustomReuseStrategy.currRouteConfig) {
-            let paths = path.split('_');
-            return paths.slice(0, paths.lastIndexOf(CustomReuseStrategy.currRouteConfig.path) + 1).join('_');
+    getDiffRouteUrl(path: any) {
+        if (CustomReuseStrategy.currRouteConfig && CustomReuseStrategy.currRouteConfig.children) {
+            for (let child of CustomReuseStrategy.currRouteConfig.children) {
+                if (path.lastIndexOf(child.path) !== -1) {
+                    return path.slice(0, path.lastIndexOf(`_${child.path}`));
+                }
+            }
+            return path;
         } else {
             return path;
         }

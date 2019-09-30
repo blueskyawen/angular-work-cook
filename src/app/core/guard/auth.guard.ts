@@ -31,7 +31,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
     if(this.startUrls.includes(url)) {
       if(url === this.startUrls[0]) {
         if(curMonth > 7 || (curMonth == 7 && curDate > 24)) {
-          CustomReuseStrategy.clear();
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
@@ -43,7 +42,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
       }
       if(url === this.startUrls[1]) {
         if(curMonth > 8 || (curMonth == 8 && curDate > 5)) {
-          CustomReuseStrategy.clear();
           return true;
         } else {
           this.router.navigate(['/main/webcop/web-start/no-right']);
@@ -54,12 +52,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
         }
       }
       if(url === this.startUrls[2]) {
-        CustomReuseStrategy.clear();
         return true;
       }
     } else if(url.indexOf('cop-project') !== -1 || url.indexOf('fan-project') !== -1) {
       if(curMonth > 7 || (curMonth == 7 && curDate > 28)) {
-        CustomReuseStrategy.clear();
         return true;
       } else {
         this.authService.sendAuthText(new AuthMsg('start', `7月29日前无法访问 !`));
@@ -67,7 +63,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad  {
       }
     } else {
       if (this.authService.curUser) {
-        CustomReuseStrategy.clear();
         return true;
       } else {
         this.authService.redirectUrl = url;
