@@ -18,6 +18,7 @@ import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-transla
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './CustomReuseStrategy';
+import { AppReuseStrategy } from './AppReuseStrategy';
 
 // 支持AOT
 export function createTranslateLoader(http: HttpClient) {
@@ -46,7 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [TranslateService,
-    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }
+    { provide: RouteReuseStrategy, useClass: AppReuseStrategy }
   ],
   bootstrap: [AppComponent]
 })
