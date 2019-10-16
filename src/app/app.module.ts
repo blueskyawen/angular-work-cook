@@ -47,7 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [TranslateService,
-    { provide: RouteReuseStrategy, useClass: AppReuseStrategy }
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }
   ],
   bootstrap: [AppComponent]
 })
