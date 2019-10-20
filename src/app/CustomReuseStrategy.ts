@@ -3,7 +3,6 @@ import { RouteReuseStrategy, ActivatedRouteSnapshot, DetachedRouteHandle } from 
 export class CustomReuseStrategy implements RouteReuseStrategy {
 
     public static handlers: { [key: string]: DetachedRouteHandle } = {};
-    public static futureRouteConfig: any;
     public static currRouteConfig: any;
 
     public static deleteRouteSnapshot(path: string): void {
@@ -38,19 +37,13 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     shouldAttach(route: ActivatedRouteSnapshot): boolean {
         console.debug('shouldAttach======>', route);
         const diffUrl = this.getDiffRouteUrl(this.getRouteUrl(route));
-        console.debug('diffUrl======>', diffUrl);
         return !!CustomReuseStrategy.handlers[diffUrl];
     }
 
     /** 从缓存中获取快照，若无则返回nul */
     retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
         console.debug('retrieve======>', route);
-        console.debug('CustomReuseStrategy.futureRouteConfig======>',
-            CustomReuseStrategy.futureRouteConfig);
-        console.debug('CustomReuseStrategy.currRouteConfig======>',
-            CustomReuseStrategy.currRouteConfig);
         const diffUrl = this.getDiffRouteUrl(this.getRouteUrl(route));
-        console.debug('diffUrl======>', diffUrl);
         if (!CustomReuseStrategy.handlers[diffUrl]) {
             return null;
         }
@@ -61,13 +54,10 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     /** 进入路由触发，判断是否同一路由 */
     shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
         console.debug('shouldReuseRoute======>');
-        console.debug('future======>', future);
-        console.debug('curr======>', curr);
         if (future.routeConfig === curr.routeConfig &&
             JSON.stringify(future.params) === JSON.stringify(curr.params)) {
             return true;
         } else {
-            CustomReuseStrategy.futureRouteConfig =future.routeConfig;
             CustomReuseStrategy.currRouteConfig =curr.routeConfig;
             return false;
         }

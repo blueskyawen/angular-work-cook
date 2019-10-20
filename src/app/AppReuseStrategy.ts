@@ -51,7 +51,6 @@ export class AppReuseStrategy implements RouteReuseStrategy {
     /** 若 path 在缓存中有的都认为允许还原路由 */
     shouldAttach(route: ActivatedRouteSnapshot): boolean {
         console.debug('shouldAttach======>', route);
-        console.debug('diffUrl======>', this.getRouteUrl(route));
         return (route.data.keepParent || !route.routeConfig.children && !route.routeConfig.loadChildren) && !!AppReuseStrategy.handlers[this.getRouteUrl(route)];
     }
 
@@ -69,8 +68,6 @@ export class AppReuseStrategy implements RouteReuseStrategy {
     /** 进入路由触发，判断是否同一路由 */
     shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
         console.debug('shouldReuseRoute======>');
-        console.debug('future======>', future);
-        console.debug('curr======>', curr);
         return (!curr.data.keepParent || !future.data.keepParent) && (future.routeConfig === curr.routeConfig && JSON.stringify(future.params) === JSON.stringify(curr.params));
     }
 
